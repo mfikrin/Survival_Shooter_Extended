@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     string GameMode = "Zen";
+    string playerName;
 
     public GameObject modalWindow;
     public void PlayGame()
@@ -14,11 +15,12 @@ public class MainMenu : MonoBehaviour
         Debug.Log(GameMode); 
         if (GameMode == "Zen")
         {
+            Debug.Log("Mode Game ZEN");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         else if (GameMode == "Wave")
         {
-
+            Debug.Log("Mode Game WAVE");
         }
         
     }
