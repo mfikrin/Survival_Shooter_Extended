@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 6f;
+    public Text speedAmount;
     Vector3 movement;
     Animator anim;
     Rigidbody playerRigidbody;
     int floorMask;
     float camRayLength = 100f;
+    float maxSpeed = 50f;
 
     private void Awake()
     {
@@ -19,6 +22,16 @@ public class PlayerMovement : MonoBehaviour
 
         //Mendapatkan komponen Rigidbody
         playerRigidbody = GetComponent<Rigidbody>();
+
+        // atribut speed 
+        if(speed > maxSpeed)
+        {
+            speedAmount.text = maxSpeed.ToString() + "/" + maxSpeed.ToString();
+        }
+        else
+        {
+            speedAmount.text = speed.ToString() + "/" + maxSpeed.ToString();
+        }
     }
 
     private void FixedUpdate()
