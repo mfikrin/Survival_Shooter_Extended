@@ -10,30 +10,32 @@ using TMPro;
 public class MainMenu : MonoBehaviour
 {
     string GameMode = "Zen";
-    string playerName;
 
-    //public GameObject InputField;
     public TMP_InputField nameInputField;
-
-    //public void Start()
-    //{
-    //    if (nameInputField != null)
-    //    {
-    //        nameInputField.onValueChanged.AddListener(UpdateInputField);
-    //    }
-        
-    //}
-
-    private void UpdateInputField(string arg0)
-    {
-        Debug.Log(arg0);
-    }
-
 
     public void PlayGame()
     {
 
+        if (nameInputField.text != string.Empty)
+        {
+            Debug.Log("Masuk not null");
+            PlayerMovement.playerNameStr = nameInputField.text; // nanti ubah playerMovement nya
+
+        }
+        else
+        {
+            Debug.Log("Masuk null");
+            DateTime now = DateTime.Now;
+
+            var defaultPlayerName = "Anonymous ";
+            defaultPlayerName += now.ToString();
+            Debug.Log(defaultPlayerName);
+            PlayerMovement.playerNameStr = defaultPlayerName;
+        }
+
         Debug.Log(GameMode); 
+
+        Debug.Log("Player name" + nameInputField.text);
         if (GameMode == "Zen")
         {
             Debug.Log("Mode Game ZEN");
@@ -70,34 +72,4 @@ public class MainMenu : MonoBehaviour
         Debug.Log(GameMode);
     }
 
-    public void onInputName()
-    {
-        //Debug.Log(value);
-        //playerName = value;
-        //Debug.Log(playerName);
-        nameInputField.onValueChanged.AddListener(UpdateInputField);
-    }
-
-    public void onEndInputName()
-    {
-        Debug.Log("In set End Input Name");
-        nameInputField.onEndEdit.AddListener(setPlayerName);
-    }
-
-    private void setPlayerName(string arg)
-    {
-        playerName = arg;
-        Debug.Log("In set Player Name");
-        Debug.Log(playerName);
-        Debug.Log("Player name");
-        Debug.Log(playerName);
-
-    }
-
-
-    //public void AboutGame()
-    //{
-    //    Debug.Log("About click!");
-    //    modalWindow.SetActive(true);
-    //}
 }

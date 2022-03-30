@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,8 +10,15 @@ public class PlayerMovement : MonoBehaviour
     int floorMask;
     float camRayLength = 100f;
 
+    public static string playerNameStr; // ubah 
+
+    public Text playerName; // ubah
+
+    
+
     private void Awake()
     {
+        playerName.text = playerNameStr; // ubah
         //mendapatkan nilai mask dari layer yang bernama Floor
         floorMask = LayerMask.GetMask("Floor");
 
