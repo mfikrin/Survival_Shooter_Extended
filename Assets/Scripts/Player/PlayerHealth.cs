@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     public Slider healthSlider;
     public Image damageImage;
     public AudioClip deathClip;
+    public Text healthAmount;
     public float flashSpeed = 5f;
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
 
@@ -21,6 +22,7 @@ public class PlayerHealth : MonoBehaviour
     PlayerShooting playerShooting;
     bool isDead;
     bool damaged;
+    int maxHealth = 100;
 
 
     void Awake()
@@ -32,6 +34,14 @@ public class PlayerHealth : MonoBehaviour
 
         playerShooting = GetComponentInChildren<PlayerShooting>();
         currentHealth = startingHealth;
+        if (startingHealth > maxHealth)
+        {
+            healthAmount.text = maxHealth.ToString() + "/" + maxHealth.ToString();
+        }
+        else
+        {
+            healthAmount.text = startingHealth.ToString() + "/" + maxHealth.ToString();
+        }
     }
 
 
@@ -59,6 +69,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= amount;
 
         healthSlider.value = currentHealth;
+        healthAmount.text = currentHealth.ToString() + "/" + maxHealth.ToString();
 
         playerAudio.Play();
 
