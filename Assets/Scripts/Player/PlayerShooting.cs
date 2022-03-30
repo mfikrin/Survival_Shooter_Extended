@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerShooting : MonoBehaviour
 {
     public int damagePerShot = 20;                  
     public float timeBetweenBullets = 0.15f;        
-    public float range = 100f;                      
+    public float range = 100f;
+    public Text powerAmount;
+
 
     float timer;                                    
     Ray shootRay = new Ray();                                   
@@ -14,7 +17,8 @@ public class PlayerShooting : MonoBehaviour
     LineRenderer gunLine;                           
     AudioSource gunAudio;                           
     Light gunLight;                                 
-    float effectsDisplayTime = 0.2f;                
+    float effectsDisplayTime = 0.2f;
+    int maxDamage = 100;
 
     void Awake()
     {
@@ -23,6 +27,14 @@ public class PlayerShooting : MonoBehaviour
         gunLine = GetComponent<LineRenderer>();
         gunAudio = GetComponent<AudioSource>();
         gunLight = GetComponent<Light>();
+        if (damagePerShot > maxDamage)
+        {
+            powerAmount.text = maxDamage.ToString() + "/" + maxDamage.ToString();
+        }
+        else
+        {
+            powerAmount.text = damagePerShot.ToString() + "/" + maxDamage.ToString();
+        }
     }
 
     void Update()
