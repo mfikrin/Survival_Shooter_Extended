@@ -87,6 +87,6 @@ public class PlayerHealth : MonoBehaviour
     public void RestartLevel()
     {
         //meload ulang scene dengan index 0 pada build setting
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Menu"); // msh bug ga bisa balik ke menu
     }
 }
