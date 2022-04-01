@@ -23,7 +23,6 @@ public class Player : MonoBehaviour
 
     // PlayerHealth
     public static int startingHealth = 100;
-    //public static int currentHealth;
     public static int maxHealth = 100;
     public static float flashSpeed = 5f;
     public static Color flashColour = new Color(1f, 0f, 0f, 0.1f);
@@ -31,7 +30,20 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerNameText.text = playerName;
+        if (playerName.Length > 20 && (playerName != MainMenu.defaultPlayerName))
+        {
+            string displayName = playerName.Substring(0, 20);
+            //Debug.Log("Display name");
+            //Debug.Log(displayName.Length);
+            playerNameText.text = displayName;
+        }
+        else
+        {
+            playerNameText.text = playerName;
+        }
+
+        //Debug.Log(playerName);
+        //Debug.Log(playerName.Length);
     }
 
     //// Update is called once per frame

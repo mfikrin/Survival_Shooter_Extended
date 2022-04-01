@@ -1009,7 +1009,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 25, y: 141}
-  m_SizeDelta: {x: 537.6259, y: 42.300293}
+  m_SizeDelta: {x: 414.015, y: 42.3003}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &259035240
 MonoBehaviour:
@@ -1044,7 +1044,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: player name
+  m_Text: PlayerName
 --- !u!222 &259035241
 CanvasRenderer:
   m_ObjectHideFlags: 0
