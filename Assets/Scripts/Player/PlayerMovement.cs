@@ -3,24 +3,24 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 6f;
+    //public float speed = 6f;
+
+    //float camRayLength = 100f;
+    //float maxSpeed = 50f;
+
+    //public static string playerNameStr; // ubah 
+
+    //public Text playerName; // ubah
+
     public Text speedAmount;
     Vector3 movement;
     Animator anim;
     Rigidbody playerRigidbody;
     int floorMask;
-    float camRayLength = 100f;
-    float maxSpeed = 50f;
 
-    public static string playerNameStr; // ubah 
-
-    public Text playerName; // ubah
-
-    
 
     private void Awake()
     {
-        playerName.text = playerNameStr; // ubah
         //mendapatkan nilai mask dari layer yang bernama Floor
         floorMask = LayerMask.GetMask("Floor");
 
@@ -31,13 +31,13 @@ public class PlayerMovement : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody>();
 
         // atribut speed 
-        if(speed > maxSpeed)
+        if(Player.speed > Player.maxSpeed)
         {
-            speedAmount.text = maxSpeed.ToString() + "/" + maxSpeed.ToString();
+            speedAmount.text = Player.maxSpeed.ToString() + "/" + Player.maxSpeed.ToString();
         }
         else
         {
-            speedAmount.text = speed.ToString() + "/" + maxSpeed.ToString();
+            speedAmount.text = Player.speed.ToString() + "/" + Player.maxSpeed.ToString();
         }
     }
 
@@ -61,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
         movement.Set(h, 0f, v);
 
         //Menormalisasi nilai vector agar total panjang dari vector adalah 1
-        movement = movement.normalized * speed * Time.deltaTime;
+        movement = movement.normalized * Player.speed * Time.deltaTime;
 
         //Move to position
         playerRigidbody.MovePosition(transform.position + movement);
@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit floorHit;
 
         //Lakukan raycast
-        if (Physics.Raycast(camRay, out floorHit, camRayLength, floorMask))
+        if (Physics.Raycast(camRay, out floorHit, Player.camRayLength, floorMask))
         {
             //Mendapatkan vector daro posisi player dan posisi floorHit
             Vector3 playerToMouse = floorHit.point - transform.position;

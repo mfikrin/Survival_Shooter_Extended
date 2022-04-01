@@ -428,9 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec45203ae7a1a54c9d02c355f983833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
   speedAmount: {fileID: 237121144}
-  playerName: {fileID: 259035240}
 --- !u!114 &33458249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -463,14 +461,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 544f2064df03e95419b4a5147c506b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 100
   currentHealth: 0
   healthSlider: {fileID: 2070728230}
   damageImage: {fileID: 1109176449}
   deathClip: {fileID: 8300000, guid: d36a393bca4582043982db9089e1694f, type: 3}
   healthAmount: {fileID: 950215453}
-  flashSpeed: 5
-  flashColour: {r: 1, g: 0, b: 0, a: 0.1}
+--- !u!114 &33458252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33458244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ba9ed9ca373004894e26e8fc88f710, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNameText: {fileID: 259035240}
 --- !u!135 &33458253
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6276,9 +6284,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27c63be2a8918c741863160b9d9da122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePerShot: 20
-  timeBetweenBullets: 0.15
-  range: 100
   powerAmount: {fileID: 866828595}
 --- !u!1 &732164003
 GameObject:

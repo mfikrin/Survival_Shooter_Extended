@@ -3,9 +3,9 @@ using UnityEngine.UI;
 
 public class PlayerShooting : MonoBehaviour
 {
-    public int damagePerShot = 20;                  
-    public float timeBetweenBullets = 0.15f;        
-    public float range = 100f;
+    //public int damagePerShot = 20;                  
+    //public float timeBetweenBullets = 0.15f;        
+    //public float range = 100f;
     public Text powerAmount;
 
 
@@ -18,7 +18,7 @@ public class PlayerShooting : MonoBehaviour
     AudioSource gunAudio;                           
     Light gunLight;                                 
     float effectsDisplayTime = 0.2f;
-    int maxDamage = 100;
+    //int maxDamage = 100;
 
     void Awake()
     {
@@ -27,13 +27,13 @@ public class PlayerShooting : MonoBehaviour
         gunLine = GetComponent<LineRenderer>();
         gunAudio = GetComponent<AudioSource>();
         gunLight = GetComponent<Light>();
-        if (damagePerShot > maxDamage)
+        if (Player.damagePerShot > Player.maxDamage)
         {
-            powerAmount.text = maxDamage.ToString() + "/" + maxDamage.ToString();
+            powerAmount.text = Player.maxDamage.ToString() + "/" + Player.maxDamage.ToString();
         }
         else
         {
-            powerAmount.text = damagePerShot.ToString() + "/" + maxDamage.ToString();
+            powerAmount.text = Player.damagePerShot.ToString() + "/" + Player.maxDamage.ToString();
         }
     }
 
@@ -41,12 +41,12 @@ public class PlayerShooting : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (Input.GetButton("Fire1") && timer >= timeBetweenBullets && Time.timeScale != 0)
+        if (Input.GetButton("Fire1") && timer >= Player.timeBetweenBullets && Time.timeScale != 0)
         {
             Shoot();
         }
 
-        if (timer >= timeBetweenBullets * effectsDisplayTime)
+        if (timer >= Player.timeBetweenBullets * effectsDisplayTime)
         {
             DisableEffects();
         }
@@ -75,20 +75,20 @@ public class PlayerShooting : MonoBehaviour
         shootRay.origin = transform.position;
         shootRay.direction = transform.forward;
 
-        if (Physics.Raycast(shootRay, out shootHit, range, shootableMask))
+        if (Physics.Raycast(shootRay, out shootHit, Player.range, shootableMask))
         {
             EnemyHealth enemyHealth = shootHit.collider.GetComponent<EnemyHealth>();
 
             if (enemyHealth != null)
             {
-                enemyHealth.TakeDamage(damagePerShot, shootHit.point);
+                enemyHealth.TakeDamage(Player.damagePerShot, shootHit.point);
             }
 
             gunLine.SetPosition(1, shootHit.point);
         }
         else
         {
-            gunLine.SetPosition(1, shootRay.origin + shootRay.direction * range);
+            gunLine.SetPosition(1, shootRay.origin + shootRay.direction * Player.range);
         }
     }
 }

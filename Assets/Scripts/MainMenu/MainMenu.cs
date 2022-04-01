@@ -19,7 +19,7 @@ public class MainMenu : MonoBehaviour
         if (nameInputField.text != string.Empty)
         {
             Debug.Log("Masuk not null");
-            PlayerMovement.playerNameStr = nameInputField.text; // nanti ubah playerMovement nya
+            Player.playerName = nameInputField.text; // nanti ubah playerMovement nya
 
         }
         else
@@ -30,7 +30,7 @@ public class MainMenu : MonoBehaviour
             var defaultPlayerName = "Anonymous ";
             defaultPlayerName += now.ToString();
             Debug.Log(defaultPlayerName);
-            PlayerMovement.playerNameStr = defaultPlayerName;
+            Player.playerName = defaultPlayerName;
         }
 
         Debug.Log(GameMode); 
