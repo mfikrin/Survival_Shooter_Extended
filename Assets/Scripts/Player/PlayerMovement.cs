@@ -3,15 +3,6 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    //public float speed = 6f;
-
-    //float camRayLength = 100f;
-    //float maxSpeed = 50f;
-
-    //public static string playerNameStr; // ubah 
-
-    //public Text playerName; // ubah
-
     public Text speedAmount;
     Vector3 movement;
     Animator anim;
