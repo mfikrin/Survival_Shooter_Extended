@@ -6,15 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int startingHealth = 100;
+    //public int startingHealth = 100;
     public int currentHealth;
     public Slider healthSlider;
     public Image damageImage;
     public AudioClip deathClip;
     public Text healthAmount;
-    public float flashSpeed = 5f;
-    public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
-
 
     Animator anim;
     AudioSource playerAudio;
@@ -22,7 +19,7 @@ public class PlayerHealth : MonoBehaviour
     PlayerShooting playerShooting;
     bool isDead;
     bool damaged;
-    int maxHealth = 100;
+    //int maxHealth = 100;
 
 
     void Awake()
@@ -33,14 +30,14 @@ public class PlayerHealth : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
 
         playerShooting = GetComponentInChildren<PlayerShooting>();
-        currentHealth = startingHealth;
-        if (startingHealth > maxHealth)
+        currentHealth = Player.startingHealth;
+        if (Player.startingHealth > Player.maxHealth)
         {
-            healthAmount.text = maxHealth.ToString() + "/" + maxHealth.ToString();
+            healthAmount.text = Player.maxHealth.ToString() + "/" + Player.maxHealth.ToString();
         }
         else
         {
-            healthAmount.text = startingHealth.ToString() + "/" + maxHealth.ToString();
+            healthAmount.text = Player.startingHealth.ToString() + "/" + Player.maxHealth.ToString();
         }
     }
 
@@ -50,12 +47,12 @@ public class PlayerHealth : MonoBehaviour
         if (damaged)
         {
             // Merubah warna gambar menjadi value dari flashColour
-            damageImage.color = flashColour;
+            damageImage.color = Player.flashColour;
         }
         else
         {
             // Fade out damage image
-            damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
+            damageImage.color = Color.Lerp(damageImage.color, Color.clear, Player.flashSpeed * Time.deltaTime);
         }
 
         damaged = false;
@@ -69,7 +66,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= amount;
 
         healthSlider.value = currentHealth;
-        healthAmount.text = currentHealth.ToString() + "/" + maxHealth.ToString();
+        healthAmount.text = currentHealth.ToString() + "/" + Player.maxHealth.ToString();
 
         playerAudio.Play();
 
