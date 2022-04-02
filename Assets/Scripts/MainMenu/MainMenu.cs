@@ -35,13 +35,19 @@ public class MainMenu : MonoBehaviour
         if (GameMode == "Zen")
         {
             //Debug.Log("Mode Game ZEN");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.LoadScene("Level_01");
         }
         else if (GameMode == "Wave")
         {
             //Debug.Log("Mode Game WAVE");
         }
         
+    }
+
+    public void ScoreBoard()
+    {
+        Debug.Log("To scoreBoard");
+        SceneManager.LoadScene("ScoreBoard");
     }
 
     public void QuitGame()
