@@ -8,6 +8,7 @@ public class ScoreUI : MonoBehaviour
     public RowUI rowUI;
     public RowUI rowUIEven;
     public ScoreManager scoreManager;
+    public static int scoreUI;
 
 
     private void Start()
@@ -17,7 +18,11 @@ public class ScoreUI : MonoBehaviour
         scoreManager.AddScore(new Score("C", 70));
         scoreManager.AddScore(new Score("D", 70));
         scoreManager.AddScore(new Score("E", 70));
-        scoreManager.AddScore(new Score(Player.playerName, ScoreManager.score));
+        
+        Debug.Log(ScoreManager.score);
+        Debug.Log(scoreUI);
+
+        scoreManager.AddScore(new Score(Player.playerName, scoreUI));
         var scores = scoreManager.GetHighScores().ToArray();
         for (int i = 0; i < scores.Length; i++)
         {

@@ -82,6 +82,7 @@ public class PlayerHealth : MonoBehaviour
         playerShooting.DisableEffects();
 
         anim.SetTrigger("Die");
+        //anim.SetBool("Die", true);
 
         playerAudio.clip = deathClip;
         playerAudio.Play();
@@ -93,6 +94,7 @@ public class PlayerHealth : MonoBehaviour
     public void RestartLevel()
     {
         //meload ulang scene dengan index 0 pada build setting
+        ScoreUI.scoreUI = ScoreManager.score;
         SceneManager.LoadScene("ScoreBoard"); // msh bug ga bisa balik ke menu
     }
 }
