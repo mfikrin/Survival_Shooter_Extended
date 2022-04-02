@@ -93,6 +93,6 @@ public class PlayerHealth : MonoBehaviour
     public void RestartLevel()
     {
         //meload ulang scene dengan index 0 pada build setting
-        SceneManager.LoadScene("Menu"); // msh bug ga bisa balik ke menu
+        SceneManager.LoadScene("ScoreBoard"); // msh bug ga bisa balik ke menu
     }
 }
