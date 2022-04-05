@@ -9,56 +9,93 @@ using System;
 public class ScoreManager : MonoBehaviour
 {
     public static int score;
-
-    private ScoreData scoreData;
-    public Text textScore;
-    public Text timeScore;
-
     public static Stopwatch stopwatch;
     public static TimeSpan ts;
 
+    // wave
+    public static int wave;
 
-    void Awake ()
+    
+    private ScoreZenData scoreZenData;
+    private ScoreWaveData scoreWaveData;
+
+
+
+
+    public Text textScore;
+    public Text textTime;
+    public Text textWave;
+
+
+    void Awake()
     {
-        var scoreJson = PlayerPrefs.GetString("scores","{}");
-        scoreData = JsonUtility.FromJson<ScoreData>(scoreJson); 
+        var ZenScoreJson = PlayerPrefs.GetString("ZenScores", "{}");
+        scoreZenData = JsonUtility.FromJson<ScoreZenData>(ZenScoreJson);
+
+        var WaveScoreJson = PlayerPrefs.GetString("WaveScores", "{}");
+        scoreWaveData = JsonUtility.FromJson<ScoreWaveData>(WaveScoreJson);
         score = 0;
+        wave = 1;
         stopwatch = new Stopwatch();
         stopwatch.Start();
 
-      
-}
-    void Update ()
-    {
-        if (textScore != null)
-        {
-            textScore.text = "Score: " + score;
-        }
-        
 
-        if (stopwatch != null)
+    }
+    void Update()
+    {
+        if (Player.modeGame.Equals("Zen"))
         {
-            ts = stopwatch.Elapsed;
-            string time = ts.ToString().Substring(0, 11);
-            if (timeScore != null)
+            if (stopwatch != null)
             {
-                timeScore.text = time;
-                //UnityEngine.Debug.Log(timeScore.text);
+                ts = stopwatch.Elapsed;
+                string time = ts.ToString().Substring(0, 11);
+                if (textTime != null)
+                {
+                    textTime.text = time;
+                    //UnityEngine.Debug.Log(timeScore.text);
+                }
+
             }
-            
+            if (textScore != null)
+            {
+                textScore.text = "Score: " + score;
+            }
         }
-        
-        
+        else if (Player.modeGame.Equals("Wave"))
+        {
+            if (textScore != null)
+            {
+                textScore.text = "Score: " + score;
+            }
+            if (textWave != null)
+            {
+                textWave.text = "Wave " + wave;
+            }
+        }
+
+
+
+
     }
 
     public IEnumerable<ScoreZen> GetZenHighScores()
     {
-        return scoreData.ScoreList.OrderByDescending(x => x.time);
+        return scoreZenData.ZenScoreList.OrderByDescending(x => x.time);
+    }
+
+    public IEnumerable<ScoreWave> GetWaveHighScores()
+    {
+        return scoreWaveData.WaveScoreList.OrderByDescending(x => x.wave);
     }
 
     public void AddZenScore(ScoreZen score)
     {
-        scoreData.ScoreList.Add(score);
+        scoreZenData.ZenScoreList.Add(score);
+    }
+
+    public void AddWaveScore(ScoreWave score)
+    {
+        scoreWaveData.WaveScoreList.Add(score);
     }
 
     private void OnDestroy()
@@ -68,7 +105,10 @@ public class ScoreManager : MonoBehaviour
 
     public void SaveScore()
     {
-        var scoreJson = JsonUtility.ToJson(scoreData);
-        PlayerPrefs.SetString("scores", scoreJson);
+        var ZenScoreJson = JsonUtility.ToJson(scoreZenData);
+        PlayerPrefs.SetString("ZenScores", ZenScoreJson);
+
+        var WaveScoreJson = JsonUtility.ToJson(scoreWaveData);
+        PlayerPrefs.SetString("WaveScores", WaveScoreJson);
     }
 }

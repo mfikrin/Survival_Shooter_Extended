@@ -35,19 +35,23 @@ public class MainMenu : MonoBehaviour
         if (GameMode == "Zen")
         {
             //Debug.Log("Mode Game ZEN");
-            SceneManager.LoadScene("Level_01");
+            Player.modeGame = GameMode;
+            SceneManager.LoadScene("ZenMode");
+
         }
         else if (GameMode == "Wave")
         {
-            //Debug.Log("Mode Game WAVE");
+            Player.modeGame = GameMode;
+            //SceneManager.LoadScene("WaveMode");
+
         }
-        
+
     }
 
     public void ScoreBoard()
     {
         Debug.Log("To scoreBoard");
-        SceneManager.LoadScene("ScoreBoard");
+        SceneManager.LoadScene("ZenScoreBoard");
     }
 
     public void QuitGame()
@@ -59,6 +63,7 @@ public class MainMenu : MonoBehaviour
     public void setZenMode()
     {
         GameMode = "Zen";
+
     }
 
     public void setWaveMode()

@@ -7,12 +7,12 @@ using UnityEngine.SceneManagement;
 
 public class ScoreZenUI : MonoBehaviour
 {
-    public RowZenUI rowUIOdd;
-    public RowZenUI rowUIEven;
+    public RowZenUI rowZenUIOdd;
+    public RowZenUI rowZenUIEven;
     public ScoreManager scoreManager;
     public static int scoreUI;
     public static int timeUI;
-    public static TimeSpan TimeSpan;
+    public static TimeSpan TimeSpanZenUI;
   
     private void Start()
     {
@@ -30,12 +30,12 @@ public class ScoreZenUI : MonoBehaviour
         Debug.Log("STAT PEMAIN");
         //Debug.Log(ScoreManager.score);
         //Debug.Log(scoreUI);
-        Debug.Log(TimeSpan);
+        Debug.Log(TimeSpanZenUI);
 
         if (Player.playerName != null)
         {
            
-           scoreManager.AddZenScore(new ScoreZen(Player.playerName,TimeSpan));
+           scoreManager.AddZenScore(new ScoreZen(Player.playerName, TimeSpanZenUI));
         }
         //else
         //{
@@ -47,14 +47,14 @@ public class ScoreZenUI : MonoBehaviour
         {
             if (i % 2 == 0)
             {
-                var row = Instantiate(rowUIOdd, transform).GetComponent<RowZenUI>();
+                var row = Instantiate(rowZenUIOdd, transform).GetComponent<RowZenUI>();
                 row.Rank.text = (i + 1).ToString();
                 row.Name.text = scores[i].name;
                 row.Time.text = scores[i].time.ToString().Substring(0,11);
             }
             else
             {
-                var row = Instantiate(rowUIEven, transform).GetComponent<RowZenUI>();
+                var row = Instantiate(rowZenUIEven, transform).GetComponent<RowZenUI>();
                 row.Rank.text = (i + 1).ToString();
                 row.Name.text = scores[i].name;
                 row.Time.text = scores[i].time.ToString().Substring(0,11);

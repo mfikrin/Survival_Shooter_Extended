@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class ScoreData
+public class ScoreZenData
 {
-    public List<ScoreZen> ScoreList;
+    public List<ScoreZen> ZenScoreList;
 
-    public ScoreData()
+    public ScoreZenData()
     {
-        ScoreList = new List<ScoreZen>();
-    } 
+        ZenScoreList = new List<ScoreZen>();
+    }
 }

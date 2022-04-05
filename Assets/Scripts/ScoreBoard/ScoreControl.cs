@@ -12,11 +12,11 @@ public class ScoreControl : MonoBehaviour
 
     public void ZenScoreButton()
     {
-        SceneManager.LoadScene("ScoreBoard");
+        SceneManager.LoadScene("ZenScoreBoard");
     }
 
     public void WaveScoreButton()
     {
-        SceneManager.LoadScene("WaveScore");
+        SceneManager.LoadScene("WaveScoreBoard");
     }
 }
