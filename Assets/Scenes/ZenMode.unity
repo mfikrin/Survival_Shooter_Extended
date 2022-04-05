@@ -6799,7 +6799,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textScore: {fileID: 1733453810}
-  timeScore: {fileID: 935112412}
+  textTime: {fileID: 0}
+  textWave: {fileID: 0}
 --- !u!114 &935112412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7569,7 +7570,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textScore: {fileID: 1733453810}
-  timeScore: {fileID: 935112412}
+  textTime: {fileID: 0}
+  textWave: {fileID: 0}
 --- !u!114 &1733453810
 MonoBehaviour:
   m_ObjectHideFlags: 0
