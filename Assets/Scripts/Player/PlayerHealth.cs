@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
-
+using System;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -77,6 +77,11 @@ public class PlayerHealth : MonoBehaviour
 
     void Death()
     {
+        ScoreManager.stopwatch.Stop();
+        //ScoreManager.ts = ScoreManager.stopwatch.Elapsed;
+
+        ScoreZenUI.TimeSpan = ScoreManager.stopwatch.Elapsed;
+
         isDead = true;
 
         playerShooting.DisableEffects();
@@ -94,7 +99,9 @@ public class PlayerHealth : MonoBehaviour
     public void RestartLevel()
     {
         //meload ulang scene dengan index 0 pada build setting
-        ScoreUI.scoreUI = ScoreManager.score;
-        SceneManager.LoadScene("ScoreBoard"); // msh bug ga bisa balik ke menu
+        
+
+        //ScoreZenUI.scoreUI = ScoreManager.score;
+        SceneManager.LoadScene("ScoreBoard");
     }
 }

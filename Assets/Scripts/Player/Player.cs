@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,6 +28,9 @@ public class Player : MonoBehaviour
     public static float flashSpeed = 5f;
     public static Color flashColour = new Color(1f, 0f, 0f, 0.1f);
 
+   
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +38,7 @@ public class Player : MonoBehaviour
         {
             string displayName = playerName.Substring(0, 20);
             //Debug.Log("Display name");
-            //Debug.Log(displayName.Length);
+            UnityEngine.Debug.Log(displayName.Length);
             playerNameText.text = displayName;
         }
         else
@@ -42,6 +46,7 @@ public class Player : MonoBehaviour
             playerNameText.text = playerName;
         }
 
+        //playerName = "Playerss";
         //playerNameText.text = "Playerss";
 
         //Debug.Log(playerName);
