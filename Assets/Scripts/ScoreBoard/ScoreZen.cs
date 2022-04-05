@@ -1,17 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [SerializeField]
-public class Score
+public class ScoreZen
 {
 
     public string name;
-    public float score;
+    public TimeSpan time;
 
-    public Score(string name, float score)
+    public ScoreZen(string name, TimeSpan time)
     {
         this.name = name;
-        this.score = score;
+        this.time = time;
     }
 }
