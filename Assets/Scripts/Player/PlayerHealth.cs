@@ -80,7 +80,7 @@ public class PlayerHealth : MonoBehaviour
         ScoreManager.stopwatch.Stop();
         //ScoreManager.ts = ScoreManager.stopwatch.Elapsed;
 
-        ScoreZenUI.TimeSpan = ScoreManager.stopwatch.Elapsed;
+        ScoreZenUI.TimeSpanZenUI = ScoreManager.stopwatch.Elapsed;
 
         isDead = true;
 
@@ -98,10 +98,24 @@ public class PlayerHealth : MonoBehaviour
 
     public void RestartLevel()
     {
-        //meload ulang scene dengan index 0 pada build setting
-        
+        //meload ulang scene dengan index 0 pada build setting
+
 
         //ScoreZenUI.scoreUI = ScoreManager.score;
-        SceneManager.LoadScene("ScoreBoard");
+        if (Player.modeGame.Equals("Zen"))
+        {
+            // set time in void Death()
+            SceneManager.LoadScene("ZenScoreBoard");
+        }
+        else if (Player.modeGame.Equals("Wave"))
+        {
+            // set score
+            ScoreWaveUI.scoreWaveUI = ScoreManager.score;
+            // set wave
+            ScoreWaveUI.waveWaveUI = ScoreManager.wave;
+
+            SceneManager.LoadScene("WaveScoreBoard");
+        }
+
     }
 }

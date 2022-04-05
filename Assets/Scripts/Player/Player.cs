@@ -6,10 +6,11 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    
+
 
     public static string playerName;
     public Text playerNameText;
+    public static string modeGame = "Wave";
 
     // PlayerShooting
     public static int damagePerShot = 20;
@@ -28,7 +29,7 @@ public class Player : MonoBehaviour
     public static float flashSpeed = 5f;
     public static Color flashColour = new Color(1f, 0f, 0f, 0.1f);
 
-   
+
 
 
     // Start is called before the first frame update
@@ -45,6 +46,9 @@ public class Player : MonoBehaviour
         {
             playerNameText.text = playerName;
         }
+
+        UnityEngine.Debug.Log("MODE GAME");
+        UnityEngine.Debug.Log(modeGame);
 
         //playerName = "Playerss";
         //playerNameText.text = "Playerss";
