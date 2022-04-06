@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
 
     public static string playerName;
     public Text playerNameText;
-    public static string modeGame = "Wave";
+    public static string modeGame;
 
     // PlayerShooting
     public static int damagePerShot = 20;
@@ -48,6 +48,7 @@ public class Player : MonoBehaviour
         }
 
         UnityEngine.Debug.Log("MODE GAME");
+        //modeGame = "Wave";
         UnityEngine.Debug.Log(modeGame);
 
         //playerName = "Playerss";

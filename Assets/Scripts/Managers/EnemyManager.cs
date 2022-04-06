@@ -14,15 +14,40 @@ public class EnemyManager : MonoBehaviour
     public MonoBehaviour factory;
     IFactory Factory { get { return factory as IFactory; } }
 
+    //private int waveNumber = 0;
+    private int enemySpawnAmount = 0;
+    private int enemyKilled = 0;
     void Start ()
     {
+        Debug.Log("IN START ENEMY MANAGER");
+
         //Mengeksekusi fungs Spawn setiap beberapa detik sesui dengan nilai spawnTime
-        InvokeRepeating("Spawn", spawnTime, spawnTime);
+        if (Player.modeGame.Equals("Wave"))
+        {
+            Debug.Log("SPAWN WAVE MODE");
+            StartWave();
+        }
+        else
+        {
+            InvokeRepeating("Spawn", spawnTime, spawnTime);
+        }
+    }
+
+    private void Update()
+    {
+        Debug.Log("IN UPDATE ENEMY MANAGER");
+
+        if (enemyKilled >= enemySpawnAmount)
+        {
+            Debug.Log("Emang ini masuk ?");
+            NextWave();
+        }
     }
 
 
     void Spawn ()
     {
+        
         if (playerHealth.currentHealth <= 0f)
         {
             return;
@@ -35,4 +60,35 @@ public class EnemyManager : MonoBehaviour
         
 
     }
+
+    private void StartWave()
+    {
+        Debug.Log("IN START WAVE");
+        ScoreManager.wave = 1;
+        enemySpawnAmount = 2;
+        enemyKilled = 0;
+
+        for (int i=0; i < enemySpawnAmount; i++)
+        {
+            Debug.Log("SPAWN");
+            Spawn();
+        }
+    }
+
+    private void NextWave()
+    {
+        Debug.Log("IN NEXT WAVE");
+
+        ScoreManager.wave++;
+        enemySpawnAmount += 2;
+        enemyKilled = 0;
+
+
+        for (int i = 0; i < enemySpawnAmount; i++)
+        {
+            Debug.Log("SPAWN");
+            Spawn();
+        }
+    }
+
 }

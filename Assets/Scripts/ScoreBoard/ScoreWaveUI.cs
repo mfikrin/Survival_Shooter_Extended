@@ -28,9 +28,9 @@ public class ScoreWaveUI : MonoBehaviour
         //Debug.Log(scoreUI);
         //Debug.Log(TimeSpan);
 
-        if (Player.playerName != null)
+        if (Player.playerName != null && Player.modeGame.Equals("Wave"))
         {
-            scoreManager.AddWaveScore(new ScoreWave(name: Player.playerName, wave: 1, score: 90));
+            scoreManager.AddWaveScore(new ScoreWave(name: Player.playerName, wave: waveWaveUI, score: scoreWaveUI));
         }
         else
         {

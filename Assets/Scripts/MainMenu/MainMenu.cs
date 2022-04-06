@@ -42,7 +42,7 @@ public class MainMenu : MonoBehaviour
         else if (GameMode == "Wave")
         {
             Player.modeGame = GameMode;
-            //SceneManager.LoadScene("WaveMode");
+            SceneManager.LoadScene("WaveMode");
 
         }
 

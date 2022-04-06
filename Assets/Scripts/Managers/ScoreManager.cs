@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
 using System;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -43,39 +44,39 @@ public class ScoreManager : MonoBehaviour
     }
     void Update()
     {
-        if (Player.modeGame.Equals("Zen"))
+        string scene = SceneManager.GetActiveScene().name;
+
+        if (scene.Equals("ZenMode") || scene.Equals("WaveMode"))
         {
-            if (stopwatch != null)
+            if (Player.modeGame.Equals("Zen"))
             {
-                ts = stopwatch.Elapsed;
-                string time = ts.ToString().Substring(0, 11);
-                if (textTime != null)
+                if (stopwatch != null)
                 {
-                    textTime.text = time;
-                    //UnityEngine.Debug.Log(timeScore.text);
+                    ts = stopwatch.Elapsed;
+                    UnityEngine.Debug.Log(ts);
+                    string time = ts.ToString().Substring(0, 11);
+                    if (textTime != null)
+                    {
+                        textTime.text = time;
+                    }
                 }
 
             }
-            if (textScore != null)
+            else if (Player.modeGame.Equals("Wave"))
             {
-                textScore.text = "Score: " + score;
-            }
-        }
-        else if (Player.modeGame.Equals("Wave"))
-        {
-            if (textScore != null)
-            {
-                textScore.text = "Score: " + score;
-            }
-            if (textWave != null)
-            {
-                textWave.text = "Wave " + wave;
+
+                if (textScore != null)
+                {
+                    textScore.text = "Score: " + score;
+                }
+                if (textWave != null)
+                {
+                    textWave.text = "Wave " + wave;
+                }
             }
         }
 
-
-
-
+        
     }
 
     public IEnumerable<ScoreZen> GetZenHighScores()
