@@ -53,7 +53,6 @@ public class ScoreManager : MonoBehaviour
                 if (stopwatch != null)
                 {
                     ts = stopwatch.Elapsed;
-                    UnityEngine.Debug.Log(ts);
                     string time = ts.ToString().Substring(0, 11);
                     if (textTime != null)
                     {

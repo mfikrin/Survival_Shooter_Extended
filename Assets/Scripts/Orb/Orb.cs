@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Orb : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    bool playerInRangeOrb;
+    GameObject player;
+    PlayerHealth playerHealth;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //private void Awake()
+    //{
+    //    player = GameObject.FindGameObjectWithTag("Player");
+    //    playerHealth = player.GetComponent<PlayerHealth>();
+
+    //}
 }

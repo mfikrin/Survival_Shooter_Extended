@@ -35,24 +35,24 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (playerName.Length > 20 && (playerName != MainMenu.defaultPlayerName))
-        {
-            string displayName = playerName.Substring(0, 20);
-            //Debug.Log("Display name");
-            UnityEngine.Debug.Log(displayName.Length);
-            playerNameText.text = displayName;
-        }
-        else
-        {
-            playerNameText.text = playerName;
-        }
+        //if (playerName.Length > 20 && (playerName != MainMenu.defaultPlayerName))
+        //{
+        //    string displayName = playerName.Substring(0, 20);
+        //    //Debug.Log("Display name");
+        //    UnityEngine.Debug.Log(displayName.Length);
+        //    playerNameText.text = displayName;
+        //}
+        //else
+        //{
+        //    playerNameText.text = playerName;
+        //}
 
         UnityEngine.Debug.Log("MODE GAME");
-        //modeGame = "Wave";
+        modeGame = "Zen";
         UnityEngine.Debug.Log(modeGame);
 
-        //playerName = "Playerss";
-        //playerNameText.text = "Playerss";
+        playerName = "Playerss";
+        playerNameText.text = "Playerss";
 
         //Debug.Log(playerName);
         //Debug.Log(playerName.Length);

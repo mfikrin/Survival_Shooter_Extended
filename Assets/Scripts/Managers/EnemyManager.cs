@@ -5,9 +5,9 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public PlayerHealth playerHealth;
-    public GameObject enemy;
+    //public GameObject enemy;
     public int spawnEnemy;
-    public float spawnTime = 3f;
+    public float spawnTime;
     public Transform[] spawnPoints;
 
     [SerializeField]
@@ -15,10 +15,13 @@ public class EnemyManager : MonoBehaviour
     IFactory Factory { get { return factory as IFactory; } }
 
     //private int waveNumber = 0;
-    private int enemySpawnAmount = 0;
-    private int enemyKilled = 0;
+    private int enemySpawnAmount;
+    private int enemyKilled;
     void Start ()
     {
+        spawnTime = 3f;
+        enemySpawnAmount = 2;
+        enemyKilled = 0;
         Debug.Log("IN START ENEMY MANAGER");
 
         //Mengeksekusi fungs Spawn setiap beberapa detik sesui dengan nilai spawnTime
@@ -31,16 +34,25 @@ public class EnemyManager : MonoBehaviour
         {
             InvokeRepeating("Spawn", spawnTime, spawnTime);
         }
+        
+        //InvokeRepeating("Spawn", spawnTime, spawnTime);
+
     }
 
     private void Update()
     {
         Debug.Log("IN UPDATE ENEMY MANAGER");
 
-        if (enemyKilled >= enemySpawnAmount)
+        
+
+        if (Player.modeGame.Equals("Wave"))
         {
-            Debug.Log("Emang ini masuk ?");
-            NextWave();
+            Debug.Log("SPAWN WAVE MODE IN UPDATE ENEMY MANAGER");
+            if (enemyKilled >= enemySpawnAmount)
+            {
+                Debug.Log("Emang ini masuk ?");
+                NextWave();
+            }
         }
     }
 
@@ -57,7 +69,6 @@ public class EnemyManager : MonoBehaviour
 
         // Menduplikasi enemy
         Instantiate(Factory.FactoryMethod(spawnEnemy), spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
-        
 
     }
 
