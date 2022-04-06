@@ -85,7 +85,7 @@ public class ScoreManager : MonoBehaviour
 
     public IEnumerable<ScoreWave> GetWaveHighScores()
     {
-        return scoreWaveData.WaveScoreList.OrderByDescending(x => x.wave);
+        return scoreWaveData.WaveScoreList.OrderByDescending(x => x.score);
     }
 
     public void AddZenScore(ScoreZen score)
