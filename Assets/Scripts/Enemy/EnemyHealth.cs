@@ -81,7 +81,11 @@ public class EnemyHealth : MonoBehaviour
         GetComponent<Rigidbody>().isKinematic = true;
         isSinking = true;
         ScoreManager.score += scoreValue;
-        ScoreManager.wave += 1;
+        
+        if (Player.modeGame.Equals("Wave"))
+        {
+            EnemyWaveManager.enemyKilled++;
+        }
         Destroy(gameObject, 2f);
     }
 }
