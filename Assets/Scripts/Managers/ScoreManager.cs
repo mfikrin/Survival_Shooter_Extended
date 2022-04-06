@@ -70,7 +70,7 @@ public class ScoreManager : MonoBehaviour
                 }
                 if (textWave != null)
                 {
-                    textWave.text = "Wave " + wave;
+                    textWave.text = "Wave " + wave + "/" + EnemyWaveManager.maxWave;
                 }
             }
         }
