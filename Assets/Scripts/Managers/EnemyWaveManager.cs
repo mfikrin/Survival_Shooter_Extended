@@ -8,9 +8,13 @@ public class EnemyWaveManager : MonoBehaviour
 {
     public PlayerHealth playerHealth;
     public GameObject enemy;
+    public GameObject panelUpgradeWeapon;
     public int[] spawnEnemy;
     public float spawnTime;
     public Transform[] spawnPoints;
+
+    // upgrade weapon 
+    public static bool GameIsPaused = false; 
 
     [SerializeField]
     public MonoBehaviour factory;
@@ -22,7 +26,9 @@ public class EnemyWaveManager : MonoBehaviour
     public static int maxWave;
     void Start()
     {
+
         //spawnEnemy = new int[enemySpawnAmount];
+        panelUpgradeWeapon.SetActive(false);
         spawnTime = 3f;
         enemySpawnAmount = spawnEnemy.Length;
         enemyKilled = 0;
@@ -75,10 +81,22 @@ public class EnemyWaveManager : MonoBehaviour
             else
             {
                 Debug.Log("Wave SUDAH SELESAI GAN ?");
+                if(ScoreManager.wave % 3 == 0)
+                {
+                    updateWeapon();
+                }
                 NextWave();
             }
-            
+           
         }
+    }
+
+    void updateWeapon()
+    {
+        panelUpgradeWeapon.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+        Debug.Log("Update Dong");
     }
 
 

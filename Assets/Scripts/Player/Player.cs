@@ -13,8 +13,8 @@ public class Player : MonoBehaviour
     public static string modeGame;
 
     // PlayerShooting
-    public static int damagePerShot = 20;
-    public static float timeBetweenBullets = 0.15f;
+    public static int damagePerShot = 100;
+    public static float timeBetweenBullets = 0.01f;
     public static float range = 100f;
     public static int maxDamage = 100;
 
