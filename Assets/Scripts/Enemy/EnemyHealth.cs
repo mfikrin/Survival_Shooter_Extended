@@ -86,6 +86,7 @@ public class EnemyHealth : MonoBehaviour
         {
             EnemyWaveManager.enemyKilled++;
         }
+        //EnemyWaveManager.enemyKilled++;
         Destroy(gameObject, 2f);
     }
 }
