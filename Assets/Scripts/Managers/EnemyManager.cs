@@ -19,7 +19,7 @@ public class EnemyManager : MonoBehaviour
     //private int enemyKilled;
     void Start ()
     {
-        spawnTime = 3f;
+        //spawnTime = 3f;
         //enemySpawnAmount = 2;
         //enemyKilled = 0;
         //Debug.Log("IN START ENEMY MANAGER");

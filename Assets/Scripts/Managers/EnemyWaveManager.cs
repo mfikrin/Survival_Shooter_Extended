@@ -19,14 +19,14 @@ public class EnemyWaveManager : MonoBehaviour
     //private int waveNumber = 0;
     private int enemySpawnAmount;
     public static int enemyKilled;
-    private int maxWave;
+    public static int maxWave;
     void Start()
     {
         //spawnEnemy = new int[enemySpawnAmount];
         spawnTime = 3f;
         enemySpawnAmount = spawnEnemy.Length;
         enemyKilled = 0;
-        maxWave = 4;
+        maxWave = 6;
         Debug.Log("IN START ENEMY MANAGER");
 
         //Mengeksekusi fungs Spawn setiap beberapa detik sesui dengan nilai spawnTime
