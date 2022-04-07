@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody>();
 
         // atribut speed 
+        Player.speed = 6f; 
         if(Player.speed > Player.maxSpeed)
         {
             speedAmount.text = Player.maxSpeed.ToString() + "/" + Player.maxSpeed.ToString();
