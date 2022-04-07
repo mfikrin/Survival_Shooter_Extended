@@ -12,6 +12,7 @@ public class SkeletonSpawnerManager : MonoBehaviour
     public float placeX;
     public float placeZ;
 
+
     [SerializeField]
     public MonoBehaviour factory;
     IFactory Factory { get { return factory as IFactory; } }
