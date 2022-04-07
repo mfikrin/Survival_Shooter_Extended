@@ -31,7 +31,7 @@ public class SkeletonAttack : MonoBehaviour
         if (other.gameObject == player && other.isTrigger == false)
         {
             playerInRange = true;
-            anim.SetBool("PlayerInRange", playerInRange);
+            //anim.SetBool("PlayerInRange", true);
             
         }
     }
@@ -42,7 +42,7 @@ public class SkeletonAttack : MonoBehaviour
         if(other.gameObject == player && other.isTrigger == false)
         {
             playerInRange = false;
-            anim.SetBool("PlayerInRange", playerInRange);
+            //anim.SetBool("PlayerInRange", false);
         }
     }
 
@@ -50,8 +50,12 @@ public class SkeletonAttack : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-
-        if(timer >= timeBetweenAttacks && playerInRange && enemyHealth.currentHealth > 0)
+        
+        if(timer >= timeBetweenAttacks && !playerInRange && enemyHealth.currentHealth > 0)
+        {
+            Shoot();
+        }
+        else if(timer >= timeBetweenAttacks && playerInRange && enemyHealth.currentHealth > 0)
         {
             Attack();
         }
@@ -72,5 +76,11 @@ public class SkeletonAttack : MonoBehaviour
         {
             playerHealth.TakeDamage(attackDamage);
         }
+    }
+
+    void Shoot()
+    {
+        // shoot projectile
+        
     }
 }

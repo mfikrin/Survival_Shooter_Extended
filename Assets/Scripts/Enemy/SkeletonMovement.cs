@@ -21,6 +21,8 @@ public class SkeletonMovement : MonoBehaviour
 
     void Update ()
     {
-        nav.enabled = false;
+        transform.LookAt(player);
+        // nav.enabled = false;
+        
     }
 }
