@@ -21,7 +21,7 @@ public class MainMenu : MonoBehaviour
         if (nameInputField.text != string.Empty)
         {
             Player.playerName = nameInputField.text; // nanti ubah playerMovement nya
-
+        
         }
         else
         {

@@ -10,6 +10,10 @@ public class WeaponUpgradeManager : MonoBehaviour
     public static bool isExitUpgradeWeapon = false;
     public static bool isUpSpeed = false;
     public GameObject panelUpgradeWeapon;
+    public GameObject weapon2;
+    public GameObject weapon3;
+    public GameObject weapon4;
+    public GameObject weapon5;
     void Start()
     {
         //panelUpgradeWeapon.SetActive(false);
@@ -79,6 +83,17 @@ public class WeaponUpgradeManager : MonoBehaviour
     public void diagonalup()
     {
         Debug.Log("diagonal up");
+        Player.diagonal += 2; 
+        if(Player.diagonal == 3)
+        {
+            weapon2.SetActive(true);
+            weapon3.SetActive(true);
+        }
+        else if (Player.diagonal == 5)
+        {
+            weapon4.SetActive(true);
+            weapon5.SetActive(true);
+        }
         Resume(); 
         
     }

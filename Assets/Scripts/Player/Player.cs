@@ -17,7 +17,10 @@ public class Player : MonoBehaviour
     public static float timeBetweenBullets = 0.5f;
     public static float range = 100f;
     public static int maxDamage = 100;
-    public static float maxTimeBetweenBullets = 0.1f; 
+    public static float maxTimeBetweenBullets = 0.1f;
+
+    // Guns 
+    public static int diagonal = 1; 
 
     // PlayerMovement
     public static float speed = 6f;
