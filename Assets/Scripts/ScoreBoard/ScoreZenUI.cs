@@ -70,7 +70,7 @@ public class ScoreZenUI : MonoBehaviour
 
     //public void FixedUpdate()
     //{
-    //    SceneManager.LoadScene("Menu");
+//SceneManager.LoadScene("Menu");
     //}
 
 
