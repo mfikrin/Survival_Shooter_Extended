@@ -667,8 +667,8 @@ GameObject:
   - component: {fileID: 5512537454312262395}
   - component: {fileID: 5512537454312262385}
   - component: {fileID: 5512537454312262398}
-  - component: {fileID: 5512537454312262399}
-  - component: {fileID: 5512537454312262396}
+  - component: {fileID: 3435279338781824384}
+  - component: {fileID: 1631866034524575482}
   m_Layer: 10
   m_Name: squelette_arbalete
   m_TagString: Enemy
@@ -703,7 +703,7 @@ Animator:
   m_GameObject: {fileID: 4630015196220143523}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 359b08a3bfc300142a2a0dce9c21db68, type: 3}
-  m_Controller: {fileID: 22100000, guid: b132a908f5cbdcd4293bbd20895fc31f, type: 2}
+  m_Controller: {fileID: 9100000, guid: c01b699ae923eb446b44c5af0ebb639b, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -766,7 +766,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 8434b04884c414ac6b468e10945685e6,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 9922a12f34d0a084aab32de985459723, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1d4840678e677424b8921716c72397ea, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -890,8 +890,8 @@ MonoBehaviour:
   currentHealth: 0
   sinkSpeed: 2.5
   scoreValue: 10
-  deathClip: {fileID: 8300000, guid: d36a393bca4582043982db9089e1694f, type: 3}
---- !u!114 &5512537454312262399
+  deathClip: {fileID: 8300000, guid: 1d3bfb9269f136947bf8ac164cace1ff, type: 3}
+--- !u!114 &3435279338781824384
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -900,23 +900,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 4630015196220143523}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e15099f5ee559584089d5851df572def, type: 3}
+  m_Script: {fileID: 11500000, guid: f70910a93af31a945b1e03da07013a7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1631866034524575482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4630015196220143523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d48fe3b56596c5643b234313a9ab4e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0.5
   attackDamage: 10
---- !u!114 &5512537454312262396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4630015196220143523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94f6618a0da65fa45b24d5105d5d8422, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5336058429731089469
 GameObject:
   m_ObjectHideFlags: 0
