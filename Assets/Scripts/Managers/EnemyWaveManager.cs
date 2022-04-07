@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class EnemyWaveManager : MonoBehaviour
 {
     public PlayerHealth playerHealth;
     public GameObject enemy;
     public GameObject panelUpgradeWeapon;
+    //public Button upgradeSpeed;
+    //public Button upgradeDiagonal;
     public int[] spawnEnemy;
     public float spawnTime;
     public Transform[] spawnPoints;
 
     // upgrade weapon 
-    public static bool GameIsPaused = false; 
+    public static bool GameIsPaused = false;
+
 
     [SerializeField]
     public MonoBehaviour factory;
@@ -81,9 +85,10 @@ public class EnemyWaveManager : MonoBehaviour
             else
             {
                 Debug.Log("Wave SUDAH SELESAI GAN ?");
-                if(ScoreManager.wave % 3 == 0)
+                if(ScoreManager.wave % 1     == 0)
                 {
-                    updateWeapon();
+          
+                    upgradeWeapon();
                 }
                 NextWave();
             }
@@ -91,14 +96,49 @@ public class EnemyWaveManager : MonoBehaviour
         }
     }
 
-    void updateWeapon()
+    public void Pause()
     {
         panelUpgradeWeapon.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
-        Debug.Log("Update Dong");
     }
 
+    public void Resume()
+    {
+        panelUpgradeWeapon.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+    }
+
+    public void upgradeWeapon()
+    {
+        // munculin panel upgrade 
+        Pause(); 
+        Debug.Log("Update Dong");
+        // upgradeSpeed.onClick.AddListener(speedup);
+        // upgradeDiagonal.onClick.AddListener(diagonalup);
+
+    }
+
+    public void speedup()
+    {
+        Debug.Log("Speed up");
+        if (Player.timeBetweenBullets >= 0.1)
+        {
+            Player.timeBetweenBullets -= 0.1f; 
+        }
+        else
+        {
+            Debug.Log("sudah kecepatan maksimal"); 
+        }
+        Resume(); 
+    }
+
+    public void diagonalup()
+    {
+        Debug.Log("diagonal up") ;
+        // Resume(); 
+    }
 
     void Spawn(int tag)
     {

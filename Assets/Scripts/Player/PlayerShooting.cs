@@ -7,8 +7,9 @@ public class PlayerShooting : MonoBehaviour
     //public float timeBetweenBullets = 0.15f;        
     //public float range = 100f;
     public Text powerAmount;
+    public Text speedWeaponAmount; 
 
-
+      
     float timer;                                    
     Ray shootRay = new Ray();                                   
     RaycastHit shootHit;                            
@@ -34,6 +35,14 @@ public class PlayerShooting : MonoBehaviour
         else
         {
             powerAmount.text = Player.damagePerShot.ToString() + "/" + Player.maxDamage.ToString();
+        }
+        if (Player.timeBetweenBullets < Player.maxTimeBetweenBullets)
+        {
+            speedWeaponAmount.text = Player.maxTimeBetweenBullets.ToString() + "/" + Player.maxTimeBetweenBullets.ToString();
+        }
+        else
+        {
+            speedWeaponAmount.text = Player.timeBetweenBullets.ToString() + "/" + Player.maxTimeBetweenBullets.ToString();
         }
     }
 
