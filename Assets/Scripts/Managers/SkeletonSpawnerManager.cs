@@ -30,8 +30,8 @@ public class SkeletonSpawnerManager : MonoBehaviour
             return;
         }
 
-        placeX = Random.Range(-30,30);
-        placeZ = Random.Range(-30,30);
+        placeX = Random.Range(-20,20);
+        placeZ = Random.Range(-20,20);
         spawnPoint = new Vector3(placeX,0,placeZ);
         Quaternion spawnRotation = Quaternion.identity;
         // Menduplikasi enemy
