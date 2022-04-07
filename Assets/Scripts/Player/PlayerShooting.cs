@@ -13,7 +13,8 @@ public class PlayerShooting : MonoBehaviour
     float timer;                                    
     Ray shootRay = new Ray();                                   
     RaycastHit shootHit;                            
-    int shootableMask;                             
+    int shootableMask;
+    int floorMask;                             
     ParticleSystem gunParticles;                    
     LineRenderer gunLine;                           
     AudioSource gunAudio;                           
@@ -24,6 +25,7 @@ public class PlayerShooting : MonoBehaviour
     void Awake()
     {
         shootableMask = LayerMask.GetMask("Shootable");
+        floorMask = LayerMask.GetMask("Floor");
         gunParticles = GetComponent<ParticleSystem>();
         gunLine = GetComponent<LineRenderer>();
         gunAudio = GetComponent<AudioSource>();
