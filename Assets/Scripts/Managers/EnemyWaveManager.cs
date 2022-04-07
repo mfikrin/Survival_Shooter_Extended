@@ -142,16 +142,20 @@ public class EnemyWaveManager : MonoBehaviour
 
     void Spawn(int tag)
     {
-
-        if (playerHealth.currentHealth <= 0f)
+        if(playerHealth != null)
         {
-            return;
+            if (playerHealth.currentHealth <= 0f)
+            {
+                return;
+            }
+
+            int spawnPointIndex = Random.Range(0, spawnPoints.Length);
+
+            // Menduplikasi enemy
+            Instantiate(Factory.FactoryMethod(tag), spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
         }
 
-        int spawnPointIndex = Random.Range(0, spawnPoints.Length);
 
-        // Menduplikasi enemy
-        Instantiate(Factory.FactoryMethod(tag), spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
 
 
     }

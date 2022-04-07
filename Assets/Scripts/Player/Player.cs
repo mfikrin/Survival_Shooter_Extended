@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
         //}
 
         UnityEngine.Debug.Log("MODE GAME");
-        modeGame = "Zen";
+        modeGame = "Wave";
         UnityEngine.Debug.Log(modeGame);
 
         playerName = "Playerss";
