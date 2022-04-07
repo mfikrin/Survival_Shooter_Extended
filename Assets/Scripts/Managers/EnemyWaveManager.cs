@@ -16,9 +16,10 @@ public class EnemyWaveManager : MonoBehaviour
     public float spawnTime;
     public Transform[] spawnPoints;
 
-    // upgrade weapon 
-    public static bool GameIsPaused = false;
-
+    //// upgrade weapon 
+    //public static bool GameIsPaused = false;
+    //public bool isExitUpgradeWeapon = false;
+    public static bool isAfterWaveBoss = false;
 
     [SerializeField]
     public MonoBehaviour factory;
@@ -37,7 +38,7 @@ public class EnemyWaveManager : MonoBehaviour
         enemySpawnAmount = spawnEnemy.Length;
         enemyKilled = 0;
         maxWave = 6;
-        Debug.Log("IN START ENEMY MANAGER");
+        //Debug.Log("IN START ENEMY MANAGER");
 
         //Mengeksekusi fungs Spawn setiap beberapa detik sesui dengan nilai spawnTime
         //if (Player.modeGame.Equals("Wave"))
@@ -65,7 +66,7 @@ public class EnemyWaveManager : MonoBehaviour
         //}
 
         //Debug.Log("SPAWN WAVE MODE IN UPDATE ENEMY MANAGER");
-        //Debug.LogFormat("Enemy Killed",enemyKilled);
+        Debug.LogFormat("Enemy Killed",enemyKilled);
         Debug.Log("Enemy Killed");
         Debug.Log(enemyKilled);
         Debug.Log("Enemy Spawn Amount");
@@ -84,79 +85,69 @@ public class EnemyWaveManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("Wave SUDAH SELESAI GAN ?");
-                if(ScoreManager.wave % 1     == 0)
+                //Debug.Log("Wave SUDAH SELESAI GAN ?");
+                if(ScoreManager.wave % 1 == 0)
                 {
-          
-                    upgradeWeapon();
+                    isAfterWaveBoss = true;
+                    panelUpgradeWeapon.SetActive(true);
+
+                    Debug.Log("BOSS WAVE");
+
+                    //upgradeWeapon();
                 }
-                NextWave();
+               
+                
+                if (!WeaponUpgradeManager.isGamePaused)
+                {
+                    NextWave();
+                }
+
+                if (WeaponUpgradeManager.isExitUpgradeWeapon)
+                {
+                    NextWave();
+                }
+
+                    
+                
             }
            
         }
     }
 
-    public void Pause()
-    {
-        panelUpgradeWeapon.SetActive(true);
-        Time.timeScale = 0f;
-        GameIsPaused = true;
-    }
+    //public void exitFromUpgradeWeapon()
+    //{
+    //    isExitUpgradeWeapon = false;
+    //    NextWave();
+    //}
 
-    public void Resume()
-    {
-        panelUpgradeWeapon.SetActive(false);
-        Time.timeScale = 1f;
-        GameIsPaused = false;
-    }
+    //public void Pause()
+    //{
+    //    panelUpgradeWeapon.SetActive(true);
+    //    Time.timeScale = 0f;
+    //    GameIsPaused = true;
+    //}
 
-    public void upgradeWeapon()
-    {
-        // munculin panel upgrade 
-        Pause(); 
-        Debug.Log("Update Dong");
-        // upgradeSpeed.onClick.AddListener(speedup);
-        // upgradeDiagonal.onClick.AddListener(diagonalup);
+    //public void Resume()
+    //{
+    //    panelUpgradeWeapon.SetActive(false);
+    //    Time.timeScale = 1f;
+    //    GameIsPaused = false;
+    //}
 
-    }
-
-    public void speedup()
-    {
-        Debug.Log("Speed up");
-        if (Player.timeBetweenBullets >= 0.1)
-        {
-            Player.timeBetweenBullets -= 0.1f; 
-        }
-        else
-        {
-            Debug.Log("sudah kecepatan maksimal"); 
-        }
-        Resume(); 
-    }
-
-    public void diagonalup()
-    {
-        Debug.Log("diagonal up") ;
-        // Resume(); 
-    }
+   
 
     void Spawn(int tag)
     {
-        if(playerHealth != null)
+        
+        if (playerHealth.currentHealth <= 0f)
         {
-            if (playerHealth.currentHealth <= 0f)
-            {
-                return;
-            }
-
-            int spawnPointIndex = Random.Range(0, spawnPoints.Length);
-
-            // Menduplikasi enemy
-            Instantiate(Factory.FactoryMethod(tag), spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+            return;
         }
 
+        int spawnPointIndex = Random.Range(0, spawnPoints.Length);
 
-
+        // Menduplikasi enemy
+        Instantiate(Factory.FactoryMethod(tag), spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
 
     }
 
@@ -180,7 +171,9 @@ public class EnemyWaveManager : MonoBehaviour
     private void NextWave()
     {
         Debug.Log("IN NEXT WAVE");
+        
         ScoreManager.wave++;
+        Debug.Log(ScoreManager.wave);
         int addEnemyAmount = 2;
         enemySpawnAmount += addEnemyAmount;
         
