@@ -59,6 +59,19 @@ public class PlayerShooting : MonoBehaviour
         {
             DisableEffects();
         }
+
+        if (WeaponUpgradeManager.isUpSpeed)
+        {
+            Debug.Log("UP SPEED WOI");
+            if (Player.timeBetweenBullets < Player.maxTimeBetweenBullets)
+            {
+                speedWeaponAmount.text = Player.maxTimeBetweenBullets.ToString() + "/" + Player.maxTimeBetweenBullets.ToString();
+            }
+            else
+            {
+                speedWeaponAmount.text = Player.timeBetweenBullets.ToString() + "/" + Player.maxTimeBetweenBullets.ToString();
+            }
+        }
     }
 
     public void DisableEffects()
