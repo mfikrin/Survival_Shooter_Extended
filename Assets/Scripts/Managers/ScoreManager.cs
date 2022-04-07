@@ -13,6 +13,8 @@ public class ScoreManager : MonoBehaviour
     public static Stopwatch stopwatch;
     public static TimeSpan ts;
 
+    public static bool isUpgradeZen = false ; 
+
     // wave
     public static int wave;
 
@@ -21,7 +23,7 @@ public class ScoreManager : MonoBehaviour
     private ScoreWaveData scoreWaveData;
 
 
-
+     public GameObject panelUpgradeWeapon;
 
     public Text textScore;
     public Text textTime;
@@ -57,6 +59,12 @@ public class ScoreManager : MonoBehaviour
                     if (textTime != null)
                     {
                         textTime.text = time;
+                    }
+                    if( ts.Seconds % 30 == 0)
+                    {
+                       
+                        isUpgradeZen = true;
+                        panelUpgradeWeapon.SetActive(true);
                     }
                 }
 

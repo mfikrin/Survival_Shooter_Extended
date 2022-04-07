@@ -28,6 +28,11 @@ public class WeaponUpgradeManager : MonoBehaviour
             Debug.Log("MASUK PAUSEEEEE");
             Pause();
         }
+        if (ScoreManager.isUpgradeZen)
+        {
+            Debug.Log("MASUK PAUSEEEEE ZENNNN");
+            Pause();
+        }
     }
 
     public void exitFromUpgradeWeapon()
