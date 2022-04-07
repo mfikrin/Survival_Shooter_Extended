@@ -1,0 +1,11 @@
+Model Information:
+* title:	Green Orb
+* source:	https://sketchfab.com/3d-models/green-orb-d1fc9db574294d1f9fb7f57f32fee426
+* author:	Creatyve3D (https://sketchfab.com/Creatyve3D)
+
+Model License:
+* license type:	CC-BY-ND-4.0 (http://creativecommons.org/licenses/by-nd/4.0/)
+* requirements:	Author must be credited. Modified versions can not be distributed. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Green Orb" (https://sketchfab.com/3d-models/green-orb-d1fc9db574294d1f9fb7f57f32fee426) by Creatyve3D (https://sketchfab.com/Creatyve3D) licensed under CC-BY-ND-4.0 (http://creativecommons.org/licenses/by-nd/4.0/)

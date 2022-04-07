@@ -21,7 +21,7 @@ public class MainMenu : MonoBehaviour
         if (nameInputField.text != string.Empty)
         {
             Player.playerName = nameInputField.text; // nanti ubah playerMovement nya
-
+        
         }
         else
         {
@@ -42,7 +42,7 @@ public class MainMenu : MonoBehaviour
         else if (GameMode == "Wave")
         {
             Player.modeGame = GameMode;
-            //SceneManager.LoadScene("WaveMode");
+            SceneManager.LoadScene("WaveMode");
 
         }
 
@@ -57,7 +57,12 @@ public class MainMenu : MonoBehaviour
     public void QuitGame()
     {
         Debug.Log("Quit");
+        //Application.Quit();
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #else
         Application.Quit();
+        #endif
     }
 
     public void setZenMode()

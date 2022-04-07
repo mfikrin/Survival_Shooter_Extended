@@ -32,7 +32,7 @@ public class ScoreZenUI : MonoBehaviour
         //Debug.Log(scoreUI);
         Debug.Log(TimeSpanZenUI);
 
-        if (Player.playerName != null)
+        if (Player.playerName != null && Player.modeGame.Equals("Zen"))
         {
            
            scoreManager.AddZenScore(new ScoreZen(Player.playerName, TimeSpanZenUI));

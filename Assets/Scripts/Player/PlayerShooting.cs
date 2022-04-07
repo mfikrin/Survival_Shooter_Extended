@@ -7,8 +7,9 @@ public class PlayerShooting : MonoBehaviour
     //public float timeBetweenBullets = 0.15f;        
     //public float range = 100f;
     public Text powerAmount;
+    public Text speedWeaponAmount; 
 
-
+      
     float timer;                                    
     Ray shootRay = new Ray();                                   
     RaycastHit shootHit;                            
@@ -29,6 +30,8 @@ public class PlayerShooting : MonoBehaviour
         gunLine = GetComponent<LineRenderer>();
         gunAudio = GetComponent<AudioSource>();
         gunLight = GetComponent<Light>();
+        Player.damagePerShot = 150;
+        Player.timeBetweenBullets = 0.5f; 
         if (Player.damagePerShot > Player.maxDamage)
         {
             powerAmount.text = Player.maxDamage.ToString() + "/" + Player.maxDamage.ToString();
@@ -36,6 +39,14 @@ public class PlayerShooting : MonoBehaviour
         else
         {
             powerAmount.text = Player.damagePerShot.ToString() + "/" + Player.maxDamage.ToString();
+        }
+        if (Player.timeBetweenBullets < Player.maxTimeBetweenBullets)
+        {
+            speedWeaponAmount.text = Player.maxTimeBetweenBullets.ToString() + "/" + Player.maxTimeBetweenBullets.ToString();
+        }
+        else
+        {
+            speedWeaponAmount.text = Player.timeBetweenBullets.ToString() + "/" + Player.maxTimeBetweenBullets.ToString();
         }
     }
 
@@ -51,6 +62,19 @@ public class PlayerShooting : MonoBehaviour
         if (timer >= Player.timeBetweenBullets * effectsDisplayTime)
         {
             DisableEffects();
+        }
+
+        if (WeaponUpgradeManager.isUpSpeed)
+        {
+            Debug.Log("UP SPEED WOI");
+            if (Player.timeBetweenBullets < Player.maxTimeBetweenBullets)
+            {
+                speedWeaponAmount.text = Player.maxTimeBetweenBullets.ToString() + "/" + Player.maxTimeBetweenBullets.ToString();
+            }
+            else
+            {
+                speedWeaponAmount.text = Player.timeBetweenBullets.ToString() + "/" + Player.maxTimeBetweenBullets.ToString();
+            }
         }
     }
 

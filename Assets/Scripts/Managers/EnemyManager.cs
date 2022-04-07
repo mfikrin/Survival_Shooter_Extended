@@ -5,24 +5,26 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public PlayerHealth playerHealth;
-    public GameObject enemy;
+    //public GameObject enemy;
     public int spawnEnemy;
-    public float spawnTime = 3f;
+    public float spawnTime;
     public Transform[] spawnPoints;
 
     [SerializeField]
     public MonoBehaviour factory;
     IFactory Factory { get { return factory as IFactory; } }
 
+    //private int waveNumber = 0;
+    //private int enemySpawnAmount;
+    //private int enemyKilled;
     void Start ()
-    {
-        //Mengeksekusi fungs Spawn setiap beberapa detik sesui dengan nilai spawnTime
-        InvokeRepeating("Spawn", spawnTime, spawnTime);
+    { 
+        InvokeRepeating(nameof(Spawn), spawnTime, spawnTime);
     }
-
 
     void Spawn ()
     {
+        
         if (playerHealth.currentHealth <= 0f)
         {
             return;
@@ -32,7 +34,6 @@ public class EnemyManager : MonoBehaviour
 
         // Menduplikasi enemy
         Instantiate(Factory.FactoryMethod(spawnEnemy), spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
-        
 
     }
 }

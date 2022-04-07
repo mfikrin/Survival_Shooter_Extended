@@ -5,12 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
 using System;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
     public static int score;
     public static Stopwatch stopwatch;
     public static TimeSpan ts;
+
+    public static bool isUpgradeZen = false ; 
 
     // wave
     public static int wave;
@@ -20,7 +23,7 @@ public class ScoreManager : MonoBehaviour
     private ScoreWaveData scoreWaveData;
 
 
-
+     public GameObject panelUpgradeWeapon;
 
     public Text textScore;
     public Text textTime;
@@ -43,39 +46,44 @@ public class ScoreManager : MonoBehaviour
     }
     void Update()
     {
-        if (Player.modeGame.Equals("Zen"))
+        string scene = SceneManager.GetActiveScene().name;
+
+        if (scene.Equals("ZenMode") || scene.Equals("WaveMode"))
         {
-            if (stopwatch != null)
+            if (Player.modeGame.Equals("Zen"))
             {
-                ts = stopwatch.Elapsed;
-                string time = ts.ToString().Substring(0, 11);
-                if (textTime != null)
+                if (stopwatch != null)
                 {
-                    textTime.text = time;
-                    //UnityEngine.Debug.Log(timeScore.text);
+                    ts = stopwatch.Elapsed;
+                    string time = ts.ToString().Substring(0, 11);
+                    if (textTime != null)
+                    {
+                        textTime.text = time;
+                    }
+                    if( ts.Seconds % 30 == 0)
+                    {
+                       
+                        isUpgradeZen = true;
+                        panelUpgradeWeapon.SetActive(true);
+                    }
                 }
 
             }
-            if (textScore != null)
+            else if (Player.modeGame.Equals("Wave"))
             {
-                textScore.text = "Score: " + score;
-            }
-        }
-        else if (Player.modeGame.Equals("Wave"))
-        {
-            if (textScore != null)
-            {
-                textScore.text = "Score: " + score;
-            }
-            if (textWave != null)
-            {
-                textWave.text = "Wave " + wave;
+
+                if (textScore != null)
+                {
+                    textScore.text = "Score: " + score;
+                }
+                if (textWave != null)
+                {
+                    textWave.text = "Wave " + wave + "/" + EnemyWaveManager.maxWave;
+                }
             }
         }
 
-
-
-
+        
     }
 
     public IEnumerable<ScoreZen> GetZenHighScores()
@@ -85,7 +93,7 @@ public class ScoreManager : MonoBehaviour
 
     public IEnumerable<ScoreWave> GetWaveHighScores()
     {
-        return scoreWaveData.WaveScoreList.OrderByDescending(x => x.wave);
+        return scoreWaveData.WaveScoreList.OrderByDescending(x => x.score);
     }
 
     public void AddZenScore(ScoreZen score)

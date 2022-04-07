@@ -15,10 +15,10 @@ public class ScoreWaveUI : MonoBehaviour
     private void Start()
     {
 
-        scoreManager.AddWaveScore(new ScoreWave(name: "A", wave: 2, score: 100));
-        scoreManager.AddWaveScore(new ScoreWave(name: "B", wave: 3, score: 400));
-        scoreManager.AddWaveScore(new ScoreWave(name: "C", wave: 4, score: 500));
-        scoreManager.AddWaveScore(new ScoreWave(name: "D", wave: 1, score: 90));
+        scoreManager.AddWaveScore(new ScoreWave(name: "A", wave: 1, score: 80));
+        scoreManager.AddWaveScore(new ScoreWave(name: "B", wave: 2, score: 180));
+        scoreManager.AddWaveScore(new ScoreWave(name: "C", wave: 3, score: 380));
+        scoreManager.AddWaveScore(new ScoreWave(name: "D", wave: 3, score: 370));
 
 
 
@@ -28,9 +28,9 @@ public class ScoreWaveUI : MonoBehaviour
         //Debug.Log(scoreUI);
         //Debug.Log(TimeSpan);
 
-        if (Player.playerName != null)
+        if (Player.playerName != null && Player.modeGame.Equals("Wave"))
         {
-            scoreManager.AddWaveScore(new ScoreWave(name: Player.playerName, wave: 1, score: 90));
+            scoreManager.AddWaveScore(new ScoreWave(name: Player.playerName, wave: waveWaveUI, score: scoreWaveUI));
         }
         else
         {

@@ -10,13 +10,17 @@ public class Player : MonoBehaviour
 
     public static string playerName;
     public Text playerNameText;
-    public static string modeGame = "Zen";
+    public static string modeGame;
 
     // PlayerShooting
-    public static int damagePerShot = 20;
-    public static float timeBetweenBullets = 0.15f;
+    public static int damagePerShot = 100;
+    public static float timeBetweenBullets = 0.5f;
     public static float range = 100f;
     public static int maxDamage = 100;
+    public static float maxTimeBetweenBullets = 0.1f;
+
+    // Guns 
+    public static int diagonal = 1; 
 
     // PlayerMovement
     public static float speed = 6f;
@@ -27,7 +31,7 @@ public class Player : MonoBehaviour
     public static int startingHealth = 100;
     public static int maxHealth = 100;
     public static float flashSpeed = 5f;
-    public static Color flashColour = new Color(1f, 0f, 0f, 0.1f);
+    public static Color flashColour = new Color(1f, 0f, 0f, 0.1f);  
 
 
 
@@ -35,23 +39,24 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (playerName.Length > 20 && (playerName != MainMenu.defaultPlayerName))
-        {
-            string displayName = playerName.Substring(0, 20);
-            //Debug.Log("Display name");
-            UnityEngine.Debug.Log(displayName.Length);
-            playerNameText.text = displayName;
-        }
-        else
-        {
-            playerNameText.text = playerName;
-        }
-        modeGame ="Zen";
+        //if (playerName.Length > 20 && (playerName != MainMenu.defaultPlayerName))
+        //{
+        //    string displayName = playerName.Substring(0, 20);
+        //    //Debug.Log("Display name");
+        //    UnityEngine.Debug.Log(displayName.Length);
+        //    playerNameText.text = displayName;
+        //}
+        //else
+        //{
+        //    playerNameText.text = playerName;
+        //}
+
         UnityEngine.Debug.Log("MODE GAME");
+        modeGame = "Zen";
         UnityEngine.Debug.Log(modeGame);
 
-        //playerName = "Playerss";
-        //playerNameText.text = "Playerss";
+        playerName = "Playerss";
+        playerNameText.text = "Playerss";
 
         //Debug.Log(playerName);
         //Debug.Log(playerName.Length);
