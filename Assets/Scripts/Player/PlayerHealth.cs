@@ -73,6 +73,22 @@ public class PlayerHealth : MonoBehaviour
             Death();
         }
     }
+    // public void TakeRangedDamage(int amount, Vector3 hitPoint)
+    // {
+    //     if (isDead)
+    //         return;
+
+    //     playerAudio.Play();
+    //     currentHealth -= amount;
+
+    //     hitParticles.transform.position = hitPoint;
+    //     hitParticles.Play();
+
+    //     if (currentHealth <= 0  && !isDead)
+    //     {
+    //         Death();
+    //     }
+    // }
 
 
     void Death()
