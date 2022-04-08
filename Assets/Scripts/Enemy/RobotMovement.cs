@@ -27,8 +27,9 @@ public class RobotMovement : MonoBehaviour
     {
         //Memindahkan posisi player
         //Debug.Log("Nav Speed" + nav.speed);
-        if (RobotHealth.currentHealth > 0 && playerHealth.currentHealth > 0)
+        if (RobotHealth.currentHealth > 0 && ((playerHealth.currentHealth > 0 && Player.modeGame != "SuddenDeath") || (playerHealth.currentHealth == 0 && Player.modeGame.Equals("SuddenDeath"))))
         {
+            Debug.Log("MASUK KE NAV MESHAN");
             nav.SetDestination(player.position);
         }
         else //Hentikan moving

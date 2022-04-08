@@ -25,9 +25,9 @@ public class AxeBossMovement : MonoBehaviour
     {
         //Memindahkan posisi player
         //transform.Rotate (0,0,50*Time.deltaTime);
-        if (enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0)
+        if (enemyHealth.currentHealth > 0 && ((playerHealth.currentHealth > 0 && Player.modeGame != "SuddenDeath") || (playerHealth.currentHealth == 0 && Player.modeGame.Equals("SuddenDeath"))))
         {
-            //FaceTarget(player.position);
+            Debug.Log("MASUK KE NAV MESHAN");
             nav.SetDestination(player.position);
         }
         else //Hentikan moving
