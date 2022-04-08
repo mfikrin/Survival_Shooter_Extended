@@ -21,7 +21,7 @@ public class GameOverManager : MonoBehaviour
 
     void Update()
     {
-        if (playerHealth.currentHealth <= 0)
+        if ((playerHealth.currentHealth <= 0 && Player.modeGame != "SuddenDeath") || (playerHealth.currentHealth < 0 && Player.modeGame.Equals("SuddenDeath")))
         {
             anim.SetTrigger("GameOver");
 
@@ -36,11 +36,10 @@ public class GameOverManager : MonoBehaviour
 
     public void ShowWarning(float enemyDistance)
     {
-        if (playerHealth.currentHealth > 0)
+        if ((playerHealth.currentHealth > 0 && Player.modeGame != "SuddenDeath") || (playerHealth.currentHealth == 0 && Player.modeGame.Equals("SuddenDeath")))
         {
             warningText.text = string.Format("! {0} m", Mathf.RoundToInt(enemyDistance));
             anim.SetTrigger("Warning");
-
         }
     }
 }
