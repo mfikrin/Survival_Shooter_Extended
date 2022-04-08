@@ -236,6 +236,7 @@ GameObject:
   - component: {fileID: 8910950728146056045}
   - component: {fileID: 8793869600167057478}
   - component: {fileID: 4474777499150813129}
+  - component: {fileID: 5884567869751989948}
   m_Layer: 0
   m_Name: GreenOrb
   m_TagString: Untagged
@@ -283,3 +284,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sinkOrbSpeed: 2.5
+--- !u!135 &5884567869751989948
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4768096594113734880}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 10.29854
+  m_Center: {x: 1, y: -0.4037224, z: -3.859509}
