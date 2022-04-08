@@ -756,7 +756,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 33458251}
   spawnEnemy: 4
-  spawnTime: 3
+  spawnTime: 10
   spawnPoints:
   - {fileID: 1614610949}
   factory: {fileID: 180263585}
