@@ -3,13 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OrbLife : MonoBehaviour
+public class PowerOrb : MonoBehaviour
 {
-    bool playerInRangeOrb;
     bool isOrbSinking;
+    bool playerInRangeOrb;
     public float sinkOrbSpeed = 2.5f;
-    GameObject player;
     PlayerHealth playerHealth;
+    GameObject player;
+    public static bool isPowerOrb = false;
+
     public static TimeSpan tsOrb;
     private void Awake()
     {
@@ -21,7 +23,7 @@ public class OrbLife : MonoBehaviour
     void Update()
     {
         tsOrb = Orb.stopwatchOrb.Elapsed;
-        if (tsOrb >= Orb.maxOrbLife)
+        if (tsOrb >= Orb.maxOrbLife || playerInRangeOrb)
         {
             StartOrbSinking();
         }
@@ -30,6 +32,23 @@ public class OrbLife : MonoBehaviour
         {
             // memindahkan object ke bawah
             transform.Translate(-Vector3.up * sinkOrbSpeed * Time.deltaTime);
+        }
+    }
+
+    // Callback jika ada suatu object masuk ke dalam trigger
+    void OnTriggerEnter(Collider other)
+    {
+        // Set player in range
+        if (other.gameObject == player && other.isTrigger == false)
+        {
+            Debug.Log("MASUK KE ORB GREEN - POWER");
+            playerInRangeOrb = true;
+            isPowerOrb = true;
+            Player.damagePerShot += 10;
+            if (Player.damagePerShot > Player.maxDamage)
+            {
+                Player.damagePerShot = Player.maxDamage;
+            }
         }
     }
 

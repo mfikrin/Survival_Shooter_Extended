@@ -104,7 +104,7 @@ public class SkeletonAttack : MonoBehaviour
         }
 
 
-        if (playerHealth.currentHealth <= 0)
+        if ((playerHealth.currentHealth <= 0 && Player.modeGame != "SuddenDeath") || (playerHealth.currentHealth < 0 && Player.modeGame.Equals("SuddenDeath")))
         {
             anim.SetTrigger("PlayerDead");
         }
@@ -116,7 +116,7 @@ public class SkeletonAttack : MonoBehaviour
         timer = 0f;
 
         // Taking damage
-        if (playerHealth.currentHealth > 0)
+        if ((playerHealth.currentHealth > 0 && Player.modeGame != "SuddenDeath") || (playerHealth.currentHealth == 0 && Player.modeGame.Equals("SuddenDeath")))
         {
             playerHealth.TakeDamage(attackDamage);
         }

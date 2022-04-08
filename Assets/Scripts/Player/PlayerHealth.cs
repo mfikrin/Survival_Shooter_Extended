@@ -6,6 +6,7 @@ using System;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public static int tempcurrenthealth;
     public int currentHealth;
     public Slider healthSlider;
     public Image damageImage;
@@ -20,6 +21,17 @@ public class PlayerHealth : MonoBehaviour
     bool damaged;
 
 
+    //void Start()
+    //{
+    //    if (Player.modeGame.Equals("SuddenDeath"))
+    //    {
+    //        currentHealth = tempcurrenthealth;
+    //    }
+    //    else
+    //    {
+    //        currentHealth = Player.startingHealth;
+    //    }
+    //}
     void Awake()
     {
         // Mendapatkan reference komponen
@@ -28,7 +40,16 @@ public class PlayerHealth : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
 
         playerShooting = GetComponentInChildren<PlayerShooting>();
+
+
+
+
+        //Debug.Log(tempcurrenthealth);
+
+        //currentHealth = tempcurrenthealth;
         currentHealth = Player.startingHealth;
+        Debug.Log("CURRENT HEALT");
+        Debug.Log(currentHealth.ToString());
         if (Player.startingHealth > Player.maxHealth)
         {
             healthAmount.text = Player.maxHealth.ToString() + "/" + Player.maxHealth.ToString();
@@ -54,6 +75,34 @@ public class PlayerHealth : MonoBehaviour
         }
 
         damaged = false;
+
+        if (HealthOrb.isHealthOrb)
+        {
+            //if (currentHealth < 0)
+            //{
+            //    currentHealth = 0;
+            //}
+
+            healthAmount.text = currentHealth.ToString() + "/" + Player.maxHealth.ToString();
+
+        }
+
+        if (isDead)
+        {
+            if (Player.modeGame.Equals("SuddenDeath"))
+            {
+                healthAmount.text = "DEATH";
+            }
+            else
+            {
+                if (currentHealth < 0)
+                {
+                    currentHealth = 0;
+                }
+                healthAmount.text = currentHealth.ToString() + "/" + Player.maxHealth.ToString();
+            }
+        }
+
     }
 
     // Fungsi untuk mendapatkan damage
@@ -68,8 +117,9 @@ public class PlayerHealth : MonoBehaviour
 
         playerAudio.Play();
 
-        if (currentHealth <= 0 && !isDead)
+        if ((currentHealth <= 0 && !isDead && Player.modeGame != "SuddenDeath") || (currentHealth < 0 && Player.modeGame.Equals("SuddenDeath")) )
         {
+            //currentHealth = 0;
             Death();
         }
     }

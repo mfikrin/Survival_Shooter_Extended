@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Orb : MonoBehaviour
 {
-    public static TimeSpan maxOrbLife = new TimeSpan(0,0,5);
+    public static TimeSpan maxOrbLife = new TimeSpan(0,0,8);
     public static Stopwatch stopwatchOrb;
     void Start()
     {

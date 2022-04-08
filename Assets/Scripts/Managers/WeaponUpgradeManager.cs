@@ -9,6 +9,7 @@ public class WeaponUpgradeManager : MonoBehaviour
     public static bool isGamePaused = false;
     public static bool isExitUpgradeWeapon = false;
     public static bool isUpSpeed = false;
+    public static bool isUpPower = false;
     public GameObject panelUpgradeWeapon;
     public GameObject weapon2;
     public GameObject weapon3;
@@ -48,6 +49,7 @@ public class WeaponUpgradeManager : MonoBehaviour
         panelUpgradeWeapon.SetActive(true);
         Time.timeScale = 0.0000001f;
         isGamePaused = true;
+        ScoreManager.isTimeActive = false; 
     }
 
     public void Resume()
@@ -55,6 +57,7 @@ public class WeaponUpgradeManager : MonoBehaviour
         panelUpgradeWeapon.SetActive(false);
         Time.timeScale = 1f;
         isGamePaused = false;
+        ScoreManager.stopwatch.Start();
     }
 
     public void upgradeWeapon()
@@ -101,5 +104,18 @@ public class WeaponUpgradeManager : MonoBehaviour
         }
         Resume(); 
         
+    }
+
+    public void powerup()
+    {
+        Debug.Log("Power Up");
+        if (Player.damagePerShot != 100)
+        {
+            Player.damagePerShot += 20;
+ 
+        }
+        isUpPower = true; 
+        Resume();
+
     }
 }
