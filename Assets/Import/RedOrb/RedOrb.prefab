@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 6673497445267614232}
   - component: {fileID: -4190960993906580036}
   - component: {fileID: 4933936574719188180}
-  - component: {fileID: 6645949505204964301}
+  - component: {fileID: 5546365036868662327}
   m_Layer: 0
   m_Name: RedOrb
   m_TagString: Orb
@@ -73,11 +73,11 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3970254296244749916}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 488.59225
+  m_Center: {x: 7.6872315, y: -1.038106, z: 3.0682247}
 --- !u!114 &4933936574719188180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4934cac8d31dc045ad226b869ca0211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6645949505204964301
+--- !u!114 &5546365036868662327
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3970254296244749916}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6238265e4e5f54749aae34e837b6bbe5, type: 3}
+  m_Script: {fileID: 11500000, guid: 07855b35a6686cd4d8387534411c3c65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sinkOrbSpeed: 2.5

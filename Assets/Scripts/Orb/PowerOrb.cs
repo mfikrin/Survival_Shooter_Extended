@@ -3,15 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OrbLife : MonoBehaviour
+public class PowerOrb : MonoBehaviour
 {
-    
     bool isOrbSinking;
     bool playerInRangeOrb;
     public float sinkOrbSpeed = 2.5f;
     PlayerHealth playerHealth;
     GameObject player;
-    
+    public static bool isPowerOrb = false;
+
     public static TimeSpan tsOrb;
     private void Awake()
     {
@@ -41,8 +41,14 @@ public class OrbLife : MonoBehaviour
         // Set player in range
         if (other.gameObject == player && other.isTrigger == false)
         {
-            Debug.Log("MASUK KE ORB");
+            Debug.Log("MASUK KE ORB GREEN - POWER");
             playerInRangeOrb = true;
+            isPowerOrb = true;
+            Player.damagePerShot += 10;
+            if (Player.damagePerShot > Player.maxDamage)
+            {
+                Player.damagePerShot = Player.maxDamage;
+            }
         }
     }
 

@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody>();
 
         // atribut speed 
-        Player.speed = 6f; 
+        //Player.speed = 6f; 
         if(Player.speed > Player.maxSpeed)
         {
             speedAmount.text = Player.maxSpeed.ToString() + "/" + Player.maxSpeed.ToString();
@@ -44,7 +44,19 @@ public class PlayerMovement : MonoBehaviour
         Move(h, v);
         Turning();
         Animating(h, v);
+
+        
     }
+
+    void Update()
+    {
+        if (SpeedOrb.isSpeedOrb)
+        {
+            speedAmount.text = Player.speed.ToString() + "/" + Player.maxSpeed.ToString();
+        }
+    }
+
+
 
     //Method player dapat berjalan
     public void Move(float h, float v)

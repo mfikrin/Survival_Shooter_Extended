@@ -54,6 +54,11 @@ public class PlayerHealth : MonoBehaviour
         }
 
         damaged = false;
+
+        if (HealthOrb.isHealthOrb)
+        {
+            healthAmount.text = currentHealth.ToString() + "/" + Player.maxHealth.ToString();
+        }
     }
 
     // Fungsi untuk mendapatkan damage

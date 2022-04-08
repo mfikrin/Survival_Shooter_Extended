@@ -23,7 +23,7 @@ public class ScoreManager : MonoBehaviour
     private ScoreWaveData scoreWaveData;
 
 
-     public GameObject panelUpgradeWeapon;
+    public GameObject panelUpgradeWeapon;
 
     public Text textScore;
     public Text textTime;
@@ -41,13 +41,12 @@ public class ScoreManager : MonoBehaviour
         wave = 1;
         stopwatch = new Stopwatch();
         stopwatch.Start();
-
+      
 
     }
     void Update()
     {
         string scene = SceneManager.GetActiveScene().name;
-
         if (scene.Equals("ZenMode") || scene.Equals("WaveMode"))
         {
             if (Player.modeGame.Equals("Zen"))
@@ -61,14 +60,13 @@ public class ScoreManager : MonoBehaviour
                     {
                         textTime.text = time;
                     }
-                    if( ts.Seconds % 30 == 0)
+                    if( ts.Seconds > 0 && ts.Seconds % 30 == 0)
                     {
                        
                         isUpgradeZen = true;
                         panelUpgradeWeapon.SetActive(true);
                     }
                 }
-
             }
             else if (Player.modeGame.Equals("Wave"))
             {
