@@ -79,6 +79,19 @@ public class PlayerShooting : MonoBehaviour
             }
         }
 
+        if (WeaponUpgradeManager.isUpPower)
+        {
+            Debug.Log("UP Power WOI");
+            if (Player.damagePerShot > Player.maxDamage)
+            {
+                powerAmount.text = Player.maxDamage.ToString() + "/" + Player.maxTimeBetweenBullets.ToString();
+            }
+            else
+            {
+                powerAmount.text = Player.damagePerShot.ToString() + "/" + Player.maxTimeBetweenBullets.ToString();
+            }
+        }
+
         if (PowerOrb.isPowerOrb)
         {
             powerAmount.text = Player.damagePerShot.ToString() + "/" + Player.maxDamage.ToString();
