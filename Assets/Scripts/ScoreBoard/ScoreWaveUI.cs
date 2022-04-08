@@ -17,8 +17,8 @@ public class ScoreWaveUI : MonoBehaviour
 
         scoreManager.AddWaveScore(new ScoreWave(name: "A", wave: 1, score: 80));
         scoreManager.AddWaveScore(new ScoreWave(name: "B", wave: 2, score: 180));
-        scoreManager.AddWaveScore(new ScoreWave(name: "C", wave: 3, score: 380));
-        scoreManager.AddWaveScore(new ScoreWave(name: "D", wave: 3, score: 370));
+        scoreManager.AddWaveScore(new ScoreWave(name: "C", wave: 4, score: 380));
+        scoreManager.AddWaveScore(new ScoreWave(name: "D", wave: 3, score: 380));
 
 
 
