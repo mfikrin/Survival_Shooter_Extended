@@ -99,7 +99,7 @@ Transform:
   m_GameObject: {fileID: 375618196672276953}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 5, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 8031408830244578799}
   - {fileID: 1376331246211705188}
@@ -153,7 +153,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3.6735117
+  m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0.67351174}
 --- !u!136 &9127621533573548015
 CapsuleCollider:
@@ -165,7 +165,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 3.5973232
+  m_Radius: 3
   m_Height: 7.1946464
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0.5973232}
@@ -206,7 +206,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.03
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -302,6 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0.5
   attackDamage: 20
+  timerToDeath: 5
 --- !u!114 &8687524655902338457
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ public class RobotAttack : MonoBehaviour
 {
     public float timeBetweenAttacks = 0.5f;
         public int attackDamage = 30;
+        public int timerToDeath = 5;
 
 
         Animator anim;
@@ -49,7 +50,10 @@ public class RobotAttack : MonoBehaviour
         void Update()
         {
             timer += Time.deltaTime;
-
+            if(timer >= timerToDeath){
+                enemyHealth.TakeDamage(enemyHealth.currentHealth,enemyHealth.transform.position);
+            }
+            
             if(timer >= timeBetweenAttacks && playerInRange && enemyHealth.currentHealth > 0)
             {
                 Attack();
