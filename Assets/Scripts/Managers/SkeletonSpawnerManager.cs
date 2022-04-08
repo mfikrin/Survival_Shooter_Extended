@@ -26,7 +26,7 @@ public class SkeletonSpawnerManager : MonoBehaviour
 
     void Spawn ()
     {
-        if (playerHealth.currentHealth <= 0f)
+        if ((playerHealth.currentHealth <= 0f && Player.modeGame != "SuddenDeath") || (playerHealth.currentHealth < 0 && Player.modeGame.Equals("SuddenDeath")))
         {
             return;
         }

@@ -54,7 +54,7 @@ public class EnemyAttack : MonoBehaviour
             Attack();
         }
 
-        if (playerHealth.currentHealth <= 0)
+        if ((playerHealth.currentHealth <= 0 && Player.modeGame != "SuddenDeath") || (playerHealth.currentHealth < 0 && Player.modeGame.Equals("SuddenDeath")))
         {
             anim.SetTrigger("PlayerDead");
         }
@@ -66,7 +66,7 @@ public class EnemyAttack : MonoBehaviour
         timer = 0f;
 
         // Taking damage
-        if (playerHealth.currentHealth > 0)
+        if ((playerHealth.currentHealth > 0 && Player.modeGame != "SuddenDeath") || (playerHealth.currentHealth == 0 && Player.modeGame.Equals("SuddenDeath")))
         {
             playerHealth.TakeDamage(attackDamage);
         }
