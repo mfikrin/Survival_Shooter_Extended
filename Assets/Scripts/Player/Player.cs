@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     public static string modeGame;
 
     // PlayerShooting
-    public static int damagePerShot = 100;
+    public static int damagePerShot = 20;
     public static float timeBetweenBullets = 0.5f;
     public static float range = 100f;
     public static int maxDamage = 100;
@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     // PlayerHealth
     public static int startingHealth = 100;
     public static int maxHealth = 100;
+    //public static int currentHealth = startingHealth;
     public static float flashSpeed = 5f;
     public static Color flashColour = new Color(1f, 0f, 0f, 0.1f);  
 

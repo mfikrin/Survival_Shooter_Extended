@@ -30,11 +30,13 @@ public class PlayerShooting : MonoBehaviour
         gunLine = GetComponent<LineRenderer>();
         gunAudio = GetComponent<AudioSource>();
         gunLight = GetComponent<Light>();
-        Player.damagePerShot = 150;
-        Player.timeBetweenBullets = 0.5f; 
+
+
         if (Player.damagePerShot > Player.maxDamage)
         {
-            powerAmount.text = Player.maxDamage.ToString() + "/" + Player.maxDamage.ToString();
+            Debug.Log("GEDE CUY");
+            Player.damagePerShot = Player.maxDamage;
+            powerAmount.text = Player.damagePerShot.ToString() + "/" + Player.maxDamage.ToString();
         }
         else
         {
@@ -76,6 +78,15 @@ public class PlayerShooting : MonoBehaviour
                 speedWeaponAmount.text = Player.timeBetweenBullets.ToString() + "/" + Player.maxTimeBetweenBullets.ToString();
             }
         }
+
+        if (PowerOrb.isPowerOrb)
+        {
+            powerAmount.text = Player.damagePerShot.ToString() + "/" + Player.maxDamage.ToString();
+        }
+
+
+
+
     }
 
     public void DisableEffects()
