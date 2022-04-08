@@ -76,4 +76,10 @@ public class MainMenu : MonoBehaviour
         GameMode = "Wave";
     }
 
+    public void setSuddenDeathMode()
+    {
+        GameMode = "SuddenDeath";
+
+    }
+
 }

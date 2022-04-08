@@ -22,8 +22,9 @@ public class EnemyMovement : MonoBehaviour
     void Update ()
     {
         //Memindahkan posisi player
-        if (enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0)
+        if (enemyHealth.currentHealth > 0 && ((playerHealth.currentHealth > 0 && Player.modeGame != "SuddenDeath") || (playerHealth.currentHealth == 0 && Player.modeGame.Equals("SuddenDeath"))))
         {
+            Debug.Log("MASUK KE NAV MESHAN");
             nav.SetDestination(player.position);
         }
         else //Hentikan moving

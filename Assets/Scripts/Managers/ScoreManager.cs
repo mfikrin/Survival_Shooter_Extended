@@ -100,6 +100,30 @@ public class ScoreManager : MonoBehaviour
                     textWave.text = "Wave " + wave + "/" + EnemyWaveManager.maxWave;
                 }
             }
+            else if (Player.modeGame.Equals("SuddenDeath"))
+            {
+
+                if (textScore != null)
+                {
+                    textScore.text = "Score: " + score;
+                }
+                if (stopwatch != null)
+                {
+                    UnityEngine.Debug.Log("MASUK KE ZEN");
+                    ts = stopwatch.Elapsed;
+                    string time = ts.ToString().Substring(0, 11);
+                    if (textTime != null)
+                    {
+                        textTime.text = time;
+                    }
+                    if (ts.Seconds > 0 && ts.Seconds % 30 == 0)
+                    {
+
+                        isUpgradeZen = true;
+                        panelUpgradeWeapon.SetActive(true);
+                    }
+                }
+            }
         }
 
         
@@ -113,6 +137,7 @@ public class ScoreManager : MonoBehaviour
     public IEnumerable<ScoreWave> GetWaveHighScores()
     {
         return scoreWaveData.WaveScoreList.OrderByDescending(x => x.score);
+            //.ThenByDescending(x => x.wave);
     }
 
     public void AddZenScore(ScoreZen score)
