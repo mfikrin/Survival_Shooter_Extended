@@ -52,6 +52,7 @@ public class ScoreManager : MonoBehaviour
         {
             if (Player.modeGame.Equals("Zen"))
             {
+                UnityEngine.Debug.Log("MASUK KE ZEN");
                 if (stopwatch != null)
                 {
                     ts = stopwatch.Elapsed;
