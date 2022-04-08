@@ -664,7 +664,6 @@ GameObject:
   - component: {fileID: 240257949}
   - component: {fileID: 240257948}
   - component: {fileID: 240257947}
-  - component: {fileID: 240257951}
   - component: {fileID: 240257952}
   m_Layer: 0
   m_Name: EnemyManager
@@ -680,12 +679,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 240257946}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76a99222b1e4a384e923ac7e86efc709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 0}
+  playerHealth: {fileID: 33458251}
   spawnEnemy: 2
   spawnTime: 12
   spawnPoints:
@@ -698,12 +697,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 240257946}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76a99222b1e4a384e923ac7e86efc709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 0}
+  playerHealth: {fileID: 33458251}
   spawnEnemy: 1
   spawnTime: 8
   spawnPoints:
@@ -716,12 +715,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 240257946}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76a99222b1e4a384e923ac7e86efc709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 0}
+  playerHealth: {fileID: 33458251}
   spawnEnemy: 0
   spawnTime: 4
   spawnPoints:
@@ -741,24 +740,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &240257951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 240257946}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76a99222b1e4a384e923ac7e86efc709, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHealth: {fileID: 0}
-  spawnEnemy: 3
-  spawnTime: 3
-  spawnPoints:
-  - {fileID: 0}
-  factory: {fileID: 180263585}
 --- !u!114 &240257952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3792,10 +3773,20 @@ PrefabInstance:
       propertyPath: speedWeaponAmount
       value: 
       objectReference: {fileID: 1815148277}
+    - target: {fileID: 7586988441521417376, guid: 20cb5484ba4b4f54f902db7f94f01f73,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7586988441521417406, guid: 20cb5484ba4b4f54f902db7f94f01f73,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7586988441521417406, guid: 20cb5484ba4b4f54f902db7f94f01f73,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7586988441521449560, guid: 20cb5484ba4b4f54f902db7f94f01f73,
         type: 3}
