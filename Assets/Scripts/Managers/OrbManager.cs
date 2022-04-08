@@ -26,20 +26,15 @@ public class OrbManager : MonoBehaviour
 
     void Spawn()
     {
-        if (playerHealth.currentHealth <= 0f)
+        if ((playerHealth.currentHealth <= 0f && Player.modeGame != "SuddenDeath") || (playerHealth.currentHealth < 0 && Player.modeGame.Equals("SuddenDeath")))
         {
             return;
         }
 
         int spawnPointIndex = Random.Range(0, spawnPoints.Length);
 
-        // Menduplikasi enemy
+        // Menduplikasi orb
         Instantiate(Factory.FactoryMethod(spawnOrb), spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

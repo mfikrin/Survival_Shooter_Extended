@@ -12,6 +12,9 @@ public class ScoreManager : MonoBehaviour
     public static int score;
     public static Stopwatch stopwatch;
     public static TimeSpan ts;
+    public static bool isTimeActive = true ;
+    public static int stopTime;
+    public int counterPanel = 0;
 
     public static bool isUpgradeZen = false ; 
 
@@ -23,7 +26,7 @@ public class ScoreManager : MonoBehaviour
     private ScoreWaveData scoreWaveData;
 
 
-     public GameObject panelUpgradeWeapon;
+    public GameObject panelUpgradeWeapon;
 
     public Text textScore;
     public Text textTime;
@@ -41,33 +44,49 @@ public class ScoreManager : MonoBehaviour
         wave = 1;
         stopwatch = new Stopwatch();
         stopwatch.Start();
-
+      
 
     }
     void Update()
     {
         string scene = SceneManager.GetActiveScene().name;
-
         if (scene.Equals("ZenMode") || scene.Equals("WaveMode"))
         {
             if (Player.modeGame.Equals("Zen"))
             {
+                UnityEngine.Debug.Log("MASUK KE ZEN");
                 if (stopwatch != null)
                 {
-                    ts = stopwatch.Elapsed;
+                    //if (isTimeActive && counterPanel == 2)
+                    //{
+                    //    stopTime = 0;
+                    //    counterPanel = 0; 
+                    //}
+                    //if (!isTimeActive)
+                    //{
+                    //    counterPanel += 1;
+                    //    isTimeActive = true; 
+                    //}
+                    ts = stopwatch.Elapsed; 
                     string time = ts.ToString().Substring(0, 11);
                     if (textTime != null)
                     {
                         textTime.text = time;
                     }
-                    if( ts.Seconds % 30 == 0)
+                    if( ts.Seconds > 0 && ts.Seconds % 30 == 0 && stopTime != ts.Seconds)
                     {
-                       
+                        counterPanel += 1;
+                        stopTime = ts.Seconds;
                         isUpgradeZen = true;
+                        isTimeActive = false;
+                        stopwatch.Stop(); 
                         panelUpgradeWeapon.SetActive(true);
                     }
+                    if (ts.Seconds % 30 != 0)
+                    {
+                        stopTime = 0; 
+                    }
                 }
-
             }
             else if (Player.modeGame.Equals("Wave"))
             {
@@ -79,6 +98,30 @@ public class ScoreManager : MonoBehaviour
                 if (textWave != null)
                 {
                     textWave.text = "Wave " + wave + "/" + EnemyWaveManager.maxWave;
+                }
+            }
+            else if (Player.modeGame.Equals("SuddenDeath"))
+            {
+
+                if (textScore != null)
+                {
+                    textScore.text = "Score: " + score;
+                }
+                if (stopwatch != null)
+                {
+                    UnityEngine.Debug.Log("MASUK KE ZEN");
+                    ts = stopwatch.Elapsed;
+                    string time = ts.ToString().Substring(0, 11);
+                    if (textTime != null)
+                    {
+                        textTime.text = time;
+                    }
+                    if (ts.Seconds > 0 && ts.Seconds % 30 == 0)
+                    {
+
+                        isUpgradeZen = true;
+                        panelUpgradeWeapon.SetActive(true);
+                    }
                 }
             }
         }
@@ -94,6 +137,7 @@ public class ScoreManager : MonoBehaviour
     public IEnumerable<ScoreWave> GetWaveHighScores()
     {
         return scoreWaveData.WaveScoreList.OrderByDescending(x => x.score);
+            //.ThenByDescending(x => x.wave);
     }
 
     public void AddZenScore(ScoreZen score)

@@ -236,7 +236,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4380475398997561828}
   - component: {fileID: 4369029536144989353}
-  - component: {fileID: 7371672250846773847}
+  - component: {fileID: 4718776042315092737}
+  - component: {fileID: 1041099144909996883}
   m_Layer: 0
   m_Name: YellowOrb
   m_TagString: Untagged
@@ -271,7 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4934cac8d31dc045ad226b869ca0211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7371672250846773847
+--- !u!114 &4718776042315092737
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -284,6 +285,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sinkOrbSpeed: 2.5
+--- !u!135 &1041099144909996883
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2850000602493884528}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.1115526
+  m_Center: {x: -0.11953565, y: 0.36217618, z: -0.93254405}
 --- !u!1 &6870782752020266117
 GameObject:
   m_ObjectHideFlags: 0
