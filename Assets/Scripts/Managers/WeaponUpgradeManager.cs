@@ -48,6 +48,7 @@ public class WeaponUpgradeManager : MonoBehaviour
         panelUpgradeWeapon.SetActive(true);
         Time.timeScale = 0.0000001f;
         isGamePaused = true;
+        ScoreManager.isTimeActive = false; 
     }
 
     public void Resume()
@@ -55,6 +56,7 @@ public class WeaponUpgradeManager : MonoBehaviour
         panelUpgradeWeapon.SetActive(false);
         Time.timeScale = 1f;
         isGamePaused = false;
+        ScoreManager.stopwatch.Start();
     }
 
     public void upgradeWeapon()

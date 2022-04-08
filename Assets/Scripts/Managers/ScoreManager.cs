@@ -12,6 +12,9 @@ public class ScoreManager : MonoBehaviour
     public static int score;
     public static Stopwatch stopwatch;
     public static TimeSpan ts;
+    public static bool isTimeActive = true ;
+    public static int stopTime;
+    public int counterPanel = 0;
 
     public static bool isUpgradeZen = false ; 
 
@@ -54,17 +57,34 @@ public class ScoreManager : MonoBehaviour
                 UnityEngine.Debug.Log("MASUK KE ZEN");
                 if (stopwatch != null)
                 {
-                    ts = stopwatch.Elapsed;
+                    //if (isTimeActive && counterPanel == 2)
+                    //{
+                    //    stopTime = 0;
+                    //    counterPanel = 0; 
+                    //}
+                    //if (!isTimeActive)
+                    //{
+                    //    counterPanel += 1;
+                    //    isTimeActive = true; 
+                    //}
+                    ts = stopwatch.Elapsed; 
                     string time = ts.ToString().Substring(0, 11);
                     if (textTime != null)
                     {
                         textTime.text = time;
                     }
-                    if( ts.Seconds > 0 && ts.Seconds % 30 == 0)
+                    if( ts.Seconds > 0 && ts.Seconds % 30 == 0 && stopTime != ts.Seconds)
                     {
-                       
+                        counterPanel += 1;
+                        stopTime = ts.Seconds;
                         isUpgradeZen = true;
+                        isTimeActive = false;
+                        stopwatch.Stop(); 
                         panelUpgradeWeapon.SetActive(true);
+                    }
+                    if (ts.Seconds % 30 != 0)
+                    {
+                        stopTime = 0; 
                     }
                 }
             }
