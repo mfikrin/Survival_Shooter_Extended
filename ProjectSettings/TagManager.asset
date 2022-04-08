@@ -8,6 +8,7 @@ TagManager:
   - Orb
   - Arrows
   - Projectile
+  - SlimeProjectile
   layers:
   - Default
   - TransparentFX
