@@ -383,8 +383,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27c63be2a8918c741863160b9d9da122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerAmount: {fileID: 0}
-  speedWeaponAmount: {fileID: 0}
+  powerAmount: {fileID: 866828595}
+  speedWeaponAmount: {fileID: 237121144}
 --- !u!82 &86246440
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5671,10 +5671,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelUpgradeWeapon: {fileID: 222749094}
-  weapon2: {fileID: 0}
-  weapon3: {fileID: 0}
-  weapon4: {fileID: 0}
-  weapon5: {fileID: 0}
+  weapon2: {fileID: 1743868032}
+  weapon3: {fileID: 86246437}
+  weapon4: {fileID: 342925018}
+  weapon5: {fileID: 598346249}
 --- !u!114 &222749097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6046,8 +6046,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27c63be2a8918c741863160b9d9da122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerAmount: {fileID: 0}
-  speedWeaponAmount: {fileID: 0}
+  powerAmount: {fileID: 866828595}
+  speedWeaponAmount: {fileID: 237121144}
 --- !u!82 &342925021
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11537,8 +11537,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27c63be2a8918c741863160b9d9da122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerAmount: {fileID: 0}
-  speedWeaponAmount: {fileID: 0}
+  powerAmount: {fileID: 866828595}
+  speedWeaponAmount: {fileID: 237121144}
 --- !u!82 &598346252
 AudioSource:
   m_ObjectHideFlags: 0
@@ -24389,8 +24389,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27c63be2a8918c741863160b9d9da122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerAmount: {fileID: 0}
-  speedWeaponAmount: {fileID: 0}
+  powerAmount: {fileID: 866828595}
+  speedWeaponAmount: {fileID: 237121144}
 --- !u!82 &1743868035
 AudioSource:
   m_ObjectHideFlags: 0
