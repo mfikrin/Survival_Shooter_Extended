@@ -24,6 +24,7 @@ public class ScoreManager : MonoBehaviour
     
     private ScoreZenData scoreZenData;
     private ScoreWaveData scoreWaveData;
+    private ScoreSuddenDeathData scoreSuddenDeathData;
 
 
     public GameObject panelUpgradeWeapon;
@@ -40,6 +41,10 @@ public class ScoreManager : MonoBehaviour
 
         var WaveScoreJson = PlayerPrefs.GetString("WaveScores", "{}");
         scoreWaveData = JsonUtility.FromJson<ScoreWaveData>(WaveScoreJson);
+
+        var SuddenDeathScoreJson = PlayerPrefs.GetString("SuddenDeathScores", "{}");
+        scoreSuddenDeathData = JsonUtility.FromJson<ScoreSuddenDeathData>(SuddenDeathScoreJson);
+
         score = 0;
         wave = 1;
         stopwatch = new Stopwatch();
@@ -50,8 +55,11 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
         string scene = SceneManager.GetActiveScene().name;
-        if (scene.Equals("ZenMode") || scene.Equals("WaveMode"))
+        UnityEngine.Debug.Log(scene);
+        if (scene.Equals("ZenMode") || scene.Equals("WaveMode") || scene.Equals("SuddenDeathMode"))
         {
+            UnityEngine.Debug.Log("MASUK KE IFFF");
+
             if (Player.modeGame.Equals("Zen"))
             {
                 UnityEngine.Debug.Log("MASUK KE ZEN");
@@ -102,14 +110,14 @@ public class ScoreManager : MonoBehaviour
             }
             else if (Player.modeGame.Equals("SuddenDeath"))
             {
-
+                UnityEngine.Debug.Log("Sud");
                 if (textScore != null)
                 {
                     textScore.text = "Score: " + score;
                 }
                 if (stopwatch != null)
                 {
-                    UnityEngine.Debug.Log("MASUK KE ZEN");
+                    UnityEngine.Debug.Log("MASUK KE STOPWATCH SUDDEN DEATH");
                     ts = stopwatch.Elapsed;
                     string time = ts.ToString().Substring(0, 11);
                     if (textTime != null)
@@ -140,6 +148,12 @@ public class ScoreManager : MonoBehaviour
             //.ThenByDescending(x => x.wave);
     }
 
+    public IEnumerable<ScoreSuddenDeath> GetSuddenDeathHighScores()
+    {
+        return scoreSuddenDeathData.SuddenDeathScoreList.OrderByDescending(x => x.score).ThenByDescending(x => x.time);
+        //.ThenByDescending(x => x.wave);
+    }
+
     public void AddZenScore(ScoreZen score)
     {
         scoreZenData.ZenScoreList.Add(score);
@@ -148,6 +162,11 @@ public class ScoreManager : MonoBehaviour
     public void AddWaveScore(ScoreWave score)
     {
         scoreWaveData.WaveScoreList.Add(score);
+    }
+
+    public void AddSuddenDeathScore(ScoreSuddenDeath score)
+    {
+        scoreSuddenDeathData.SuddenDeathScoreList.Add(score);
     }
 
     private void OnDestroy()
@@ -162,5 +181,8 @@ public class ScoreManager : MonoBehaviour
 
         var WaveScoreJson = JsonUtility.ToJson(scoreWaveData);
         PlayerPrefs.SetString("WaveScores", WaveScoreJson);
+
+        var SuddenDeathScoreJson = JsonUtility.ToJson(scoreSuddenDeathData);
+        PlayerPrefs.SetString("SuddenDeathScores", SuddenDeathScoreJson);
     }
 }

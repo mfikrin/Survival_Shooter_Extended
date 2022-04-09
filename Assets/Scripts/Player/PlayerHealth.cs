@@ -145,8 +145,14 @@ public class PlayerHealth : MonoBehaviour
     {
         ScoreManager.stopwatch.Stop();
         //ScoreManager.ts = ScoreManager.stopwatch.Elapsed;
-
-        ScoreZenUI.TimeSpanZenUI = ScoreManager.stopwatch.Elapsed;
+        if (Player.modeGame.Equals("Zen"))
+        {
+            ScoreZenUI.TimeSpanZenUI = ScoreManager.stopwatch.Elapsed;
+        }else if (Player.modeGame.Equals("SuddenDeath"))
+        {
+            ScoreSuddenDeathUI.TimeSpanSuddenDeathUI = ScoreManager.stopwatch.Elapsed;
+        }
+        
 
         isDead = true;
 
@@ -181,6 +187,15 @@ public class PlayerHealth : MonoBehaviour
             ScoreWaveUI.waveWaveUI = ScoreManager.wave;
 
             SceneManager.LoadScene("WaveScoreBoard");
+        }
+        else if (Player.modeGame.Equals("SuddenDeath"))
+        {
+            // set score
+            ScoreSuddenDeathUI.scoreSuddenDeathUI = ScoreManager.score;
+            // set wave
+            ScoreWaveUI.waveWaveUI = ScoreManager.wave;
+
+            SceneManager.LoadScene("SuddenDeathScoreBoard");
         }
 
     }
