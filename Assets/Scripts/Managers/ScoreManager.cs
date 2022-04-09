@@ -38,13 +38,13 @@ public class ScoreManager : MonoBehaviour
 
     void Awake()
     {
-        var ZenScoreJson = PlayerPrefs.GetString("ZenScores");
-        //Account account = JsonConvert.DeserializeObject<Account>(json);
-        if (ZenScoreJson == null)
-        {
-            ZenScoreJson = "{}";
-        }
-        scoreZenData = JsonConvert.DeserializeObject<ScoreZenData>(ZenScoreJson);
+        //var ZenScoreJson = PlayerPrefs.GetString("ZenScores");
+        ////Account account = JsonConvert.DeserializeObject<Account>(json);
+        //if (ZenScoreJson == null)
+        //{
+        //    ZenScoreJson = "{}";
+        //}
+        //scoreZenData = JsonConvert.DeserializeObject<ScoreZenData>(ZenScoreJson);
 
         var WaveScoreJson = PlayerPrefs.GetString("WaveScores");
 
@@ -68,6 +68,8 @@ public class ScoreManager : MonoBehaviour
       
 
     }
+
+
     void Update()
     {
         string scene = SceneManager.GetActiveScene().name;
@@ -184,9 +186,24 @@ public class ScoreManager : MonoBehaviour
         
     }
 
+    public ScoreZenData GetScoreZens()
+    {
+        return scoreZenData;
+    }
+
+    public ScoreWaveData GetScoreWave()
+    {
+        return scoreWaveData;
+    }
+
+    public ScoreSuddenDeathData GetScoreSudden()
+    {
+        return scoreSuddenDeathData;
+    }
+
     public IEnumerable<ScoreZen> GetZenHighScores()
     {
-        return scoreZenData.ZenScoreList.OrderByDescending(x => x.time);
+        return scoreZenData.ZenScoreList.OrderByDescending(x => x.time);           
     }
 
     public IEnumerable<ScoreWave> GetWaveHighScores()
