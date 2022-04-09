@@ -38,4 +38,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SuddenDeathOverMenu.unity
     guid: f2810a48dc34121488e1a4efc012c053
+  - enabled: 1
+    path: Assets/Scenes/WaveWinMenu.unity
+    guid: 1490a0ad40158474781a6e46ceac800b
   m_configObjects: {}
