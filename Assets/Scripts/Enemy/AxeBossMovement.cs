@@ -9,7 +9,7 @@ public class AxeBossMovement : MonoBehaviour
     UnityEngine.AI.NavMeshAgent nav;
      Animator anim;
      
-    float speed = 7f;
+    public float speed = 8f;
     float detectionRange = 8f;
 
 
@@ -20,6 +20,7 @@ public class AxeBossMovement : MonoBehaviour
         playerHealth = player.GetComponent<PlayerHealth>();
         enemyHealth = GetComponent<EnemyHealth>();
         nav = GetComponent <UnityEngine.AI.NavMeshAgent>();
+        nav.speed = speed;
         // nav.updateRotation = false;
     }
 
