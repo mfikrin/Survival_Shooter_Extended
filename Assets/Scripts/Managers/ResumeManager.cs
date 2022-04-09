@@ -33,11 +33,14 @@ public class ResumeManager : MonoBehaviour
     {
         Debug.Log("To main menu Resume");
 
+        Player.playerName = null;
         Player.timeBetweenBullets = 0.5f;
         Player.damagePerShot = 50;
         Player.speed = 6f;
         Player.diagonal = 1;
         SceneManager.LoadScene("Menu");
+        Resume();
+
     }
     public void QuitGameFromResume()
     {
