@@ -123,22 +123,6 @@ public class PlayerHealth : MonoBehaviour
             Death();
         }
     }
-    // public void TakeRangedDamage(int amount, Vector3 hitPoint)
-    // {
-    //     if (isDead)
-    //         return;
-
-    //     playerAudio.Play();
-    //     currentHealth -= amount;
-
-    //     hitParticles.transform.position = hitPoint;
-    //     hitParticles.Play();
-
-    //     if (currentHealth <= 0  && !isDead)
-    //     {
-    //         Death();
-    //     }
-    // }
 
 
     void Death()
@@ -156,7 +140,8 @@ public class PlayerHealth : MonoBehaviour
             ScoreSuddenDeathUI.TimeSpanSuddenDeathUI = ScoreManager.stopwatch.Elapsed;
         }
         
-
+        // Debug.Log(ScoreZenUI.TimeSpanZenUI);
+       
         isDead = true;
 
         playerShooting.DisableEffects();
@@ -175,31 +160,40 @@ public class PlayerHealth : MonoBehaviour
     {
         //meload ulang scene dengan index 0 pada build setting
 
-
-        //ScoreZenUI.scoreUI = ScoreManager.score;
+        string lastGameMode = Player.modeGame;
+        OverMenu.GameMode = lastGameMode;
+        OverMenu.defaultPlayerName = Player.playerName;
         if (Player.modeGame.Equals("Zen"))
-        {
-            // set time in void Death()
-            SceneManager.LoadScene("ZenScoreBoard");
+        {   
+            TimeSpan newTime = new TimeSpan(ScoreZenUI.TimeSpanZenUI.Days, ScoreZenUI.TimeSpanZenUI.Hours, ScoreZenUI.TimeSpanZenUI.Minutes, ScoreZenUI.TimeSpanZenUI.Seconds);
+            string insertedScore = newTime.ToString();
+            OverMenu.Param1 = insertedScore;
+            OverMenu.Param2 = insertedScore;
+            Debug.Log(OverMenu.Param1);
+            SceneManager.LoadScene("ZenOverMenu");
+       
         }
         else if (Player.modeGame.Equals("Wave"))
         {
             // set score
-            ScoreWaveUI.scoreWaveUI = ScoreManager.score;
-            // set wave
-            ScoreWaveUI.waveWaveUI = ScoreManager.wave;
-
-            SceneManager.LoadScene("WaveScoreBoard");
+            OverMenu.Param1 = ScoreManager.wave.ToString();
+            OverMenu.Param2 = ScoreManager.score.ToString();
+            Debug.Log(OverMenu.Param1);
+            SceneManager.LoadScene("WaveOverMenu");
+       
         }
         else if (Player.modeGame.Equals("SuddenDeath"))
         {
             // set score
-            ScoreSuddenDeathUI.scoreSuddenDeathUI = ScoreManager.score;
-            // set wave
-            ScoreWaveUI.waveWaveUI = ScoreManager.wave;
+            TimeSpan newTime = new TimeSpan(ScoreSuddenDeathUI.TimeSpanSuddenDeathUI.Days, ScoreSuddenDeathUI.TimeSpanSuddenDeathUI.Hours, ScoreSuddenDeathUI.TimeSpanSuddenDeathUI.Minutes, ScoreSuddenDeathUI.TimeSpanSuddenDeathUI.Seconds);
+            string insertedScore = newTime.ToString();
+            OverMenu.Param1 = insertedScore;
+            OverMenu.Param2 = ScoreManager.score.ToString();
+            Debug.Log(OverMenu.Param1);
+            SceneManager.LoadScene("SuddenDeathOverMenu");
 
-            SceneManager.LoadScene("SuddenDeathScoreBoard");
         }
+        
 
     }
 }
