@@ -11,6 +11,7 @@ public class ResumeManager : MonoBehaviour
 
     public void Pause()
     {
+        Debug.Log("PAUSEEEEEEE");
         panelResume.SetActive(true);
         Time.timeScale = 0.0000001f;
         isGamePaused = true;
@@ -22,7 +23,11 @@ public class ResumeManager : MonoBehaviour
         panelResume.SetActive(false);
         Time.timeScale = 1f;
         isGamePaused = false;
-        ScoreManager.stopwatch.Start();
+        if (Player.modeGame != "Wave")
+        {
+            ScoreManager.stopwatch.Start();
+        }
+        
     }
     public void MainMenuFromResume()
     {
