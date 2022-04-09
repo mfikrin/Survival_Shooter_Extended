@@ -23,4 +23,9 @@ public class ScoreControl : MonoBehaviour
     {
         SceneManager.LoadScene("WaveScoreBoard");
     }
+
+    public void SuddenDeathScoreButton()
+    {
+        SceneManager.LoadScene("SuddenDeathScoreBoard");
+    }
 }
