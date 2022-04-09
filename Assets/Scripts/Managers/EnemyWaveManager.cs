@@ -81,7 +81,7 @@ public class EnemyWaveManager : MonoBehaviour
                 // set wave
                 ScoreWaveUI.waveWaveUI = ScoreManager.wave;
 
-                SceneManager.LoadScene("WaveScoreBoard");
+                SceneManager.LoadScene("WaveWinMenu");
             }
             else
             {
