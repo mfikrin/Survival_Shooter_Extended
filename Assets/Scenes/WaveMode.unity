@@ -715,6 +715,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 159832588}
   m_CullTransparentMesh: 0
+--- !u!1 &170435869
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 170435870}
+  m_Layer: 0
+  m_Name: AxeBossSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &170435870
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170435869}
+  m_LocalRotation: {x: 0, y: 0.9063079, z: 0, w: 0.42261827}
+  m_LocalPosition: {x: -3.2, y: 0, z: 3.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 130, z: 0}
 --- !u!1 &205060220
 GameObject:
   m_ObjectHideFlags: 0
@@ -2299,36 +2329,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 773053550}
   m_CullTransparentMesh: 1
---- !u!1 &858558528
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 858558529}
-  m_Layer: 0
-  m_Name: AxeBossSpawnPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &858558529
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 858558528}
-  m_LocalRotation: {x: -0, y: 0.9063079, z: -0, w: 0.42261827}
-  m_LocalPosition: {x: 259.36874, y: 203, z: 1.6822265}
-  m_LocalScale: {x: 0.5097659, y: 0.5097656, z: 0.5097659}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 130, z: 0}
 --- !u!1 &914814369
 GameObject:
   m_ObjectHideFlags: 0
@@ -2979,7 +2979,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 23.1, y: 171.4}
+  m_AnchoredPosition: {x: 23.099976, y: 171.4}
   m_SizeDelta: {x: 414.015, y: 42.3003}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1327630054
@@ -3779,15 +3779,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 2091534493}
-  enemy: {fileID: 0}
   panelUpgradeWeapon: {fileID: 977838818}
-  spawnedEnemy: 
+  spawnedEnemy: 00000000010000000200000003000000040000000500000006000000
+  waveNumber: 6
   spawnTime: 3
   spawnPoints:
   - {fileID: 1653513237}
   - {fileID: 685508077}
   - {fileID: 441880227}
-  factory: {fileID: 0}
+  - {fileID: 1653513237}
+  - {fileID: 972828157}
+  - {fileID: 1775878356}
+  - {fileID: 170435870}
+  enemyWeight: 01000000020000000300000004000000030000000000000000000000
+  waves:
+  - enemyPrefabIndex: 0000000001000000
+    maxWeight: 5
+  - enemyPrefabIndex: 0200000003000000
+    maxWeight: 7
+  - enemyPrefabIndex: 050000000200000004000000
+    maxWeight: 10
+  - enemyPrefabIndex: 010000000200000004000000
+    maxWeight: 12
+  - enemyPrefabIndex: 000000000300000004000000
+    maxWeight: 15
+  - enemyPrefabIndex: 06000000020000000300000004000000
+    maxWeight: 25
+  factory: {fileID: 1880489809}
 --- !u!4 &1599711902
 Transform:
   m_ObjectHideFlags: 0
@@ -4238,20 +4256,6 @@ MonoBehaviour:
   - {fileID: 375618196672276953, guid: 2d825b5e972d96d4fb53e81ed33a6cb8, type: 3}
   - {fileID: 1064094405035396631, guid: 035df82fedae0ed41afe0609ceaa0a95, type: 3}
   - {fileID: 5211971573577369356, guid: bb19bb7f125a4ee40bafcf70f4f64715, type: 3}
-  enemyWeight: 01000000020000000300000003000000020000000000000000000000
-  waves:
-  - enemyPrefabIndex: 0000000001000000
-    maxWeight: 5
-  - enemyPrefabIndex: 0200000003000000
-    maxWeight: 7
-  - enemyPrefabIndex: 020000000400000005000000
-    maxWeight: 10
-  - enemyPrefabIndex: 000000000300000004000000
-    maxWeight: 12
-  - enemyPrefabIndex: 01000000020000000300000004000000
-    maxWeight: 15
-  - enemyPrefabIndex: 02000000030000000400000006000000
-    maxWeight: 25
 --- !u!4 &1880489810
 Transform:
   m_ObjectHideFlags: 0

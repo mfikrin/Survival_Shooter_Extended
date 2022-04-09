@@ -8,13 +8,16 @@ using UnityEngine.UI;
 public class EnemyWaveManager : MonoBehaviour
 {
     public PlayerHealth playerHealth;
-    public GameObject enemy;
     public GameObject panelUpgradeWeapon;
     //public Button upgradeSpeed;
     //public Button upgradeDiagonal;
     public int[] spawnedEnemy;
+    public int waveNumber;
     public float spawnTime;
     public Transform[] spawnPoints;
+
+    public int[] enemyWeight;
+    [SerializeField] public enemyPool[] waves;
 
     //// upgrade weapon 
     //public static bool GameIsPaused = false;
@@ -29,6 +32,8 @@ public class EnemyWaveManager : MonoBehaviour
     private int spawnedEnemyAmount;
     public static int enemyKilled;
     public static int maxWave;
+
+    
     // public int[,] enemyPool = new int[maxWave, spawnedEnemy.Length]; 
     void Start()
     {
@@ -36,23 +41,16 @@ public class EnemyWaveManager : MonoBehaviour
         //spawnedEnemy = new int[spawnedEnemyAmount];
         panelUpgradeWeapon.SetActive(false);
         spawnTime = 3f;
-        spawnedEnemyAmount = spawnedEnemy.Length;
+        // spawnedEnemyAmount = spawnedEnemy.Length;
         enemyKilled = 0;
-        maxWave = 6;
-        
-
+        spawnedEnemyAmount = 999;
+        maxWave = waves.Length;
         FirstWave();
 
     }
 
     private void Update()
     {
-
-        // Debug.LogFormat("Enemy Killed",enemyKilled);
-        // Debug.Log("Enemy Killed");
-        // Debug.Log(enemyKilled);
-        // Debug.Log("Enemy Spawn Amount");
-        //Debug.Log(spawnedEnemyAmount);
         if (enemyKilled >= spawnedEnemyAmount)
         {
             if (ScoreManager.wave == maxWave) // Reached max wave
@@ -84,7 +82,7 @@ public class EnemyWaveManager : MonoBehaviour
                     NextWave();
                 }
 
-                if (WeaponUpgradeManager.isExitUpgradeWeapon)
+                else if (WeaponUpgradeManager.isExitUpgradeWeapon)
                 {
                     NextWave();
                 }
@@ -95,28 +93,6 @@ public class EnemyWaveManager : MonoBehaviour
            
         }
     }
-
-    //public void exitFromUpgradeWeapon()
-    //{
-    //    isExitUpgradeWeapon = false;
-    //    NextWave();
-    //}
-
-    //public void Pause()
-    //{
-    //    panelUpgradeWeapon.SetActive(true);
-    //    Time.timeScale = 0f;
-    //    GameIsPaused = true;
-    //}
-
-    //public void Resume()
-    //{
-    //    panelUpgradeWeapon.SetActive(false);
-    //    Time.timeScale = 1f;
-    //    GameIsPaused = false;
-    //}
-
-   
 
     void Spawn(int tag)
     {
@@ -137,16 +113,24 @@ public class EnemyWaveManager : MonoBehaviour
     {
         //Debug.Log("IN START WAVE");
         ScoreManager.wave = 1;
-        //spawnedEnemyAmount = 2;
+        //spawnedEnemyAmount = 2;s
         enemyKilled = 0;
-        
-
-        for (int i = 0; i < spawnedEnemyAmount; i++)
+        int tempAmount = 0;
+        int[] currentPool = randomiseSpawnAmount(waves[0].enemyPrefabIndex, waves[0].maxWeight);
+        for (int i = 0; i < currentPool.Length; i++)
         {
-            int tag = spawnedEnemy[i];
-            Debug.Log("SPAWN");
-            Spawn(tag);
+            int tag = waves[0].enemyPrefabIndex[i];
+            int amount = currentPool[i];
+            tempAmount += amount;
+            for (int j = 0; j < amount; j++)
+            {
+                Spawn(tag);
+            }
         }
+        Debug.Log("Wave Manager Wave : "+ ScoreManager.wave );
+        Debug.Log("Spawned Enemy : " + tempAmount);
+
+        spawnedEnemyAmount = tempAmount;
     }
 
     private void NextWave()
@@ -154,43 +138,112 @@ public class EnemyWaveManager : MonoBehaviour
         //Debug.Log("IN NEXT WAVE");
         
         ScoreManager.wave++;
-        Debug.Log(ScoreManager.wave);
-        int enemyCount = 2;
-        spawnedEnemyAmount += enemyCount;
-        
-        int[] addedEnemyArray;
-        if (ScoreManager.wave % 3 == 0) // Boss stage
-        {
-           addedEnemyArray = new int[] { 2, 2 };
-        }
-        else
-        {
-           addedEnemyArray = new int[] { 0, 1 }; // 
-        }
-        
-
-        List<int> spawnedEnemyList = spawnedEnemy.ToList();
-
-        foreach (var tag in addedEnemyArray)
-        {
-            spawnedEnemyList.Add(tag);
-        }
-
-        spawnedEnemy = spawnedEnemyList.ToArray();
-
-        Debug.Log(spawnedEnemy);
-        //spawnedEnemy = new int[spawnedEnemyAmount];
-
-        
-        
         enemyKilled = 0;
-
-
-        for (int i = 0; i < spawnedEnemyAmount; i++)
+        int tempAmount = 0;
+        int[] currentPool = randomiseSpawnAmount(waves[ScoreManager.wave-1].enemyPrefabIndex, waves[ScoreManager.wave-1].maxWeight);
+        for (int i = 0; i < currentPool.Length; i++)
         {
-            int tag = spawnedEnemy[i];
-            Debug.Log("SPAWN");
-            Spawn(tag);
+            int tag = waves[ScoreManager.wave-1].enemyPrefabIndex[i];
+            int amount = currentPool[i];
+            tempAmount += amount;
+            for (int j = 0; j < amount; j++)
+            {
+                Spawn(tag);
+            }
+
         }
+        Debug.Log("Wave Manager Wave : "+ ScoreManager.wave );
+        Debug.Log("Spawned Enemy : " + tempAmount);
+        spawnedEnemyAmount = tempAmount;      
+
     }
+    private int[] randomiseSpawnAmount(int[] enemyPool,int weight)
+    {
+        // Every Mobs spawned minimum once
+        int initWeight = weight;
+        int[] randomisedEnemyPool = new int[enemyPool.Length];
+        int removedIndex;
+        for (int i = 0; i < enemyPool.Length; i++)
+        {
+            randomisedEnemyPool[i] = 0;
+        }
+        for (int i = 0; i < enemyPool.Length; i++)
+        {
+            int temp = initWeight - GetWeight(enemyPool[i]);
+            if(temp >= 0)
+            {
+                randomisedEnemyPool[i] += 1;
+                initWeight = temp;
+            }
+            if(GetWeight(enemyPool[i]) == 0)
+            {
+                removedIndex = i;
+            }
+        }
+        int countRepeated = 0;
+        while(initWeight > 0 && countRepeated < 100)
+        {
+            int randomIndex = Random.Range(0, enemyPool.Length);
+            if(GetWeight(enemyPool[randomIndex]) != 0)
+            {
+                int temp = initWeight - GetWeight(enemyPool[randomIndex]);
+                if (temp >= 0)
+                {
+                    randomisedEnemyPool[randomIndex] += 1;
+                    initWeight = temp;
+                }
+            }
+            else{
+                countRepeated++;
+            }
+        }
+        if(countRepeated >= 100)
+        {
+            Debug.Log("Randomise Spawn Amount Error");
+        }
+        return randomisedEnemyPool;
+
+    }
+    public int GetWaveLength()
+    {
+        return waves.Length;
+    }
+    public int[] GetPool(int wave){
+        return waves[wave].enemyPrefabIndex;
+    }
+    public int GetWaveMaxWeight(int wave){
+        return waves[wave].maxWeight;
+    }
+    public int GetWeight(int tag)
+    {
+        return enemyWeight[tag];
+    }
+    
+    //public void exitFromUpgradeWeapon()
+    //{
+    //    isExitUpgradeWeapon = false;
+    //    NextWave();
+    //}
+
+    //public void Pause()
+    //{
+    //    panelUpgradeWeapon.SetActive(true);
+    //    Time.timeScale = 0f;
+    //    GameIsPaused = true;
+    //}
+
+    //public void Resume()
+    //{
+    //    panelUpgradeWeapon.SetActive(false);
+    //    Time.timeScale = 1f;
+    //    GameIsPaused = false;
+    //}
+
+}
+[System.Serializable]
+public class enemyPool {
+
+    public int[] enemyPrefabIndex;
+    public int maxWeight;
+
 }
