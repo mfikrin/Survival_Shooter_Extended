@@ -70,7 +70,8 @@ public class Player : MonoBehaviour
         //flashColour = new Color(1f, 0f, 0f, 0.1f);
 
         UnityEngine.Debug.Log("MODE GAME");
-        modeGame = "Zen";
+        modeGame = "SuddenDeath";
+        UnityEngine.Debug.Log("BAWAHNA MODE GAME");
         UnityEngine.Debug.Log(modeGame);
 
         if (modeGame.Equals("SuddenDeath"))
