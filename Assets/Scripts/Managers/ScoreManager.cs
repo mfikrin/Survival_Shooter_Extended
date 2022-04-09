@@ -119,8 +119,9 @@ public class ScoreManager : MonoBehaviour
                 }
                 if (ResumeManager.isGamePaused)
                 {
+                    UnityEngine.Debug.Log("AAAAAAAA");
                     isTimeActive = false;
-                    stopwatch.Stop();
+                    //stopwatch.Stop();
                     panelResume.SetActive(true);
                 }
             }
@@ -140,11 +141,18 @@ public class ScoreManager : MonoBehaviour
                     {
                         textTime.text = time;
                     }
-                    if (ts.Seconds > 0 && ts.Seconds % 30 == 0)
+                    if (ts.Seconds > 0 && ts.Seconds % 30 == 0 && stopTime != ts.Seconds)
                     {
-
+                        counterPanel += 1;
+                        stopTime = ts.Seconds;
                         isUpgradeZen = true;
+                        isTimeActive = false;
+                        stopwatch.Stop();
                         panelUpgradeWeapon.SetActive(true);
+                    }
+                    if (ts.Seconds % 30 != 0)
+                    {
+                        stopTime = 0;
                     }
 
                     if (ResumeManager.isGamePaused)
