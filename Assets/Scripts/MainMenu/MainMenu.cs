@@ -46,6 +46,13 @@ public class MainMenu : MonoBehaviour
 
         }
 
+        else if (GameMode == "SuddenDeath")
+        {
+            Player.modeGame = GameMode;
+            SceneManager.LoadScene("SuddenDeathMode");
+
+        }
+
     }
 
     public void ScoreBoard()
