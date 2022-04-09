@@ -22,6 +22,7 @@ public class AxeBossAttack : MonoBehaviour
         anim = GetComponent <Animator> ();
         // Mendapatkan Enemy health
         enemyHealth = GetComponent<EnemyHealth>();
+
     }
 
     // Callback jika ada suatu object masuk ke dalam trigger
@@ -48,7 +49,9 @@ public class AxeBossAttack : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        anim.Play("SpinAttack");
+        //anim.Play("SpinAttack");
+
+
         if(timer >= timeBetweenAttacks && playerInRange && enemyHealth.currentHealth > 0)
         {
             Attack();
@@ -58,6 +61,7 @@ public class AxeBossAttack : MonoBehaviour
         {
             anim.SetTrigger("PlayerDead");
         }
+
     }
 
 

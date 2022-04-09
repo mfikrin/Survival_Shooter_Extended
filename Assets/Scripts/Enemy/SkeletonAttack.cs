@@ -5,10 +5,10 @@ public class SkeletonAttack : MonoBehaviour
 {
     public float timeBetweenAttacks = 0.5f;
 
-    public float timeBetweenBullets = 1f;
+    public float timeBetweenBullets = 2f;
     public int attackDamage = 10;
     public int rangedDamage = 5;
-    public static float range = 50f;
+    public static float range = 10f;
     int shootableMask;
     Animator anim;
     GameObject player;
@@ -25,7 +25,7 @@ public class SkeletonAttack : MonoBehaviour
     Ray arrowRay = new Ray();
     RaycastHit arrowHit;              
     float effectsDisplayTime = 0.2f;
-    public float shootingDistance = 10f;
+    float shootingDistance = 10f;
 
 
     void Awake ()
@@ -136,14 +136,17 @@ public class SkeletonAttack : MonoBehaviour
         if (Physics.Raycast(arrowRay, out arrowHit, range, shootableMask))
         {
             PlayerHealth pHealth = arrowHit.collider.GetComponent<PlayerHealth>();
+            Vector3 hitPoint = arrowHit.point;
             if (pHealth != null)
             {
                 // Debug.Log("Player Health : " + pHealth.currentHealth);
                 // Debug.Log("Distance : " + dist);
                 pHealth.TakeDamage(rangedDamage);
+                arrowLine.SetPosition(1, pHealth.transform.position);
             }
-
-            arrowLine.SetPosition(1, arrowHit.point);
+            else{
+                arrowLine.SetPosition(1, hitPoint);
+            }
         }
         else
         {
