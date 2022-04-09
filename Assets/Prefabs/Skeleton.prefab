@@ -737,7 +737,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4630015196220143523}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 1.5
@@ -917,8 +917,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0.5
+  timeBetweenBullets: 1
   attackDamage: 10
-  rangedDamage: 20
+  rangedDamage: 5
   arrows: {fileID: 4988530302757203873}
 --- !u!1 &4988530302757203873
 GameObject:
@@ -950,7 +951,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4988530302757203873}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.34, y: 1, z: 0.8}
+  m_LocalPosition: {x: 0, y: 1, z: 0.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5407361793505684761}
@@ -5956,7 +5957,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0.00000071525574, y: 1.4451615, z: 0}
-  - {x: 0, y: 1.4355359, z: 1}
+  - {x: 0, y: 1.557064, z: 1}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1

@@ -25,6 +25,7 @@ public class SkeletonAttack : MonoBehaviour
     Ray arrowRay = new Ray();
     RaycastHit arrowHit;              
     float effectsDisplayTime = 0.2f;
+    public float shootingDistance = 10f;
 
 
     void Awake ()
@@ -34,6 +35,8 @@ public class SkeletonAttack : MonoBehaviour
         shootableMask = LayerMask.GetMask ("Shootable");
         playerHealth = player.GetComponent <PlayerHealth> ();
         anim = GetComponent <Animator> ();
+        anim.Play ("Spawn");
+        //anim.SetTrigger("Spawn");
         // Mendapatkan Enemy health
         enemyHealth = GetComponent<EnemyHealth>();
         
@@ -58,7 +61,7 @@ public class SkeletonAttack : MonoBehaviour
         if (other.gameObject == player && other.isTrigger == false)
         {
             playerInRange = true;
-            //anim.SetBool("PlayerInRange", true);
+            anim.Play("Melee");
             
         }
     }
@@ -69,7 +72,6 @@ public class SkeletonAttack : MonoBehaviour
         if(other.gameObject == player && other.isTrigger == false)
         {
             playerInRange = false;
-            //anim.SetBool("PlayerInRange", false);
         }
     }
 
@@ -77,21 +79,28 @@ public class SkeletonAttack : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        
-        if(timer >= timeBetweenAttacks && !playerInRange && enemyHealth.currentHealth > 0)
+        float dist = shootingDistance - Vector3.Distance(transform.position, player.transform.position);
+        if(dist < 0)
         {
-            if (timer >= timeBetweenBullets && Time.timeScale != 0){
-                Shoot();
+            //anim.Play("Idle");
+        }
+        else{
+            if(timer >= timeBetweenAttacks && !playerInRange && enemyHealth.currentHealth > 0)
+            {
+                if (timer >= timeBetweenBullets && Time.timeScale != 0 && playerHealth.currentHealth > 0){
+                    anim.Play("Attack");
+                    Shoot();
+                }
             }
         }
-        else if(timer >= timeBetweenAttacks && playerInRange && enemyHealth.currentHealth > 0)
+        if(timer >= timeBetweenAttacks && playerInRange && enemyHealth.currentHealth > 0)
         {
             Attack();
         }
 
         if (timer >= Player.timeBetweenBullets * effectsDisplayTime)
         {
-        DisableEffects();
+            DisableEffects();
         }
 
 
@@ -115,7 +124,6 @@ public class SkeletonAttack : MonoBehaviour
 
     void Shoot()
     {
-        anim.SetBool("PlayerInRange", true);
         timer = 0f;
         arrowAudio.Play();
         arrowLight.enabled = true;
@@ -128,11 +136,11 @@ public class SkeletonAttack : MonoBehaviour
         if (Physics.Raycast(arrowRay, out arrowHit, range, shootableMask))
         {
             PlayerHealth pHealth = arrowHit.collider.GetComponent<PlayerHealth>();
-
             if (pHealth != null)
             {
-                Debug.Log("Player Health : " + pHealth.currentHealth);
-                //pHealth.TakeDamage(rangedDamage);
+                // Debug.Log("Player Health : " + pHealth.currentHealth);
+                // Debug.Log("Distance : " + dist);
+                pHealth.TakeDamage(rangedDamage);
             }
 
             arrowLine.SetPosition(1, arrowHit.point);
@@ -142,7 +150,6 @@ public class SkeletonAttack : MonoBehaviour
             arrowLine.SetPosition(1, arrowRay.origin + arrowRay.direction * range);
         }
 
-        // shoot projectile
         
     }
 
