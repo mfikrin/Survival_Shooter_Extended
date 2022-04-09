@@ -33,8 +33,7 @@ public class ScoreZenUI : MonoBehaviour
     private void Start()
     {
         var ZenScoreJson = PlayerPrefs.GetString("ZenScores");
-        //Account account = JsonConvert.DeserializeObject<Account>(json);
-        //Debug.Log(ZenScoreJson.Equals(String.Empty));
+
         Debug.Log(ZenScoreJson);
         if (ZenScoreJson.Equals(String.Empty))
         {
@@ -49,6 +48,9 @@ public class ScoreZenUI : MonoBehaviour
 
         Debug.Log(scoreZenData);
 
+        Debug.Log(Player.playerName);
+        Debug.Log(Player.modeGame);
+
         if (Player.playerName != null && Player.modeGame.Equals("Zen"))
         {         
             AddZenScore(new ScoreZen(Player.playerName, TimeSpanZenUI));
@@ -57,7 +59,16 @@ public class ScoreZenUI : MonoBehaviour
         if (scoreZenData != null)
         {
             var scores = GetZenHighScores().ToArray();
-            for (int i = 0; i < scores.Length; i++)
+
+            Debug.Log(scores.Length);
+            int max_display = scores.Length;
+
+            if (scores.Length > 5)
+            {
+                max_display = 5; // display 5 first rank
+            }
+
+            for (int i = 0; i < max_display; i++)
             {
                 if (i % 2 == 0)
                 {
@@ -95,20 +106,9 @@ public class ScoreZenUI : MonoBehaviour
 
     public void SaveScoreZen()
     {
-        //var ZenScoreJson = JsonUtility.ToJson(scoreZenData);
         var ZenScoreJson = JsonConvert.SerializeObject(scoreZenData);
         UnityEngine.Debug.Log(ZenScoreJson);
         PlayerPrefs.SetString("ZenScores", ZenScoreJson);
-
-        //var WaveScoreJson = JsonConvert.SerializeObject(scoreWaveData);
-        //UnityEngine.Debug.Log(WaveScoreJson);
-
-        //PlayerPrefs.SetString("WaveScores", WaveScoreJson);
-
-        //var SuddenDeathScoreJson = JsonConvert.SerializeObject(scoreSuddenDeathData);
-        //UnityEngine.Debug.Log(SuddenDeathScoreJson);
-
-        //PlayerPrefs.SetString("SuddenDeathScores", SuddenDeathScoreJson);
     }
 
 }

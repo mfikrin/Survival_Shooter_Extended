@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,29 +9,55 @@ public class ScoreWaveUI : MonoBehaviour
 {
     public RowWaveUI rowWaveUIOdd;
     public RowWaveUI rowWaveUIEven;
-    public ScoreManager scoreManager;
     public static int scoreWaveUI;
     public static int waveWaveUI;
+
+    private ScoreWaveData scoreWaveData;
+
 
 
     private void Start()
     {
 
-        //scoreManager.AddWaveScore(new ScoreWave(name: "A", wave: 1, score: 80));
-        //scoreManager.AddWaveScore(new ScoreWave(name: "B", wave: 2, score: 180));
-        //scoreManager.AddWaveScore(new ScoreWave(name: "C", wave: 4, score: 380));
-        //scoreManager.AddWaveScore(new ScoreWave(name: "D", wave: 3, score: 380));
+        var WaveScoreJson = PlayerPrefs.GetString("WaveScores");
+        //Debug.Log(ZenScoreJson.Equals(String.Empty));
+        Debug.Log(WaveScoreJson);
+        if (WaveScoreJson.Equals(String.Empty))
+        {
+            Debug.Log("nulll");
+            scoreWaveData = new ScoreWaveData();
+        }
+        else
+        {
+            Debug.Log("not nulll");
+            scoreWaveData = JsonConvert.DeserializeObject<ScoreWaveData>(WaveScoreJson);
+        }
 
+        Debug.Log(scoreWaveData);
+
+        Debug.Log(Player.playerName);
+        Debug.Log(Player.modeGame);
 
         if (Player.playerName != null && Player.modeGame.Equals("Wave"))
         {
-            scoreManager.AddWaveScore(new ScoreWave(name: Player.playerName, wave: waveWaveUI, score: scoreWaveUI));
+            AddWaveScore(new ScoreWave(name: Player.playerName, wave: waveWaveUI, score: scoreWaveUI));
+            Player.playerName = null;
         }
 
-        if (scoreManager.GetScoreWave() != null)
+        if (scoreWaveData != null)
         {
-            var scores = scoreManager.GetWaveHighScores().ToArray();
-            for (int i = 0; i < scores.Length; i++)
+            var scores = GetWaveHighScores().ToArray();
+
+            Debug.Log(scores.Length);
+            int max_display = scores.Length;
+
+            if (scores.Length > 5)
+            {
+                max_display = 5; // display 5 first rank
+            }
+            
+
+            for (int i = 0; i < max_display; i++)
             {
                 if (i % 2 == 0)
                 {
@@ -54,5 +82,40 @@ public class ScoreWaveUI : MonoBehaviour
 
         
     }
+
+    public IEnumerable<ScoreWave> GetWaveHighScores()
+    {
+        return scoreWaveData.WaveScoreList.OrderByDescending(x => x.score);
+        //.ThenByDescending(x => x.wave);
+    }
+
+    private void OnDestroy()
+    {
+        SaveScoreWave();
+    }
+
+    public void AddWaveScore(ScoreWave score)
+    {
+        scoreWaveData.WaveScoreList.Add(score);
+    }
+
+    public void SaveScoreWave()
+    {
+        //var ZenScoreJson = JsonUtility.ToJson(scoreZenData);
+        //var ZenScoreJson = JsonConvert.SerializeObject(scoreZenData);
+        //UnityEngine.Debug.Log(ZenScoreJson);
+        //PlayerPrefs.SetString("ZenScores", ZenScoreJson);
+
+        var WaveScoreJson = JsonConvert.SerializeObject(scoreWaveData);
+        UnityEngine.Debug.Log(WaveScoreJson);
+
+        PlayerPrefs.SetString("WaveScores", WaveScoreJson);
+
+        //var SuddenDeathScoreJson = JsonConvert.SerializeObject(scoreSuddenDeathData);
+        //UnityEngine.Debug.Log(SuddenDeathScoreJson);
+
+        //PlayerPrefs.SetString("SuddenDeathScores", SuddenDeathScoreJson);
+    }
+
 
 }

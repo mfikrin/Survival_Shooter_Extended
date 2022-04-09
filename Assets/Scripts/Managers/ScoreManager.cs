@@ -38,22 +38,7 @@ public class ScoreManager : MonoBehaviour
 
     void Awake()
     {
-        //var ZenScoreJson = PlayerPrefs.GetString("ZenScores");
-        ////Account account = JsonConvert.DeserializeObject<Account>(json);
-        //if (ZenScoreJson == null)
-        //{
-        //    ZenScoreJson = "{}";
-        //}
-        //scoreZenData = JsonConvert.DeserializeObject<ScoreZenData>(ZenScoreJson);
-
-        var WaveScoreJson = PlayerPrefs.GetString("WaveScores");
-
-        if (WaveScoreJson == null)
-        {
-            WaveScoreJson = "{}";
-        }
-        scoreWaveData = JsonConvert.DeserializeObject<ScoreWaveData>(WaveScoreJson);
-
+      
         var SuddenDeathScoreJson = PlayerPrefs.GetString("SuddenDeathScores");
         if (SuddenDeathScoreJson == null)
         {
@@ -178,81 +163,7 @@ public class ScoreManager : MonoBehaviour
                         panelResume.SetActive(true);
                     }
                 }
-
-                
             }
         }
-
-        
     }
-
-    public ScoreZenData GetScoreZens()
-    {
-        return scoreZenData;
-    }
-
-    public ScoreWaveData GetScoreWave()
-    {
-        return scoreWaveData;
-    }
-
-    public ScoreSuddenDeathData GetScoreSudden()
-    {
-        return scoreSuddenDeathData;
-    }
-
-    //public IEnumerable<ScoreZen> GetZenHighScores()
-    //{
-    //    return scoreZenData.ZenScoreList.OrderByDescending(x => x.time);           
-    //}
-
-    public IEnumerable<ScoreWave> GetWaveHighScores()
-    {
-        return scoreWaveData.WaveScoreList.OrderByDescending(x => x.score);
-            //.ThenByDescending(x => x.wave);
-    }
-
-    public IEnumerable<ScoreSuddenDeath> GetSuddenDeathHighScores()
-    {
-        return scoreSuddenDeathData.SuddenDeathScoreList.OrderByDescending(x => x.score).ThenByDescending(x => x.time);
-        //.ThenByDescending(x => x.wave);
-    }
-
-    //public void AddZenScore(ScoreZen score)
-    //{
-    //    scoreZenData.ZenScoreList.Add(score);
-    //}
-
-    public void AddWaveScore(ScoreWave score)
-    {
-        scoreWaveData.WaveScoreList.Add(score);
-    }
-
-    public void AddSuddenDeathScore(ScoreSuddenDeath score)
-    {
-        scoreSuddenDeathData.SuddenDeathScoreList.Add(score);
-    }
-
-    //private void OnDestroy()
-    //{
-    //    SaveScore();
-    //}
-
-    //public void SaveScore()
-    //{
-    //    //var ZenScoreJson = JsonUtility.ToJson(scoreZenData);
-    //    var ZenScoreJson = JsonConvert.SerializeObject(scoreZenData);
-    //    UnityEngine.Debug.Log(ZenScoreJson);
-    //    PlayerPrefs.SetString("ZenScores", ZenScoreJson);
-
-    //    var WaveScoreJson = JsonConvert.SerializeObject(scoreWaveData);
-    //    UnityEngine.Debug.Log(WaveScoreJson);
-
-    //    PlayerPrefs.SetString("WaveScores", WaveScoreJson);
-
-    //    var SuddenDeathScoreJson = JsonConvert.SerializeObject(scoreSuddenDeathData);
-    //    UnityEngine.Debug.Log(SuddenDeathScoreJson);
-
-    //    PlayerPrefs.SetString("SuddenDeathScores", SuddenDeathScoreJson);
-    //}
 }
