@@ -39,9 +39,9 @@ Transform:
   - {fileID: 7169448665181398423}
   - {fileID: 6530755596792626036}
   - {fileID: 1104069097885532980}
-  - {fileID: 8098119139490963332}
   - {fileID: 4747939635089299984}
   - {fileID: 4307652095450753801}
+  - {fileID: 8098119139490963332}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -118,8 +118,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 8434b04884c414ac6b468e10945685e6,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: d36a393bca4582043982db9089e1694f, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: ec37e328a5e0f5d4297f3809bc4e8182, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -242,7 +242,7 @@ MonoBehaviour:
   currentHealth: 0
   sinkSpeed: 2.5
   scoreValue: 10
-  deathClip: {fileID: 8300000, guid: fce027b40770a44298a6f5a4233bfb04, type: 3}
+  deathClip: {fileID: 8300000, guid: abc17c8ad13040f4eb8a1075fd194771, type: 3}
 --- !u!114 &9015818686314555159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,7 +259,8 @@ MonoBehaviour:
   timeBetweenBullets: 1
   attackDamage: 10
   rangedDamage: 5
-  mid: {fileID: 3552930621206016281}
+  left: {fileID: 3552930621206016281}
+  right: {fileID: 7760010002534761771}
   shootingDistance: 10
 --- !u!114 &9210670265786057436
 MonoBehaviour:
@@ -294,7 +295,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8098119139490963332
 Transform:
   m_ObjectHideFlags: 0
@@ -307,7 +308,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400746242699547821}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &628057717861321366
 CapsuleCollider:
@@ -5522,13 +5523,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3552930621206016281}
-  m_LocalRotation: {x: 0, y: 0.14780942, z: 0, w: 0.9890159}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0.7}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.1, y: 0.5, z: 0.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400746242699547821}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 17, z: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &83830201820099930
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10860,13 +10861,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7760010002534761771}
-  m_LocalRotation: {x: 0, y: -0.14780933, z: 0, w: 0.9890159}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0.7}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.1, y: 0.5, z: 0.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400746242699547821}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: -17, z: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &7359702663538999846
 CapsuleCollider:
   m_ObjectHideFlags: 0
