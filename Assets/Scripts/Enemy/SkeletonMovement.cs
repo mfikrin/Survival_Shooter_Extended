@@ -7,6 +7,7 @@ public class SkeletonMovement : MonoBehaviour
     PlayerHealth playerHealth;
     EnemyHealth enemyHealth;
     UnityEngine.AI.NavMeshAgent nav;
+    float shootingDistance = 10f;
 
 
     void Awake()
@@ -21,7 +22,10 @@ public class SkeletonMovement : MonoBehaviour
 
     void Update ()
     {
-        transform.LookAt(player);
+        float dist = shootingDistance - Vector3.Distance(transform.position, player.transform.position);
+        if(dist >= 0) {
+            transform.LookAt(player);
+            }
         // nav.enabled = false;
         
     }
