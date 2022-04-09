@@ -15,6 +15,7 @@ public class OverMenu : MonoBehaviour
     public static string Param2;
     public Text param1;
     public Text param2;
+    //public ScoreWaveUI scoreWaveUI;
 
 
     public static string defaultPlayerName;
@@ -42,8 +43,8 @@ public class OverMenu : MonoBehaviour
         else if (GameMode == "Wave")
         {
             Player.modeGame = GameMode;
+            //scoreWaveUI.AddWaveScore(new ScoreWave(name: Player.playerName, wave: ScoreManager.wave, score: ScoreManager.score));
             SceneManager.LoadScene("WaveMode");
-
         }
 
     }
@@ -51,7 +52,19 @@ public class OverMenu : MonoBehaviour
     public void ScoreBoard()
     {
         Debug.Log("To scoreBoard");
-        SceneManager.LoadScene("ZenScoreBoard");
+        if (Player.modeGame.Equals("Zen"))
+        {
+           SceneManager.LoadScene("ZenScoreBoard");
+        }
+        else if (Player.modeGame.Equals("Wave"))
+        {
+           SceneManager.LoadScene("WaveScoreBoard");
+        }
+        else if (Player.modeGame.Equals("SuddenDeath"))
+        {
+            SceneManager.LoadScene("SuddenDeathScoreBoard");
+        }
+
     }
 
     public void QuitGame()
