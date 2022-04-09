@@ -137,7 +137,7 @@ public class PlayerHealth : MonoBehaviour
         }
         else if (Player.modeGame.Equals("SuddenDeath"))
         {
-            ScoreSuddenDeathUI.TimeSpanSuddenDeathUI = ScoreManager.stopwatch.Elapsed;
+            ScoreSuddenDeathManager.TimeSpanSuddenDeathUI = ScoreManager.stopwatch.Elapsed;
         }
         
         // Debug.Log(ScoreZenUI.TimeSpanZenUI);
@@ -185,7 +185,7 @@ public class PlayerHealth : MonoBehaviour
         else if (Player.modeGame.Equals("SuddenDeath"))
         {
             // set score
-            TimeSpan newTime = new TimeSpan(ScoreSuddenDeathUI.TimeSpanSuddenDeathUI.Days, ScoreSuddenDeathUI.TimeSpanSuddenDeathUI.Hours, ScoreSuddenDeathUI.TimeSpanSuddenDeathUI.Minutes, ScoreSuddenDeathUI.TimeSpanSuddenDeathUI.Seconds, ScoreSuddenDeathUI.TimeSpanSuddenDeathUI.Milliseconds);
+            TimeSpan newTime = new TimeSpan(ScoreSuddenDeathManager.TimeSpanSuddenDeathUI.Days, ScoreSuddenDeathManager.TimeSpanSuddenDeathUI.Hours, ScoreSuddenDeathManager.TimeSpanSuddenDeathUI.Minutes, ScoreSuddenDeathManager.TimeSpanSuddenDeathUI.Seconds, ScoreSuddenDeathManager.TimeSpanSuddenDeathUI.Milliseconds);
             string insertedScore = newTime.ToString().Substring(0,11);
             OverMenu.Param1 = insertedScore;
             OverMenu.Param2 = ScoreManager.score.ToString();
