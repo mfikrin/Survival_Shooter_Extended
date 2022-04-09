@@ -523,36 +523,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 95592892}
   m_CullTransparentMesh: 0
---- !u!1 &101219934
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 101219935}
-  m_Layer: 0
-  m_Name: OrbRedSpawnPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &101219935
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 101219934}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.3365794, z: -22.1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &142615520
 GameObject:
   m_ObjectHideFlags: 0
@@ -1556,7 +1526,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &615791234
 GameObject:
@@ -1586,7 +1556,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &617051437
 GameObject:
@@ -1983,7 +1953,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 995690260}
-  - component: {fileID: 995690259}
   - component: {fileID: 995690258}
   - component: {fileID: 995690257}
   m_Layer: 0
@@ -2006,7 +1975,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 1217503252}
-  spawnOrb: 2
+  spawnOrb: 1
   spawnTime: 12
   spawnPoints:
   - {fileID: 517024623}
@@ -2024,28 +1993,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 1217503252}
-  spawnOrb: 1
-  spawnTime: 12
-  spawnPoints:
-  - {fileID: 615791235}
-  factory: {fileID: 1646098296}
---- !u!114 &995690259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 995690256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de62d3c54f4ee7c4f8608fa8eee78719, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHealth: {fileID: 1217503252}
   spawnOrb: 0
   spawnTime: 12
   spawnPoints:
-  - {fileID: 101219935}
+  - {fileID: 615791235}
   factory: {fileID: 1646098296}
 --- !u!4 &995690260
 Transform:
@@ -2059,7 +2010,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1037507761
 GameObject:
@@ -3386,7 +3337,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbPrefab:
-  - {fileID: 3970254296244749916, guid: f4e7dd87b583e7848a99030e0a182dd4, type: 3}
   - {fileID: 4768096594113734880, guid: b95436dd7d646f14c85e9afab07f20f7, type: 3}
   - {fileID: 2850000602493884528, guid: 776447ecc731e8045b47fa0ef24f5488, type: 3}
 --- !u!4 &1646098297
@@ -3553,7 +3503,7 @@ RectTransform:
   m_Children:
   - {fileID: 1199001144}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4022,6 +3972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86e378bc199fbd343bceabbd3a16d73e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  counterPanel: 0
   panelUpgradeWeapon: {fileID: 1199001143}
   textScore: {fileID: 178451031}
   textTime: {fileID: 36352312}

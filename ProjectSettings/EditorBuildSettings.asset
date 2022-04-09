@@ -15,11 +15,17 @@ EditorBuildSettings:
     path: Assets/Scenes/WaveMode.unity
     guid: eb2c31cb240504643a5135d142a7b3dc
   - enabled: 1
+    path: Assets/Scenes/SuddenDeathMode.unity
+    guid: 979f52cc08c3b6549a94bf9984af44bb
+  - enabled: 1
     path: Assets/Scenes/ZenScoreBoard.unity
     guid: 531a68e15f0657644b81fd749ff934bb
   - enabled: 1
     path: Assets/Scenes/WaveScoreBoard.unity
     guid: d666e2e25637cef4b833e991d3eb8800
+  - enabled: 1
+    path: Assets/Scenes/SuddenDeathScoreBoard.unity
+    guid: e2b09b70f7fcc8a41abeeeccab856783
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000

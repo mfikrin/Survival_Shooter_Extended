@@ -71,6 +71,7 @@ public class Player : MonoBehaviour
 
         UnityEngine.Debug.Log("MODE GAME");
         modeGame = "SuddenDeath";
+        UnityEngine.Debug.Log("BAWAHNA MODE GAME");
         UnityEngine.Debug.Log(modeGame);
 
         if (modeGame.Equals("SuddenDeath"))
