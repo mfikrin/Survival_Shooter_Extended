@@ -201,10 +201,10 @@ public class ScoreManager : MonoBehaviour
         return scoreSuddenDeathData;
     }
 
-    public IEnumerable<ScoreZen> GetZenHighScores()
-    {
-        return scoreZenData.ZenScoreList.OrderByDescending(x => x.time);           
-    }
+    //public IEnumerable<ScoreZen> GetZenHighScores()
+    //{
+    //    return scoreZenData.ZenScoreList.OrderByDescending(x => x.time);           
+    //}
 
     public IEnumerable<ScoreWave> GetWaveHighScores()
     {
@@ -218,10 +218,10 @@ public class ScoreManager : MonoBehaviour
         //.ThenByDescending(x => x.wave);
     }
 
-    public void AddZenScore(ScoreZen score)
-    {
-        scoreZenData.ZenScoreList.Add(score);
-    }
+    //public void AddZenScore(ScoreZen score)
+    //{
+    //    scoreZenData.ZenScoreList.Add(score);
+    //}
 
     public void AddWaveScore(ScoreWave score)
     {
@@ -233,26 +233,26 @@ public class ScoreManager : MonoBehaviour
         scoreSuddenDeathData.SuddenDeathScoreList.Add(score);
     }
 
-    private void OnDestroy()
-    {
-        SaveScore();
-    }
+    //private void OnDestroy()
+    //{
+    //    SaveScore();
+    //}
 
-    public void SaveScore()
-    {
-        //var ZenScoreJson = JsonUtility.ToJson(scoreZenData);
-        var ZenScoreJson = JsonConvert.SerializeObject(scoreZenData);
-        UnityEngine.Debug.Log(ZenScoreJson);
-        PlayerPrefs.SetString("ZenScores", ZenScoreJson);
+    //public void SaveScore()
+    //{
+    //    //var ZenScoreJson = JsonUtility.ToJson(scoreZenData);
+    //    var ZenScoreJson = JsonConvert.SerializeObject(scoreZenData);
+    //    UnityEngine.Debug.Log(ZenScoreJson);
+    //    PlayerPrefs.SetString("ZenScores", ZenScoreJson);
 
-        var WaveScoreJson = JsonConvert.SerializeObject(scoreWaveData);
-        UnityEngine.Debug.Log(WaveScoreJson);
+    //    var WaveScoreJson = JsonConvert.SerializeObject(scoreWaveData);
+    //    UnityEngine.Debug.Log(WaveScoreJson);
 
-        PlayerPrefs.SetString("WaveScores", WaveScoreJson);
+    //    PlayerPrefs.SetString("WaveScores", WaveScoreJson);
 
-        var SuddenDeathScoreJson = JsonConvert.SerializeObject(scoreSuddenDeathData);
-        UnityEngine.Debug.Log(SuddenDeathScoreJson);
+    //    var SuddenDeathScoreJson = JsonConvert.SerializeObject(scoreSuddenDeathData);
+    //    UnityEngine.Debug.Log(SuddenDeathScoreJson);
 
-        PlayerPrefs.SetString("SuddenDeathScores", SuddenDeathScoreJson);
-    }
+    //    PlayerPrefs.SetString("SuddenDeathScores", SuddenDeathScoreJson);
+    //}
 }
