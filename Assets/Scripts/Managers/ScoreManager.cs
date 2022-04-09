@@ -28,6 +28,8 @@ public class ScoreManager : MonoBehaviour
 
 
     public GameObject panelUpgradeWeapon;
+    public GameObject panelResume;
+
 
     public Text textScore;
     public Text textTime;
@@ -94,10 +96,18 @@ public class ScoreManager : MonoBehaviour
                     {
                         stopTime = 0; 
                     }
+
+                    if (ResumeManager.isGamePaused)
+                    {
+                        isTimeActive = false;
+                        stopwatch.Stop();
+                        panelResume.SetActive(true);
+                    }
                 }
             }
             else if (Player.modeGame.Equals("Wave"))
             {
+                UnityEngine.Debug.Log("MASUK KE WAVE");
 
                 if (textScore != null)
                 {
@@ -106,6 +116,12 @@ public class ScoreManager : MonoBehaviour
                 if (textWave != null)
                 {
                     textWave.text = "Wave " + wave + "/" + EnemyWaveManager.maxWave;
+                }
+                if (ResumeManager.isGamePaused)
+                {
+                    isTimeActive = false;
+                    stopwatch.Stop();
+                    panelResume.SetActive(true);
                 }
             }
             else if (Player.modeGame.Equals("SuddenDeath"))
@@ -130,7 +146,16 @@ public class ScoreManager : MonoBehaviour
                         isUpgradeZen = true;
                         panelUpgradeWeapon.SetActive(true);
                     }
+
+                    if (ResumeManager.isGamePaused)
+                    {
+                        isTimeActive = false;
+                        stopwatch.Stop();
+                        panelResume.SetActive(true);
+                    }
                 }
+
+                
             }
         }
 
