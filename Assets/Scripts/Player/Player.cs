@@ -41,17 +41,17 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        //if (playerName.Length > 20 && (playerName != MainMenu.defaultPlayerName))
-        //{
-        //    string displayName = playerName.Substring(0, 20);
-        //    //Debug.Log("Display name");
-        //    UnityEngine.Debug.Log(displayName.Length);
-        //    playerNameText.text = displayName;
-        //}
-        //else
-        //{
-        //    playerNameText.text = playerName;
-        //}
+        if (playerName.Length > 20 && (playerName != MainMenu.defaultPlayerName))
+        {
+            string displayName = playerName.Substring(0, 20);
+            //Debug.Log("Display name");
+            UnityEngine.Debug.Log(displayName.Length);
+            playerNameText.text = displayName;
+        }
+        else
+        {
+            playerNameText.text = playerName;
+        }
 
         //damagePerShot = 20;
         //timeBetweenBullets = 0.5f;
@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
         //flashColour = new Color(1f, 0f, 0f, 0.1f);
 
         UnityEngine.Debug.Log("MODE GAME");
-        // modeGame = "Wave";
+        //modeGame = "SuddenDeath";
         UnityEngine.Debug.Log("BAWAHNA MODE GAME");
         UnityEngine.Debug.Log(modeGame);
 
@@ -86,8 +86,8 @@ public class Player : MonoBehaviour
             startingHealth = 100;
         }
 
-        // playerName = "Playerss";
-        playerNameText.text = playerName;
+        //playerName = "Playerss";
+        //playerNameText.text = "Playerss";
 
         //Debug.Log(playerName);
         //Debug.Log(playerName.Length);
