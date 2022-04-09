@@ -8,7 +8,7 @@ public class SlimeAttack : MonoBehaviour
     public float timeBetweenBullets = 1f;
     public int attackDamage = 10;
     public int rangedDamage = 5;
-    public static float range = 100f;
+    public static float range = 10f;
     int shootableMask;
     Animator anim;
     GameObject player;

@@ -9,6 +9,7 @@ TagManager:
   - Arrows
   - Projectile
   - SlimeProjectile
+  - Exproshon
   layers:
   - Default
   - TransparentFX

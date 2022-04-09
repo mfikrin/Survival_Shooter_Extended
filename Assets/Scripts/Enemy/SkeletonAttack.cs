@@ -8,7 +8,7 @@ public class SkeletonAttack : MonoBehaviour
     public float timeBetweenBullets = 2f;
     public int attackDamage = 10;
     public int rangedDamage = 5;
-    public static float range = 50f;
+    public static float range = 10f;
     int shootableMask;
     Animator anim;
     GameObject player;
