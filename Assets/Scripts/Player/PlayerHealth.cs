@@ -148,7 +148,10 @@ public class PlayerHealth : MonoBehaviour
         if (Player.modeGame.Equals("Zen"))
         {
             ScoreZenUI.TimeSpanZenUI = ScoreManager.stopwatch.Elapsed;
-        }else if (Player.modeGame.Equals("SuddenDeath"))
+
+
+        }
+        else if (Player.modeGame.Equals("SuddenDeath"))
         {
             ScoreSuddenDeathUI.TimeSpanSuddenDeathUI = ScoreManager.stopwatch.Elapsed;
         }
