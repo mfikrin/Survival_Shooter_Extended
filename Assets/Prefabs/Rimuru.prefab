@@ -260,8 +260,6 @@ MonoBehaviour:
   attackDamage: 10
   rangedDamage: 5
   mid: {fileID: 3552930621206016281}
-  left: {fileID: 1443359243390570979}
-  right: {fileID: 7760010002534761771}
   shootingDistance: 10
 --- !u!114 &9210670265786057436
 MonoBehaviour:
@@ -5320,7 +5318,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.05
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0

@@ -13,6 +13,7 @@ public class RobotAttack : MonoBehaviour
         GameObject player;
         PlayerHealth playerHealth;
         EnemyHealth enemyHealth;
+        ParticleSystem hitParticles;
         bool playerInRange;
         float timer;
 
@@ -22,6 +23,7 @@ public class RobotAttack : MonoBehaviour
             player = GameObject.FindGameObjectWithTag ("Player");
             playerHealth = player.GetComponent <PlayerHealth> ();
             anim = GetComponent <Animator> ();
+            hitParticles = GetComponentInChildren<ParticleSystem>();
             // Mendapatkan Enemy health
             enemyHealth = GetComponent<EnemyHealth>();
         }
@@ -53,7 +55,7 @@ public class RobotAttack : MonoBehaviour
             if(timer >= timerToDeath){
                 enemyHealth.TakeDamage(enemyHealth.currentHealth,enemyHealth.transform.position);
             }
-            
+
             if(timer >= timeBetweenAttacks && playerInRange && enemyHealth.currentHealth > 0)
             {
                 Attack();
@@ -75,6 +77,8 @@ public class RobotAttack : MonoBehaviour
             {
                 playerHealth.TakeDamage(attackDamage);
                 enemyHealth.TakeDamage(enemyHealth.currentHealth, playerHealth.transform.position);
+                hitParticles.Play();
+
             }
         }
 }

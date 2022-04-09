@@ -8,7 +8,7 @@ public class SlimeAttack : MonoBehaviour
     public float timeBetweenBullets = 1f;
     public int attackDamage = 10;
     public int rangedDamage = 5;
-    public static float range = 50f;
+    public static float range = 100f;
     int shootableMask;
     Animator anim;
     GameObject player;
@@ -17,19 +17,22 @@ public class SlimeAttack : MonoBehaviour
     bool playerInRange;
     float timer;
     public GameObject mid;
-    public GameObject left;
-    public GameObject right;
-    ParticleSystem[] arrowParticle = new ParticleSystem[3];
-    LineRenderer[] arrowLine = new LineRenderer[3];
+    // ParticleSystem[] arrowParticle = new ParticleSystem[3];
+    // LineRenderer[] arrowLine = new LineRenderer[3];
     
-    AudioSource[] arrowAudio= new AudioSource[3];
-    Light[] arrowLight = new Light[3];                   
+    // AudioSource[] arrowAudio= new AudioSource[3];
+    // Light[] arrowLight = new Light[3];           
+    ParticleSystem arrowParticle;
+    LineRenderer arrowLine;
+    
+    AudioSource arrowAudio;
+    Light arrowLight;              
     Ray arrowRay = new Ray();
     RaycastHit arrowHit;              
     float effectsDisplayTime = 0.2f;
     public float shootingDistance = 10f;
 
-    GameObject[] arrows = new GameObject[3];
+    GameObject arrows;
 
 
     void Awake ()
@@ -45,19 +48,28 @@ public class SlimeAttack : MonoBehaviour
         enemyHealth = GetComponent<EnemyHealth>();
         
         // Mendapatkan Particle System
-        arrows[0] = mid;
-        arrows[1] = left;
-        arrows[2] = right;
-        for (int i = 0; i < 3; i++)
-        {
-            arrowParticle[i] = arrows[i].GetComponent<ParticleSystem>();
-            // Mendapatkan Line Renderer
-            arrowLine[i] = arrows[i].GetComponent<LineRenderer>();
-            // Mendapatkan Audio Source
-            arrowAudio[i] = arrows[i].GetComponent<AudioSource>();
-            // Mendapatkan Light
-            arrowLight[i] = arrows[i].GetComponent<Light>();
-        }
+        arrows = mid;
+        arrowParticle = arrows.GetComponent<ParticleSystem>();
+        // Mendapatkan Line Renderer
+        arrowLine = arrows.GetComponent<LineRenderer>();
+        //arrowLine.SetWidth(0,0.5f);
+        // Mendapatkan Audio Source
+        arrowAudio= arrows.GetComponent<AudioSource>();
+        // Mendapatkan Light
+        arrowLight= arrows.GetComponent<Light>();
+        // arrows[1] = left;
+        // arrows[2] = right;
+        // for (int i = 0; i < 3; i++)
+        // {
+        //     arrowParticle[i] = arrows[i].GetComponent<ParticleSystem>();
+        //     // Mendapatkan Line Renderer
+        //     arrowLine[i] = arrows[i].GetComponent<LineRenderer>();
+        //     arrowLine[i].SetWidth(0,0.5f);
+        //     // Mendapatkan Audio Source
+        //     arrowAudio[i] = arrows[i].GetComponent<AudioSource>();
+        //     // Mendapatkan Light
+        //     arrowLight[i] = arrows[i].GetComponent<Light>();
+        // }
 
 
 
@@ -136,44 +148,68 @@ public class SlimeAttack : MonoBehaviour
     void Shoot()
     {
         timer = 0f;
-        for (int i = 0; i < 3; i++)
+        arrowAudio.Play();
+        arrowLight.enabled = true;
+        arrowParticle.Stop();
+        arrowParticle.Play();
+        arrowLine.enabled = true;
+        arrowLine.SetPosition(0, arrows.transform.position);
+        arrowRay.origin = arrows.transform.position;
+        arrowRay.direction = arrows.transform.forward;
+        if (Physics.Raycast(arrowRay, out arrowHit, range, shootableMask))
         {
-            arrowAudio[i].Play();
-            arrowLight[i].enabled = true;
-            arrowParticle[i].Stop();
-            arrowParticle[i].Play();
-            arrowLine[i].enabled = true;
-            arrowLine[i].SetPosition(0, arrows[i].transform.position);
-            arrowRay.origin = arrows[i].transform.position;
-            arrowRay.direction = arrows[i].transform.forward;
-            if (Physics.Raycast(arrowRay, out arrowHit, range, shootableMask))
+            PlayerHealth pHealth = arrowHit.collider.GetComponent<PlayerHealth>();
+            if (pHealth != null)
             {
-                PlayerHealth pHealth = arrowHit.collider.GetComponent<PlayerHealth>();
-                if (pHealth != null)
-                {
-                    // Debug.Log("Player Health : " + pHealth.currentHealth);
-                    // Debug.Log("Distance : " + dist);
-                    pHealth.TakeDamage(rangedDamage);
-                }
-
-                arrowLine[i].SetPosition(1, arrowHit.point);
+                // Debug.Log("Player Health : " + pHealth.currentHealth);
+                // Debug.Log("Distance : " + dist);
+                pHealth.TakeDamage(rangedDamage);
+                arrowLine.SetPosition(1, pHealth.transform.position);
             }
-            else
-            {
-                arrowLine[i].SetPosition(1, arrowRay.origin + arrowRay.direction * range);
-            }   
+            else{
+                arrowLine.SetPosition(1, arrowHit.point);
+            }
         }
+        else
+        {
+            arrowLine.SetPosition(1, arrowRay.origin + arrowRay.direction * range);
+        }  
+        // for (int i = 0; i < 1; i++)
+        // {
+        //     arrowAudio[i].Play();
+        //     arrowLight[i].enabled = true;
+        //     arrowParticle[i].Stop();
+        //     arrowParticle[i].Play();
+        //     arrowLine[i].enabled = true;
+        //     arrowLine[i].SetPosition(0, arrows[i].transform.position);
+        //     arrowRay.origin = arrows[i].transform.position;
+        //     arrowRay.direction = arrows[i].transform.forward;
+        //     if (Physics.Raycast(arrowRay, out arrowHit, range, shootableMask))
+        //     {
+        //         PlayerHealth pHealth = arrowHit.collider.GetComponent<PlayerHealth>();
+        //         if (pHealth != null)
+        //         {
+        //             // Debug.Log("Player Health : " + pHealth.currentHealth);
+        //             // Debug.Log("Distance : " + dist);
+        //             pHealth.TakeDamage(rangedDamage);
+        //         }
+
+        //         arrowLine[i].SetPosition(1, arrowHit.point);
+        //     }
+        //     else
+        //     {
+        //         arrowLine[i].SetPosition(1, arrowRay.origin + arrowRay.direction * range);
+        //     }   
+        // }
 
         
     }
 
     void DisableEffects()
     {
-        for (int i = 0; i < 3; i++)
-        {
-            arrowLine[i].enabled = false;
-            arrowLight[i].enabled = false;    
-        }
+            arrowLine.enabled = false;
+            arrowLight.enabled = false;    
+        
     }
 
     
