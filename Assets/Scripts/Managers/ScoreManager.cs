@@ -6,7 +6,7 @@ using System.Linq;
 using System.Diagnostics;
 using System;
 using UnityEngine.SceneManagement;
-
+using Newtonsoft.Json;
 public class ScoreManager : MonoBehaviour
 {
     public static int score;
@@ -38,14 +38,28 @@ public class ScoreManager : MonoBehaviour
 
     void Awake()
     {
-        var ZenScoreJson = PlayerPrefs.GetString("ZenScores", "{}");
-        scoreZenData = JsonUtility.FromJson<ScoreZenData>(ZenScoreJson);
+        var ZenScoreJson = PlayerPrefs.GetString("ZenScores");
+        //Account account = JsonConvert.DeserializeObject<Account>(json);
+        if (ZenScoreJson == null)
+        {
+            ZenScoreJson = "{}";
+        }
+        scoreZenData = JsonConvert.DeserializeObject<ScoreZenData>(ZenScoreJson);
 
-        var WaveScoreJson = PlayerPrefs.GetString("WaveScores", "{}");
-        scoreWaveData = JsonUtility.FromJson<ScoreWaveData>(WaveScoreJson);
+        var WaveScoreJson = PlayerPrefs.GetString("WaveScores");
 
-        var SuddenDeathScoreJson = PlayerPrefs.GetString("SuddenDeathScores", "{}");
-        scoreSuddenDeathData = JsonUtility.FromJson<ScoreSuddenDeathData>(SuddenDeathScoreJson);
+        if (WaveScoreJson == null)
+        {
+            WaveScoreJson = "{}";
+        }
+        scoreWaveData = JsonConvert.DeserializeObject<ScoreWaveData>(WaveScoreJson);
+
+        var SuddenDeathScoreJson = PlayerPrefs.GetString("SuddenDeathScores");
+        if (SuddenDeathScoreJson == null)
+        {
+            SuddenDeathScoreJson = "{}";
+        }
+        scoreSuddenDeathData = JsonConvert.DeserializeObject<ScoreSuddenDeathData>(SuddenDeathScoreJson);
 
         score = 0;
         wave = 1;
@@ -209,13 +223,19 @@ public class ScoreManager : MonoBehaviour
 
     public void SaveScore()
     {
-        var ZenScoreJson = JsonUtility.ToJson(scoreZenData);
+        //var ZenScoreJson = JsonUtility.ToJson(scoreZenData);
+        var ZenScoreJson = JsonConvert.SerializeObject(scoreZenData);
+        UnityEngine.Debug.Log(ZenScoreJson);
         PlayerPrefs.SetString("ZenScores", ZenScoreJson);
 
-        var WaveScoreJson = JsonUtility.ToJson(scoreWaveData);
+        var WaveScoreJson = JsonConvert.SerializeObject(scoreWaveData);
+        UnityEngine.Debug.Log(WaveScoreJson);
+
         PlayerPrefs.SetString("WaveScores", WaveScoreJson);
 
-        var SuddenDeathScoreJson = JsonUtility.ToJson(scoreSuddenDeathData);
+        var SuddenDeathScoreJson = JsonConvert.SerializeObject(scoreSuddenDeathData);
+        UnityEngine.Debug.Log(SuddenDeathScoreJson);
+
         PlayerPrefs.SetString("SuddenDeathScores", SuddenDeathScoreJson);
     }
 }
