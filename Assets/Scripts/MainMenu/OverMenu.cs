@@ -56,6 +56,17 @@ public class OverMenu : MonoBehaviour
             //scoreWaveManager.AddWaveScore(new ScoreWave(name: Player.playerName, wave: ScoreManager.wave, score: ScoreManager.score));
             SceneManager.LoadScene("WaveMode");
         }
+        else if (GameMode == "SuddenDeath")
+        {
+            Player.modeGame = GameMode;
+            Player.timeBetweenBullets = 0.5f;
+            Player.damagePerShot = 20;
+            Player.speed = 6f;
+            Player.diagonal = 1;
+            //Debug.Log("PAS RESTART MASUKIN COY");
+            //scoreWaveManager.AddWaveScore(new ScoreWave(name: Player.playerName, wave: ScoreManager.wave, score: ScoreManager.score));
+            SceneManager.LoadScene("SuddenDeathMode");
+        }
 
     }
 
