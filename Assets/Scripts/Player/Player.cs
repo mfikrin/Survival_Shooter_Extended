@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
         //flashColour = new Color(1f, 0f, 0f, 0.1f);
 
         UnityEngine.Debug.Log("MODE GAME");
-        modeGame = "SuddenDeath";
+        // modeGame = "Wave";
         UnityEngine.Debug.Log("BAWAHNA MODE GAME");
         UnityEngine.Debug.Log(modeGame);
 
@@ -86,8 +86,8 @@ public class Player : MonoBehaviour
             startingHealth = 100;
         }
 
-        playerName = "Playerss";
-        playerNameText.text = "Playerss";
+        // playerName = "Playerss";
+        playerNameText.text = playerName;
 
         //Debug.Log(playerName);
         //Debug.Log(playerName.Length);
