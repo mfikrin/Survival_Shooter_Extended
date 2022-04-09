@@ -131,7 +131,7 @@ public class PlayerHealth : MonoBehaviour
         //ScoreManager.ts = ScoreManager.stopwatch.Elapsed;
         if (Player.modeGame.Equals("Zen"))
         {
-            ScoreZenUI.TimeSpanZenUI = ScoreManager.stopwatch.Elapsed;
+            ScoreZenManager.TimeSpanZenUI = ScoreManager.stopwatch.Elapsed;
 
 
         }
@@ -165,7 +165,7 @@ public class PlayerHealth : MonoBehaviour
         OverMenu.defaultPlayerName = Player.playerName;
         if (Player.modeGame.Equals("Zen"))
         {   
-            TimeSpan newTime = new TimeSpan(ScoreZenUI.TimeSpanZenUI.Days, ScoreZenUI.TimeSpanZenUI.Hours, ScoreZenUI.TimeSpanZenUI.Minutes, ScoreZenUI.TimeSpanZenUI.Seconds,ScoreZenUI.TimeSpanZenUI.Milliseconds);
+            TimeSpan newTime = new TimeSpan(ScoreZenManager.TimeSpanZenUI.Days, ScoreZenManager.TimeSpanZenUI.Hours, ScoreZenManager.TimeSpanZenUI.Minutes, ScoreZenManager.TimeSpanZenUI.Seconds, ScoreZenManager.TimeSpanZenUI.Milliseconds);
             string insertedScore = newTime.ToString().Substring(0,11);
             OverMenu.Param1 = insertedScore;
             OverMenu.Param2 = insertedScore;

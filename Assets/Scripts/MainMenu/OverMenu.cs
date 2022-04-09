@@ -15,7 +15,7 @@ public class OverMenu : MonoBehaviour
     public static string Param2;
     public Text param1;
     public Text param2;
-    //public ScoreWaveUI scoreWaveUI;
+    //public ScoreWaveManager scoreWaveManager;
 
 
     public static string defaultPlayerName;
@@ -36,14 +36,24 @@ public class OverMenu : MonoBehaviour
         if (GameMode == "Zen")
         {
             //Debug.Log("Mode Game ZEN");
+
             Player.modeGame = GameMode;
+            Player.timeBetweenBullets = 0.5f;
+            Player.damagePerShot = 20;
+            Player.speed = 6f;
+            Player.diagonal = 1;
             SceneManager.LoadScene("ZenMode");
 
         }
         else if (GameMode == "Wave")
         {
             Player.modeGame = GameMode;
-            //scoreWaveUI.AddWaveScore(new ScoreWave(name: Player.playerName, wave: ScoreManager.wave, score: ScoreManager.score));
+            Player.timeBetweenBullets = 0.5f;
+            Player.damagePerShot = 20;
+            Player.speed = 6f;
+            Player.diagonal = 1;
+            //Debug.Log("PAS RESTART MASUKIN COY");
+            //scoreWaveManager.AddWaveScore(new ScoreWave(name: Player.playerName, wave: ScoreManager.wave, score: ScoreManager.score));
             SceneManager.LoadScene("WaveMode");
         }
 
@@ -69,7 +79,13 @@ public class OverMenu : MonoBehaviour
 
     public void QuitGame()
     {
+        Player.timeBetweenBullets = 0.5f;
+        Player.damagePerShot = 20;
+        Player.speed = 6f;
+        Player.diagonal = 1;
+        Player.playerName = null;
         SceneManager.LoadScene("Menu");
+        
     }
 
     public void setZenMode()
