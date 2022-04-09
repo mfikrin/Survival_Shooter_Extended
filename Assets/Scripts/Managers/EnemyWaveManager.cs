@@ -12,7 +12,7 @@ public class EnemyWaveManager : MonoBehaviour
     public GameObject panelUpgradeWeapon;
     //public Button upgradeSpeed;
     //public Button upgradeDiagonal;
-    public int[] spawnEnemy;
+    public int[] spawnedEnemy;
     public float spawnTime;
     public Transform[] spawnPoints;
 
@@ -26,52 +26,34 @@ public class EnemyWaveManager : MonoBehaviour
     IFactory Factory { get { return factory as IFactory; } }
 
     //private int waveNumber = 0;
-    private int enemySpawnAmount;
+    private int spawnedEnemyAmount;
     public static int enemyKilled;
     public static int maxWave;
+    // public int[,] enemyPool = new int[maxWave, spawnedEnemy.Length]; 
     void Start()
     {
 
-        //spawnEnemy = new int[enemySpawnAmount];
+        //spawnedEnemy = new int[spawnedEnemyAmount];
         panelUpgradeWeapon.SetActive(false);
         spawnTime = 3f;
-        enemySpawnAmount = spawnEnemy.Length;
+        spawnedEnemyAmount = spawnedEnemy.Length;
         enemyKilled = 0;
         maxWave = 6;
-        //Debug.Log("IN START ENEMY MANAGER");
+        
 
-        //Mengeksekusi fungs Spawn setiap beberapa detik sesui dengan nilai spawnTime
-        //if (Player.modeGame.Equals("Wave"))
-        //{
-        //    Debug.Log("SPAWN WAVE MODE");
-            
-        //}
-        StartWave();
-        //InvokeRepeating("Spawn", spawnTime, spawnTime);
+        FirstWave();
 
     }
 
     private void Update()
     {
-        //Debug.Log("IN UPDATE ENEMY MANAGER");
 
-        //if (Player.modeGame.Equals("Wave"))
-        //{
-        //    Debug.Log("SPAWN WAVE MODE IN UPDATE ENEMY MANAGER");
-        //    if (enemyKilled >= enemySpawnAmount)
-        //    {
-        //        Debug.Log("Wave SUDAH SELESAI GAN ?");
-        //        NextWave();
-        //    }
-        //}
-
-        //Debug.Log("SPAWN WAVE MODE IN UPDATE ENEMY MANAGER");
-        Debug.LogFormat("Enemy Killed",enemyKilled);
-        Debug.Log("Enemy Killed");
-        Debug.Log(enemyKilled);
-        Debug.Log("Enemy Spawn Amount");
-        Debug.Log(enemySpawnAmount);
-        if (enemyKilled >= enemySpawnAmount)
+        // Debug.LogFormat("Enemy Killed",enemyKilled);
+        // Debug.Log("Enemy Killed");
+        // Debug.Log(enemyKilled);
+        // Debug.Log("Enemy Spawn Amount");
+        //Debug.Log(spawnedEnemyAmount);
+        if (enemyKilled >= spawnedEnemyAmount)
         {
             if (ScoreManager.wave == maxWave) // Reached max wave
             {
@@ -151,18 +133,17 @@ public class EnemyWaveManager : MonoBehaviour
 
     }
 
-    private void StartWave()
+    private void FirstWave()
     {
-        Debug.Log("IN START WAVE");
+        //Debug.Log("IN START WAVE");
         ScoreManager.wave = 1;
-        //enemySpawnAmount = 2;
+        //spawnedEnemyAmount = 2;
         enemyKilled = 0;
-
         
 
-        for (int i = 0; i < enemySpawnAmount; i++)
+        for (int i = 0; i < spawnedEnemyAmount; i++)
         {
-            int tag = spawnEnemy[i];
+            int tag = spawnedEnemy[i];
             Debug.Log("SPAWN");
             Spawn(tag);
         }
@@ -170,44 +151,44 @@ public class EnemyWaveManager : MonoBehaviour
 
     private void NextWave()
     {
-        Debug.Log("IN NEXT WAVE");
+        //Debug.Log("IN NEXT WAVE");
         
         ScoreManager.wave++;
         Debug.Log(ScoreManager.wave);
-        int addEnemyAmount = 2;
-        enemySpawnAmount += addEnemyAmount;
+        int enemyCount = 2;
+        spawnedEnemyAmount += enemyCount;
         
-        int[] arrayAddEnemey;
+        int[] addedEnemyArray;
         if (ScoreManager.wave % 3 == 0) // Boss stage
         {
-           arrayAddEnemey = new int[] { 2, 2 };
+           addedEnemyArray = new int[] { 2, 2 };
         }
         else
         {
-           arrayAddEnemey = new int[] { 0, 1 }; // 
+           addedEnemyArray = new int[] { 0, 1 }; // 
         }
         
 
-        List<int> ListSpawnEnemy = spawnEnemy.ToList();
+        List<int> spawnedEnemyList = spawnedEnemy.ToList();
 
-        foreach (var tag in arrayAddEnemey)
+        foreach (var tag in addedEnemyArray)
         {
-            ListSpawnEnemy.Add(tag);
+            spawnedEnemyList.Add(tag);
         }
 
-        spawnEnemy = ListSpawnEnemy.ToArray();
+        spawnedEnemy = spawnedEnemyList.ToArray();
 
-        Debug.Log(spawnEnemy);
-        //spawnEnemy = new int[enemySpawnAmount];
+        Debug.Log(spawnedEnemy);
+        //spawnedEnemy = new int[spawnedEnemyAmount];
 
         
         
         enemyKilled = 0;
 
 
-        for (int i = 0; i < enemySpawnAmount; i++)
+        for (int i = 0; i < spawnedEnemyAmount; i++)
         {
-            int tag = spawnEnemy[i];
+            int tag = spawnedEnemy[i];
             Debug.Log("SPAWN");
             Spawn(tag);
         }
