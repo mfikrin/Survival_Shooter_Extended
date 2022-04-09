@@ -12,6 +12,7 @@ public class RobotHealth : MonoBehaviour
     Animator anim;
     AudioSource enemyAudio;
     ParticleSystem hitParticles;
+    ParticleSystem explosionParticles;
     CapsuleCollider capsuleCollider;
     bool isDead;
     bool isSinking;
@@ -23,6 +24,7 @@ public class RobotHealth : MonoBehaviour
         anim = GetComponent<Animator>();
         enemyAudio = GetComponent<AudioSource>();
         hitParticles = GetComponentInChildren<ParticleSystem>();
+
         capsuleCollider = GetComponent<CapsuleCollider>();
 
         // Set current health
