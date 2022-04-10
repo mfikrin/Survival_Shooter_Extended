@@ -32,7 +32,9 @@ public class EnemyWaveManager : MonoBehaviour
     private int spawnedEnemyAmount;
     public static int enemyKilled;
     public static int maxWave;
-
+    float timeBetweenWaves = 5f;
+    float timer;
+    float spawnTimer;
     
     // public int[,] enemyPool = new int[maxWave, spawnedEnemy.Length]; 
     void Start()
@@ -51,6 +53,7 @@ public class EnemyWaveManager : MonoBehaviour
 
     private void Update()
     {
+        timer += Time.deltaTime;
         if (enemyKilled >= spawnedEnemyAmount)
         {
             if (ScoreManager.wave == maxWave) // Reached max wave
@@ -60,6 +63,10 @@ public class EnemyWaveManager : MonoBehaviour
                 ScoreWaveUI.scoreWaveUI = ScoreManager.score;
                 // set wave
                 ScoreWaveUI.waveWaveUI = ScoreManager.wave;
+                
+                OverMenu.Param1 = ScoreManager.wave.ToString();
+                OverMenu.Param2 = ScoreManager.score.ToString();
+                Debug.Log(OverMenu.Param1);
 
                 SceneManager.LoadScene("WaveWinMenu");
             }
@@ -76,18 +83,19 @@ public class EnemyWaveManager : MonoBehaviour
                     //upgradeWeapon();
                 }
                
-                
-                if (!WeaponUpgradeManager.isGamePaused)
+                if(timer >= timeBetweenWaves)
                 {
-                    NextWave();
-                }
+                    if (!WeaponUpgradeManager.isGamePaused)
+                    {
+                        NextWave();
+                    }
 
-                else if (WeaponUpgradeManager.isExitUpgradeWeapon)
-                {
-                    NextWave();
+                    else if (WeaponUpgradeManager.isExitUpgradeWeapon)
+                    {
+                        NextWave();
+                    }
                 }
-
-                    
+   
                 
             }
            
@@ -111,12 +119,14 @@ public class EnemyWaveManager : MonoBehaviour
 
     private void FirstWave()
     {
+        timer = 0f;
         //Debug.Log("IN START WAVE");
         ScoreManager.wave = 1;
         //spawnedEnemyAmount = 2;s
         enemyKilled = 0;
         int tempAmount = 0;
         int[] currentPool = randomiseSpawnAmount(waves[0].enemyPrefabIndex, waves[0].maxWeight);
+        spawnTimer = 0f;
         for (int i = 0; i < currentPool.Length; i++)
         {
             int tag = waves[0].enemyPrefabIndex[i];
@@ -136,7 +146,7 @@ public class EnemyWaveManager : MonoBehaviour
     private void NextWave()
     {
         //Debug.Log("IN NEXT WAVE");
-        
+        timer = 0f;
         ScoreManager.wave++;
         enemyKilled = 0;
         int tempAmount = 0;

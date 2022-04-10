@@ -29,7 +29,7 @@ public class RobotMovement : MonoBehaviour
         //Debug.Log("Nav Speed" + nav.speed);
         if (RobotHealth.currentHealth > 0 && ((playerHealth.currentHealth > 0 && Player.modeGame != "SuddenDeath") || (playerHealth.currentHealth == 0 && Player.modeGame.Equals("SuddenDeath"))))
         {
-            Debug.Log("MASUK KE NAV MESHAN");
+            //Debug.Log("MASUK KE NAV MESHAN");
             nav.SetDestination(player.position);
         }
         else //Hentikan moving

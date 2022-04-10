@@ -74,11 +74,11 @@ public class ScoreManager : MonoBehaviour
         UnityEngine.Debug.Log(scene);
         if (scene.Equals("ZenMode") || scene.Equals("WaveMode") || scene.Equals("SuddenDeathMode"))
         {
-            UnityEngine.Debug.Log("MASUK KE IFFF");
+            //UnityEngine.Debug.Log("MASUK KE IFFF");
 
             if (Player.modeGame.Equals("Zen"))
             {
-                UnityEngine.Debug.Log("MASUK KE ZEN");
+                //UnityEngine.Debug.Log("MASUK KE ZEN");
                 if (stopwatch != null)
                 {
                     //if (isTimeActive && counterPanel == 2)
@@ -121,7 +121,7 @@ public class ScoreManager : MonoBehaviour
             }
             else if (Player.modeGame.Equals("Wave"))
             {
-                UnityEngine.Debug.Log("MASUK KE WAVE");
+                //UnityEngine.Debug.Log("MASUK KE WAVE");
 
                 if (textScore != null)
                 {
@@ -133,7 +133,7 @@ public class ScoreManager : MonoBehaviour
                 }
                 if (ResumeManager.isGamePaused)
                 {
-                    UnityEngine.Debug.Log("AAAAAAAA");
+                    //UnityEngine.Debug.Log("AAAAAAAA");
                     isTimeActive = false;
                     //stopwatch.Stop();
                     panelResume.SetActive(true);
@@ -148,7 +148,7 @@ public class ScoreManager : MonoBehaviour
                 }
                 if (stopwatch != null)
                 {
-                    UnityEngine.Debug.Log("MASUK KE STOPWATCH SUDDEN DEATH");
+                    //UnityEngine.Debug.Log("MASUK KE STOPWATCH SUDDEN DEATH");
                     ts = stopwatch.Elapsed;
                     string time = ts.ToString().Substring(0, 11);
                     if (textTime != null)
