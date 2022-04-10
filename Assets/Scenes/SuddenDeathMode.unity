@@ -2920,6 +2920,11 @@ PrefabInstance:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 170190823}
+    - target: {fileID: 6141757101894192956, guid: 20cb5484ba4b4f54f902db7f94f01f73,
+        type: 3}
+      propertyPath: currentHealth
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6141757101894192959, guid: 20cb5484ba4b4f54f902db7f94f01f73,
         type: 3}
       propertyPath: powerAmount
