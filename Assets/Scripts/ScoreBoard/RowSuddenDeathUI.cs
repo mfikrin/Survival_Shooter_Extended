@@ -9,4 +9,5 @@ public class RowSuddenDeathUI : MonoBehaviour
     public TextMeshProUGUI Name;
     public TextMeshProUGUI Score;
     public TextMeshProUGUI Time;
+    public TextMeshProUGUI FullName;
 }
