@@ -129,7 +129,7 @@ Ketika pemain berhasil menyelesaikan permainan (atau kalah), akan ditampilkan Ga
 1. Pastikan Unity Sudah Terinstal
 2. Untuk Menjalankan Program, dapat melalui 2 metode. 
    - Jika ingin menjalankan Program Lewat Unity Editor, drag Scene Menu ke Hierarchy, lalu play Scene.
-   - Atau run .exe file (Survival-Shooter.exe) yang berada pada root directory
+   - Atau run .exe file (Survival Shooter.exe) yang berada pada directory Executable
 3. Untuk memainkan Zen Mode (atau mode permainan lainnya), dapat menekan tombol Play pada Main Menu, lalu klik terlebih dahulu button dari mode yang ingin dimainkan, kemudian klik tombol Next.
    
 ## Library

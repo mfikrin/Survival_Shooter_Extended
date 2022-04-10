@@ -73,13 +73,14 @@ public class RobotAttack : MonoBehaviour
             timer = 0f;
 
             // Taking damage
-            if (playerHealth.currentHealth > 0)
+            if ((playerHealth.currentHealth > 0 && Player.modeGame != "SuddenDeath") || (playerHealth.currentHealth == 0 && Player.modeGame.Equals("SuddenDeath")))
             {
                 playerHealth.TakeDamage(attackDamage);
                 enemyHealth.TakeDamage(enemyHealth.currentHealth, playerHealth.transform.position);
                 hitParticles.Play();
 
             }
+
         }
 }
 
