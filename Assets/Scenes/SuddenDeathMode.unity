@@ -2363,7 +2363,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 882488288}
   m_LocalRotation: {x: 0, y: 0.9063079, z: -0, w: -0.42261827}
-  m_LocalPosition: {x: 0, y: 0, z: 32}
+  m_LocalPosition: {x: -6.6, y: 0, z: 21.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2913,10 +2913,20 @@ PrefabInstance:
       propertyPath: speedWeaponAmount
       value: 
       objectReference: {fileID: 2038688227}
+    - target: {fileID: 6141757101894224328, guid: 20cb5484ba4b4f54f902db7f94f01f73,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6141757101894224342, guid: 20cb5484ba4b4f54f902db7f94f01f73,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6141757101894224342, guid: 20cb5484ba4b4f54f902db7f94f01f73,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6141757101894325736, guid: 20cb5484ba4b4f54f902db7f94f01f73,
         type: 3}
