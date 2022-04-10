@@ -11,7 +11,7 @@ public class ResumeManager : MonoBehaviour
 
     public void Pause()
     {
-        Debug.Log("PAUSEEEEEEE");
+        //Debug.Log("PAUSEEEEEEE");
         panelResume.SetActive(true);
         Time.timeScale = 0.0000001f;
         isGamePaused = true;
