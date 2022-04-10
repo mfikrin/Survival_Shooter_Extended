@@ -9,4 +9,5 @@ public class RowWaveUI : MonoBehaviour
     public TextMeshProUGUI Name;
     public TextMeshProUGUI Wave;
     public TextMeshProUGUI Score;
+    public TextMeshProUGUI FullName;
 }
