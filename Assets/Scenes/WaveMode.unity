@@ -3794,17 +3794,17 @@ MonoBehaviour:
   enemyWeight: 01000000020000000300000004000000030000000000000000000000
   waves:
   - enemyPrefabIndex: 0000000001000000
-    maxWeight: 5
+    maxWeight: 10
   - enemyPrefabIndex: 0200000003000000
-    maxWeight: 7
+    maxWeight: 14
   - enemyPrefabIndex: 050000000200000004000000
-    maxWeight: 12
+    maxWeight: 24
   - enemyPrefabIndex: 010000000200000004000000
-    maxWeight: 15
+    maxWeight: 30
   - enemyPrefabIndex: 000000000300000004000000
-    maxWeight: 20
+    maxWeight: 40
   - enemyPrefabIndex: 06000000020000000300000004000000
-    maxWeight: 25
+    maxWeight: 50
   factory: {fileID: 1880489809}
 --- !u!4 &1599711902
 Transform:
