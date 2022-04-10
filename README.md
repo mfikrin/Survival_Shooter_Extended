@@ -115,7 +115,7 @@ Pada wave Mode, upgrade weapon dilakukan setiap kali player menyelesaikan wave t
 ### Local Scoreboard
 Terdapat tiga local scoreboard yaitu local scoreboard untuk zen mode, wave mode, dan sudden death mode. 
 Local scoreboard Zen mode menampilkan rank, nama, dan waktu survival pemain. Diurutkan berdasarkan waktu survival pemain paling lama. 
-Local scoreboard Wave mode menampilkan rank, nama, wave, dan score pemain. < … >
+Local scoreboard Wave mode menampilkan rank, nama, wave, dan score pemain, diurutkan berdasarkan Wave tertinggi, lalu Score.
 Local scoreboard Sudden Death mode menampilkan rank, nama, score, dan waktu survival pemain. Diurutkan berdasarkan score tertinggi kemudian waktu survival terlama.
 Local scoreboard disimpan pada Playerprefs, sehingga scoreboard dapat dilihat kembali walaupun telah quit game. Penyimpanan scoreboard ke Playerprefs menggunakan library Newtonsoft json untuk serialize class c# ke json dan sebaliknya (untuk load data). 
  
