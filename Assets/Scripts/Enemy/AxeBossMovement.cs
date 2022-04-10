@@ -39,7 +39,7 @@ public class AxeBossMovement : MonoBehaviour
         //transform.Rotate (0,0,50*Time.deltaTime);
         if (enemyHealth.currentHealth > 0 && ((playerHealth.currentHealth > 0 && Player.modeGame != "SuddenDeath") || (playerHealth.currentHealth == 0 && Player.modeGame.Equals("SuddenDeath"))))
         {
-            Debug.Log("MASUK KE NAV MESHAN");
+            //Debug.Log("MASUK KE NAV MESHAN");
             nav.SetDestination(player.position);
             
         }

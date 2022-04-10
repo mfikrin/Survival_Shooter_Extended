@@ -3798,11 +3798,11 @@ MonoBehaviour:
   - enemyPrefabIndex: 0200000003000000
     maxWeight: 7
   - enemyPrefabIndex: 050000000200000004000000
-    maxWeight: 10
-  - enemyPrefabIndex: 010000000200000004000000
     maxWeight: 12
-  - enemyPrefabIndex: 000000000300000004000000
+  - enemyPrefabIndex: 010000000200000004000000
     maxWeight: 15
+  - enemyPrefabIndex: 000000000300000004000000
+    maxWeight: 20
   - enemyPrefabIndex: 06000000020000000300000004000000
     maxWeight: 25
   factory: {fileID: 1880489809}
