@@ -3,7 +3,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreWaveUI : MonoBehaviour
 {
@@ -13,8 +15,6 @@ public class ScoreWaveUI : MonoBehaviour
     public static int waveWaveUI;
 
     public ScoreWaveManager scoreWaveManager;
-
-
 
     private void Start()
     {
@@ -63,17 +63,39 @@ public class ScoreWaveUI : MonoBehaviour
                 {
                     var row = Instantiate(rowWaveUIOdd, transform).GetComponent<RowWaveUI>();
                     row.Rank.text = (i + 1).ToString();
-                    row.Name.text = scores[i].name;
+
+                    string fullName = scores[i].name;
+                    string nickName = scores[i].name;
+                    if (scores[i].name.Length > 12)
+                    {
+                        nickName = scores[i].name.Substring(0, 12);
+                    }
+                    row.Name.text = nickName;
                     row.Wave.text = scores[i].wave.ToString();
                     row.Score.text = scores[i].score.ToString();
+
+                    row.FullName.text = fullName;
+
+                    
                 }
                 else
                 {
                     var row = Instantiate(rowWaveUIEven, transform).GetComponent<RowWaveUI>();
                     row.Rank.text = (i + 1).ToString();
-                    row.Name.text = scores[i].name;
+
+
+                    string fullName = scores[i].name;
+                    string nickName = scores[i].name;
+                    if (scores[i].name.Length > 12)
+                    {
+                        nickName = scores[i].name.Substring(0, 12);
+                    }
+
+                    row.Name.text = nickName;
                     row.Wave.text = scores[i].wave.ToString();
                     row.Score.text = scores[i].score.ToString();
+
+                    row.FullName.text = fullName;
                 }
 
 
@@ -82,6 +104,48 @@ public class ScoreWaveUI : MonoBehaviour
 
         
     }
+
+    //public void Update()
+    //{
+    //    OnMouseOver();
+    ////}
+
+    //public void OnMouseOver()
+    //{
+    //    Debug.Log("MASUK MOUSE OVER");
+    //    //hoverFullName.text = "Over";
+    //    hoverFullNamePanel.SetActive(true);
+
+    //}
+
+    //public void OnMouseExit()
+    //{
+    //    Debug.Log("MASUK MOUSE EXIT");
+    //    hoverFullNamePanel.SetActive(false);
+
+    //    //hoverFullName.text = "Exit";
+    //}
+
+    // Callback jika ada suatu object masuk ke dalam trigger
+    //void OnTriggerEnter(Collider other)
+    //{
+    //    // Set player in range
+    //    if (other.gameObject == hoverFullName)
+    //    {
+    //        updateText = true;
+    //        Debug.Log("MASUK TRIGGER");
+
+    //    }
+    //}
+
+    //// Callback jika ada object yang keluar dari trigger
+    //void OnTriggerExit(Collider other)
+    //{
+    //    if (other.gameObject == player && other.isTrigger == false)
+    //    {
+    //        playerInRange = false;
+    //    }
+    //}
 
     //public IEnumerable<ScoreWave> GetWaveHighScores()
     //{
