@@ -35,8 +35,9 @@ public class EnemyWaveManager : MonoBehaviour
     float timeBetweenWaves = 3f;
     float timer;
     float spawnTimer;
-    
-    // public int[,] enemyPool = new int[maxWave, spawnedEnemy.Length]; 
+    int[][] defaultPool = new int[6][];
+
+
     void Start()
     {
 
@@ -47,6 +48,7 @@ public class EnemyWaveManager : MonoBehaviour
         enemyKilled = 0;
         spawnedEnemyAmount = 999;
         maxWave = waves.Length;
+        defaultPool = initDefaultPooling();
         FirstWave();
 
     }
@@ -168,6 +170,7 @@ public class EnemyWaveManager : MonoBehaviour
     private int[] randomiseSpawnAmount(int[] enemyPool,int weight)
     {
         // Every Mobs spawned minimum once
+        // Using GCD might work better but ummm
         int initWeight = weight;
         int[] randomisedEnemyPool = new int[enemyPool.Length];
         int removedIndex;
@@ -189,7 +192,7 @@ public class EnemyWaveManager : MonoBehaviour
             }
         }
         int countRepeated = 0;
-        while(initWeight > 0 && countRepeated < 100)
+        while(initWeight > 0 && countRepeated < 50)
         {
             int randomIndex = Random.Range(0, enemyPool.Length);
             if(GetWeight(enemyPool[randomIndex]) != 0)
@@ -200,14 +203,24 @@ public class EnemyWaveManager : MonoBehaviour
                     randomisedEnemyPool[randomIndex] += 1;
                     initWeight = temp;
                 }
+                else{
+                    countRepeated++;
+                }
             }
             else{
                 countRepeated++;
             }
         }
-        if(countRepeated >= 100)
+        if(countRepeated >= 50)
         {
-            Debug.Log("Randomise Spawn Amount Error");
+            Debug.Log("Randomise Spawn Amount Error; Can't get permutation.");
+            Debug.Log("Using Default Spawn Amount");
+            for (int i = 0; i < randomisedEnemyPool.Length; i++)
+            {
+                randomisedEnemyPool[i] = defaultPool[ScoreManager.wave-1][i];
+            }
+
+
         }
         return randomisedEnemyPool;
 
@@ -225,6 +238,20 @@ public class EnemyWaveManager : MonoBehaviour
     public int GetWeight(int tag)
     {
         return enemyWeight[tag];
+    }
+
+    private int[][] initDefaultPooling()
+    {
+        int[][] dPool = new int[6][];
+        dPool[0] = new int[2] {2,4};
+        Debug.Log(dPool[0][1]);
+        dPool[1] = new int[2] {2,2};
+        dPool[2] = new int[3] {1,4,4};
+        dPool[3] = new int[3] {6,3,3};
+        dPool[4] = new int[3] {10,3,6};
+        dPool[5] = new int[4] {1,4,5,6};
+
+        return dPool;
     }
     
     //public void exitFromUpgradeWeapon()
