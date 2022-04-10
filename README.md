@@ -4,10 +4,12 @@
 ## Table of contents
   - [Deskripsi Aplikasi](#deskripsi-aplikasi)
   - [Cara Kerja](#cara-kerja)
+  - [Cara Menjalankan Program](#cara-menjalankan-program)
   - [Library](#library)
   - [Screenshots](#screenshots)
   - [Pembagian Tugas](#pembagian-tugas)
   - [Credits](#credits)
+  
 ## Deskripsi Aplikasi
  
 Survival Shooter : Extended merupakan ekstensi dari permainan [Survival Shooter](https://learn.unity.com/tutorial/survival-shooter-training-day-phases?) yang diimplementasi menggunakan [Unity Game Engine](https://unity.com/), spesifiknya Unity3D.
@@ -60,7 +62,7 @@ Implementasi mob dengan tipe Boss (AxeBoss) memiliki trait yaitu memiliki ukuran
  
 Credits (3D Model) : [Boss](https://sketchfab.com/3d-models/boss-2233362e54b94af8bf51f8b1057f48c4)
 ##### Stats
-- HP : 1500
+- HP : 800
 - Score : 200
 - Weight : None
 - Speed : 8
@@ -72,7 +74,7 @@ Implementasi mob dengan tipe Slime memiliki trait yaitu mampu menembakkan 2 lase
  
 Credits (3D Model) : [Slime](https://sketchfab.com/3d-models/slime-f8df6013fe824d919eced0664eef160a)
 ##### Stats
-- HP : 400
+- HP : 300
 - Score : 80
 - Weight : None
 - Speed : 3.5
@@ -123,7 +125,13 @@ Pada awal game, pemain akan ditampilkan main menu yang berisi Play button, Score
 ### Game Over 
 Ketika pemain berhasil menyelesaikan permainan (atau kalah), akan ditampilkan Game Over Screen/Scene yang akan menampilkan waktu survival (pada Zen Mode), Wave tertinggi dan score yang diraih (pada Wave Mode), atau waktu survival dan score yang diraih (pada Sudden Death Mode). Pada Screen ini juga ditampilkan 3 button untuk merestart permainan (dengan mode dan nama pemain yang sama), button ke halaman Scoreboard, dan button ke Main Menu.
  
- 
+## Cara Menjalankan Program
+1. Pastikan Unity Sudah Terinstal
+2. Untuk Menjalankan Program, dapat melalui 2 metode. 
+   - Jika ingin menjalankan Program Lewat Unity Editor, drag Scene Menu ke Hierarchy, lalu play Scene.
+   - Atau run .exe file (Survival-Shooter.exe) yang berada pada root directory
+3. Untuk memainkan Zen Mode (atau mode permainan lainnya), dapat menekan tombol Play pada Main Menu, lalu klik terlebih dahulu button dari mode yang ingin dimainkan, kemudian klik tombol Next.
+   
 ## Library
 Newtonsoft json 
 -> Digunakan untuk serialize class c# ke json dan deserialize json ke class c#. Serialize / deserialize ini digunakan untuk keperluan menyimpan data scoreboard pemain ke json. Kemudian, datanya disimpan ke playerprefs.
