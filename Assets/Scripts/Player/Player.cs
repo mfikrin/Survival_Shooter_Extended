@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     public static float maxSpeed = 50f;
 
     // PlayerHealth
-    public static int startingHealth;
+    public static int startingHealth = 100;
     public static int maxHealth = 100;
     //public static int currentHealth = startingHealth;
     public static float flashSpeed = 5f;

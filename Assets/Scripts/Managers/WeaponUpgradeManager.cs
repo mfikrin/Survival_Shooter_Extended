@@ -23,15 +23,15 @@ public class WeaponUpgradeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("UPDATE IN WEP MANG");
+        //Debug.Log("UPDATE IN WEP MANG");
         if (EnemyWaveManager.isAfterWaveBoss)
         {
-            Debug.Log("MASUK PAUSEEEEE");
+            //Debug.Log("MASUK PAUSEEEEE");
             Pause();
         }
         if (ScoreManager.isUpgradeZen)
         {
-            Debug.Log("MASUK PAUSEEEEE ZENNNN");
+            //Debug.Log("MASUK PAUSEEEEE ZENNNN");
             Pause();
         }
     }
@@ -64,7 +64,7 @@ public class WeaponUpgradeManager : MonoBehaviour
     {
         // munculin panel upgrade 
         //Pause(); 
-        Debug.Log("Update Dong");
+        //Debug.Log("Update Dong");
         // upgradeSpeed.onClick.AddListener(speedup);
         // upgradeDiagonal.onClick.AddListener(diagonalup);
 
@@ -74,7 +74,7 @@ public class WeaponUpgradeManager : MonoBehaviour
     {
         isUpSpeed = true;
 
-        Debug.Log("Speed up");
+        //Debug.Log("Speed up");
         if (Player.timeBetweenBullets >= 0.1)
         {
             Player.timeBetweenBullets -= 0.1f;
