@@ -9,4 +9,7 @@ public class RowZenUI : MonoBehaviour
     public TextMeshProUGUI Rank;
     public TextMeshProUGUI Name;
     public TextMeshProUGUI Time;
+    public TextMeshProUGUI FullName;
+
+
 }
