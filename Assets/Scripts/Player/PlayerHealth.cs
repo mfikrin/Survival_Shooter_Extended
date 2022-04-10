@@ -48,7 +48,7 @@ public class PlayerHealth : MonoBehaviour
 
         //currentHealth = tempcurrenthealth;
         currentHealth = Player.startingHealth;
-        Debug.Log("CURRENT HEALT");
+        //Debug.Log("CURRENT HEALT");
         Debug.Log(currentHealth.ToString());
         if (Player.startingHealth > Player.maxHealth)
         {

@@ -32,7 +32,7 @@ public class ScoreWaveManager : MonoBehaviour
 
         if (Player.playerName != null && Player.modeGame.Equals("Wave"))
         {
-            Debug.Log("LAHH GW MASUKIN JG CUY");
+            
             AddWaveScore(new ScoreWave(name: Player.playerName, wave: ScoreManager.wave, score: ScoreManager.score));
             Player.playerName = null;
         }

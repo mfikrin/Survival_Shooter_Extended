@@ -34,7 +34,7 @@ public class PlayerShooting : MonoBehaviour
 
         if (Player.damagePerShot > Player.maxDamage)
         {
-            Debug.Log("GEDE CUY");
+            
             Player.damagePerShot = Player.maxDamage;
             powerAmount.text = Player.damagePerShot.ToString() + "/" + Player.maxDamage.ToString();
         }
@@ -81,7 +81,7 @@ public class PlayerShooting : MonoBehaviour
 
         if (WeaponUpgradeManager.isUpPower)
         {
-            Debug.Log("UP Power WOI");
+            
             if (Player.damagePerShot > Player.maxDamage)
             {
                 powerAmount.text = Player.maxDamage.ToString() + "/" + Player.maxTimeBetweenBullets.ToString();

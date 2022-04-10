@@ -81,7 +81,7 @@ public class EnemyWaveManager : MonoBehaviour
                     isAfterWaveBoss = true;
                     panelUpgradeWeapon.SetActive(true);
 
-                    Debug.Log("BOSS WAVE");
+                    //Debug.Log("BOSS WAVE");
 
                     //upgradeWeapon();
                     }
