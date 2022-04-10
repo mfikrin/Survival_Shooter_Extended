@@ -76,7 +76,7 @@ public class EnemyWaveManager : MonoBehaviour
             {  
                 if(timer >= timeBetweenWaves)
                 {
-                    if(ScoreManager.wave % 1 == 0)
+                    if(ScoreManager.wave % 3 == 0)
                     {
                     isAfterWaveBoss = true;
                     panelUpgradeWeapon.SetActive(true);
