@@ -32,7 +32,7 @@ public class EnemyWaveManager : MonoBehaviour
     private int spawnedEnemyAmount;
     public static int enemyKilled;
     public static int maxWave;
-    float timeBetweenWaves = 5f;
+    float timeBetweenWaves = 3f;
     float timer;
     float spawnTimer;
     
@@ -53,9 +53,9 @@ public class EnemyWaveManager : MonoBehaviour
 
     private void Update()
     {
-        timer += Time.deltaTime;
         if (enemyKilled >= spawnedEnemyAmount)
         {
+            timer += Time.deltaTime; 
             if (ScoreManager.wave == maxWave) // Reached max wave
             {
 
@@ -63,7 +63,7 @@ public class EnemyWaveManager : MonoBehaviour
                 ScoreWaveUI.scoreWaveUI = ScoreManager.score;
                 // set wave
                 ScoreWaveUI.waveWaveUI = ScoreManager.wave;
-                
+
                 OverMenu.Param1 = ScoreManager.wave.ToString();
                 OverMenu.Param2 = ScoreManager.score.ToString();
                 Debug.Log(OverMenu.Param1);
@@ -71,20 +71,18 @@ public class EnemyWaveManager : MonoBehaviour
                 SceneManager.LoadScene("WaveWinMenu");
             }
             else
-            {
-                //Debug.Log("Wave SUDAH SELESAI GAN ?");
-                if(ScoreManager.wave % 1 == 0)
+            {  
+                if(timer >= timeBetweenWaves)
                 {
+                    if(ScoreManager.wave % 1 == 0)
+                    {
                     isAfterWaveBoss = true;
                     panelUpgradeWeapon.SetActive(true);
 
                     Debug.Log("BOSS WAVE");
 
                     //upgradeWeapon();
-                }
-               
-                if(timer >= timeBetweenWaves)
-                {
+                    }
                     if (!WeaponUpgradeManager.isGamePaused)
                     {
                         NextWave();
