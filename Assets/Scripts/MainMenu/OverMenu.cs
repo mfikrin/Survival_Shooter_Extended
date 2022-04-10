@@ -15,6 +15,7 @@ public class OverMenu : MonoBehaviour
     public static string Param2;
     public Text param1;
     public Text param2;
+    //public ScoreWaveManager scoreWaveManager;
 
 
     public static string defaultPlayerName;
@@ -35,15 +36,36 @@ public class OverMenu : MonoBehaviour
         if (GameMode == "Zen")
         {
             //Debug.Log("Mode Game ZEN");
+
             Player.modeGame = GameMode;
+            Player.timeBetweenBullets = 0.5f;
+            Player.damagePerShot = 20;
+            Player.speed = 6f;
+            Player.diagonal = 1;
             SceneManager.LoadScene("ZenMode");
 
         }
         else if (GameMode == "Wave")
         {
             Player.modeGame = GameMode;
+            Player.timeBetweenBullets = 0.5f;
+            Player.damagePerShot = 20;
+            Player.speed = 6f;
+            Player.diagonal = 1;
+            //Debug.Log("PAS RESTART MASUKIN COY");
+            //scoreWaveManager.AddWaveScore(new ScoreWave(name: Player.playerName, wave: ScoreManager.wave, score: ScoreManager.score));
             SceneManager.LoadScene("WaveMode");
-
+        }
+        else if (GameMode == "SuddenDeath")
+        {
+            Player.modeGame = GameMode;
+            Player.timeBetweenBullets = 0.5f;
+            Player.damagePerShot = 20;
+            Player.speed = 6f;
+            Player.diagonal = 1;
+            //Debug.Log("PAS RESTART MASUKIN COY");
+            //scoreWaveManager.AddWaveScore(new ScoreWave(name: Player.playerName, wave: ScoreManager.wave, score: ScoreManager.score));
+            SceneManager.LoadScene("SuddenDeathMode");
         }
 
     }
@@ -51,12 +73,30 @@ public class OverMenu : MonoBehaviour
     public void ScoreBoard()
     {
         Debug.Log("To scoreBoard");
-        SceneManager.LoadScene("ZenScoreBoard");
+        if (Player.modeGame.Equals("Zen"))
+        {
+           SceneManager.LoadScene("ZenScoreBoard");
+        }
+        else if (Player.modeGame.Equals("Wave"))
+        {
+           SceneManager.LoadScene("WaveScoreBoard");
+        }
+        else if (Player.modeGame.Equals("SuddenDeath"))
+        {
+            SceneManager.LoadScene("SuddenDeathScoreBoard");
+        }
+
     }
 
     public void QuitGame()
     {
+        Player.timeBetweenBullets = 0.5f;
+        Player.damagePerShot = 20;
+        Player.speed = 6f;
+        Player.diagonal = 1;
+        Player.playerName = null;
         SceneManager.LoadScene("Menu");
+        
     }
 
     public void setZenMode()
