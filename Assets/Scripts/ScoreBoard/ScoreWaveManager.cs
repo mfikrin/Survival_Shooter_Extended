@@ -44,8 +44,7 @@ public class ScoreWaveManager : MonoBehaviour
     }
     public IEnumerable<ScoreWave> GetWaveHighScores()
     {
-        return scoreWaveData.WaveScoreList.OrderByDescending(x => x.score);
-        //.ThenByDescending(x => x.wave);
+        return scoreWaveData.WaveScoreList.OrderByDescending(x => x.wave).ThenByDescending(x => x.score);
     }
 
     private void OnDestroy()
