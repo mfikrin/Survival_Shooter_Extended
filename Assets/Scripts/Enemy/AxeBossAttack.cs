@@ -57,7 +57,7 @@ public class AxeBossAttack : MonoBehaviour
             Attack();
         }
 
-        if (playerHealth.currentHealth <= 0)
+        if ((playerHealth.currentHealth <= 0 && Player.modeGame != "SuddenDeath") || (playerHealth.currentHealth < 0 && Player.modeGame.Equals("SuddenDeath")))
         {
             anim.SetTrigger("PlayerDead");
         }
