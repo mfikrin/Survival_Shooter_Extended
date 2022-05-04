@@ -110,7 +110,7 @@ public class SlimeAttack : MonoBehaviour
         else{
             if(timer >= timeBetweenAttacks && !playerInRange && enemyHealth.currentHealth > 0)
             {
-                if (timer >= timeBetweenBullets && Time.timeScale != 0 && playerHealth.currentHealth > 0){
+                if (timer >= timeBetweenBullets && Time.timeScale != 0 && ((playerHealth.currentHealth > 0 && Player.modeGame != "SuddenDeath") || (playerHealth.currentHealth == 0 && Player.modeGame.Equals("SuddenDeath")))){
                     anim.Play("Attack");
                     Shoot();
                 }
