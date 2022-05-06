@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
 
     // Guns 
     public static int diagonal = 1;
+    public static int maxDiagonal = 5;
 
     // PlayerMovement
     public static float speed = 6f;

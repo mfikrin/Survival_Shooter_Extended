@@ -91,7 +91,12 @@ public class WeaponUpgradeManager : MonoBehaviour
     public void diagonalup()
     {
         Debug.Log("diagonal up");
-        Player.diagonal += 2; 
+
+        if (Player.diagonal < 5)
+        {
+           Player.diagonal += 2;
+        }
+         
         if(Player.diagonal == 3)
         {
             weapon2.SetActive(true);

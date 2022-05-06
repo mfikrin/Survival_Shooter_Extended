@@ -7,7 +7,8 @@ public class PlayerShooting : MonoBehaviour
     //public float timeBetweenBullets = 0.15f;        
     //public float range = 100f;
     public Text powerAmount;
-    public Text speedWeaponAmount; 
+    public Text speedWeaponAmount;
+    public Text diagonalWeaponAmount;
 
       
     float timer;                                    
@@ -50,6 +51,9 @@ public class PlayerShooting : MonoBehaviour
         {
             speedWeaponAmount.text = Player.timeBetweenBullets.ToString() + "/" + Player.maxTimeBetweenBullets.ToString();
         }
+
+        diagonalWeaponAmount.text = Player.diagonal.ToString() + "/" + Player.maxDiagonal.ToString();
+
     }
 
     void Update()
