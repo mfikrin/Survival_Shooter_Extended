@@ -153,9 +153,9 @@ Sketchfab for unity
 ## Pembagian Kerja Anggota Kelompok
 | Nama     | NIM     | Pembagian kerja     |
 | ------------- | ------------- | -------- |
-| Mohammad Sheva Almeyda Sofjan    | 13519018         |Additional Mobs (Skeleton, Bomber, Boss, Slime), Zen Mode, Wave Mode |
-| Muhammad Fikri N.          | 13519069        | Main Menu, ScoreBoard, Zen Mode, Sudden Death Mode, Orb, init Wave Mode  |
-| Muhammad Tamiramin Hayat Suhendar | 13519129 | Initial Git, Attribute Player, Weapon Level up 
+| [Mohammad Sheva Almeyda Sofjan](https://github.com/moshval)    | 13519018         |Additional Mobs (Skeleton, Bomber, Boss, Slime), Zen Mode, Wave Mode |
+| [Muhammad Fikri. N](https://github.com/mfikrin)          | 13519069        | Main Menu, ScoreBoard, Zen Mode, Sudden Death Mode, Orb, init Wave Mode  |
+| [Muhammad Tamiramin Hayat Suhendar](https://github.com/Thumbear) | 13519129 | Initial Git, Attribute Player, Weapon Level up 
  
 ## Credits
 - Unity Learn
