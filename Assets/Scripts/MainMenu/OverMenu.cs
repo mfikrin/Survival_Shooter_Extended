@@ -83,6 +83,7 @@ public class OverMenu : MonoBehaviour
         }
         else if (Player.modeGame.Equals("SuddenDeath"))
         {
+            Player.startingHealth = 100;
             SceneManager.LoadScene("SuddenDeathScoreBoard");
         }
 
@@ -95,6 +96,7 @@ public class OverMenu : MonoBehaviour
         Player.speed = 6f;
         Player.diagonal = 1;
         Player.playerName = null;
+        Player.startingHealth = 100;
         SceneManager.LoadScene("Menu");
         
     }
