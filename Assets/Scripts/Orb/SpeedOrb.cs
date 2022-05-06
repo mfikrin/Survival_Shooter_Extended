@@ -42,7 +42,6 @@ public class SpeedOrb : MonoBehaviour
         // Set player in range
         if (other.gameObject == player && other.isTrigger == false)
         {
-            //Debug.Log("MASUK KE ORB YELLOW - SPEED");
             playerInRangeOrb = true;
             isSpeedOrb = true;
 

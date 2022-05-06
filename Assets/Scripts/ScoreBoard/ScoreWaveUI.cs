@@ -18,32 +18,6 @@ public class ScoreWaveUI : MonoBehaviour
 
     private void Start()
     {
-
-        //var WaveScoreJson = PlayerPrefs.GetString("WaveScores");
-        ////Debug.Log(ZenScoreJson.Equals(String.Empty));
-        //Debug.Log(WaveScoreJson);
-        //if (WaveScoreJson.Equals(String.Empty))
-        //{
-        //    Debug.Log("nulll");
-        //    scoreWaveData = new ScoreWaveData();
-        //}
-        //else
-        //{
-        //    Debug.Log("not nulll");
-        //    scoreWaveData = JsonConvert.DeserializeObject<ScoreWaveData>(WaveScoreJson);
-        //}
-
-        //Debug.Log(scoreWaveData);
-
-        //Debug.Log(Player.playerName);
-        //Debug.Log(Player.modeGame);
-
-        //if (Player.playerName != null && Player.modeGame.Equals("Wave"))
-        //{
-        //    scoreWaveManager.AddWaveScore(new ScoreWave(name: Player.playerName, wave: ScoreManager.wave, score: ScoreManager.score));
-        //    Player.playerName = null;
-        //}
-
         if (scoreWaveManager.GetScoreWaveData() != null)
         {
             var scores = scoreWaveManager.GetWaveHighScores().ToArray();
@@ -56,7 +30,6 @@ public class ScoreWaveUI : MonoBehaviour
                 max_display = 5; // display 5 first rank
             }
             
-
             for (int i = 0; i < max_display; i++)
             {
                 if (i % 2 == 0)
@@ -75,7 +48,6 @@ public class ScoreWaveUI : MonoBehaviour
                     row.Score.text = scores[i].score.ToString();
 
                     row.FullName.text = fullName;
-
                     
                 }
                 else
@@ -101,85 +73,6 @@ public class ScoreWaveUI : MonoBehaviour
 
             }
         }
-
         
     }
-
-    //public void Update()
-    //{
-    //    OnMouseOver();
-    ////}
-
-    //public void OnMouseOver()
-    //{
-    //    Debug.Log("MASUK MOUSE OVER");
-    //    //hoverFullName.text = "Over";
-    //    hoverFullNamePanel.SetActive(true);
-
-    //}
-
-    //public void OnMouseExit()
-    //{
-    //    Debug.Log("MASUK MOUSE EXIT");
-    //    hoverFullNamePanel.SetActive(false);
-
-    //    //hoverFullName.text = "Exit";
-    //}
-
-    // Callback jika ada suatu object masuk ke dalam trigger
-    //void OnTriggerEnter(Collider other)
-    //{
-    //    // Set player in range
-    //    if (other.gameObject == hoverFullName)
-    //    {
-    //        updateText = true;
-    //        Debug.Log("MASUK TRIGGER");
-
-    //    }
-    //}
-
-    //// Callback jika ada object yang keluar dari trigger
-    //void OnTriggerExit(Collider other)
-    //{
-    //    if (other.gameObject == player && other.isTrigger == false)
-    //    {
-    //        playerInRange = false;
-    //    }
-    //}
-
-    //public IEnumerable<ScoreWave> GetWaveHighScores()
-    //{
-    //    return scoreWaveData.WaveScoreList.OrderByDescending(x => x.score);
-    //    //.ThenByDescending(x => x.wave);
-    //}
-
-    //private void OnDestroy()
-    //{
-    //    SaveScoreWave();
-    //}
-
-    //public void AddWaveScore(ScoreWave score)
-    //{
-    //    scoreWaveData.WaveScoreList.Add(score);
-    //}
-
-    //public void SaveScoreWave()
-    //{
-    //    //var ZenScoreJson = JsonUtility.ToJson(scoreZenData);
-    //    //var ZenScoreJson = JsonConvert.SerializeObject(scoreZenData);
-    //    //UnityEngine.Debug.Log(ZenScoreJson);
-    //    //PlayerPrefs.SetString("ZenScores", ZenScoreJson);
-
-    //    var WaveScoreJson = JsonConvert.SerializeObject(scoreWaveData);
-    //    UnityEngine.Debug.Log(WaveScoreJson);
-
-    //    PlayerPrefs.SetString("WaveScores", WaveScoreJson);
-
-    //    //var SuddenDeathScoreJson = JsonConvert.SerializeObject(scoreSuddenDeathData);
-    //    //UnityEngine.Debug.Log(SuddenDeathScoreJson);
-
-    //    //PlayerPrefs.SetString("SuddenDeathScores", SuddenDeathScoreJson);
-    //}
-
-
 }

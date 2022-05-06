@@ -8,7 +8,6 @@ public class EnemyMovement : MonoBehaviour
     EnemyHealth enemyHealth;
     UnityEngine.AI.NavMeshAgent nav;
 
-
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -17,8 +16,6 @@ public class EnemyMovement : MonoBehaviour
         enemyHealth = GetComponent<EnemyHealth>();
         nav = GetComponent <UnityEngine.AI.NavMeshAgent>();
     }
-
-
     void Update ()
     {
         //Memindahkan posisi player

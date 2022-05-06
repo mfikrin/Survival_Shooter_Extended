@@ -41,15 +41,8 @@ public class PlayerHealth : MonoBehaviour
 
         playerShooting = GetComponentInChildren<PlayerShooting>();
 
-
-
-
-        //Debug.Log(tempcurrenthealth);
-
-        //currentHealth = tempcurrenthealth;
         currentHealth = Player.startingHealth;
-        //Debug.Log("CURRENT HEALT");
-        Debug.Log(currentHealth.ToString());
+        
         if (Player.startingHealth > Player.maxHealth)
         {
             healthAmount.text = Player.maxHealth.ToString() + "/" + Player.maxHealth.ToString();
@@ -78,13 +71,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (HealthOrb.isHealthOrb)
         {
-            //if (currentHealth < 0)
-            //{
-            //    currentHealth = 0;
-            //}
-
             healthAmount.text = currentHealth.ToString() + "/" + Player.maxHealth.ToString();
-
         }
 
         if (isDead)
@@ -119,7 +106,6 @@ public class PlayerHealth : MonoBehaviour
 
         if ((currentHealth <= 0 && !isDead && Player.modeGame != "SuddenDeath") || (currentHealth < 0 && Player.modeGame.Equals("SuddenDeath")) )
         {
-            //currentHealth = 0;
             Death();
         }
     }
@@ -128,7 +114,6 @@ public class PlayerHealth : MonoBehaviour
     void Death()
     {
         ScoreManager.stopwatch.Stop();
-        //ScoreManager.ts = ScoreManager.stopwatch.Elapsed;
         if (Player.modeGame.Equals("Zen"))
         {
             ScoreZenManager.TimeSpanZenUI = ScoreManager.stopwatch.Elapsed;
@@ -140,14 +125,13 @@ public class PlayerHealth : MonoBehaviour
             ScoreSuddenDeathManager.TimeSpanSuddenDeathUI = ScoreManager.stopwatch.Elapsed;
         }
         
-        // Debug.Log(ScoreZenUI.TimeSpanZenUI);
+    
        
         isDead = true;
 
         playerShooting.DisableEffects();
 
         anim.SetTrigger("Die");
-        //anim.SetBool("Die", true);
 
         playerAudio.clip = deathClip;
         playerAudio.Play();
@@ -169,7 +153,6 @@ public class PlayerHealth : MonoBehaviour
             string insertedScore = newTime.ToString().Substring(0,11);
             OverMenu.Param1 = insertedScore;
             OverMenu.Param2 = insertedScore;
-            Debug.Log(OverMenu.Param1);
             SceneManager.LoadScene("ZenOverMenu");
        
         }
@@ -178,7 +161,7 @@ public class PlayerHealth : MonoBehaviour
             // set score
             OverMenu.Param1 = ScoreManager.wave.ToString();
             OverMenu.Param2 = ScoreManager.score.ToString();
-            Debug.Log(OverMenu.Param1);
+          
             SceneManager.LoadScene("WaveOverMenu");
        
         }
@@ -189,7 +172,7 @@ public class PlayerHealth : MonoBehaviour
             string insertedScore = newTime.ToString().Substring(0,11);
             OverMenu.Param1 = insertedScore;
             OverMenu.Param2 = ScoreManager.score.ToString();
-            Debug.Log(OverMenu.Param1);
+          
             SceneManager.LoadScene("SuddenDeathOverMenu");
 
         }

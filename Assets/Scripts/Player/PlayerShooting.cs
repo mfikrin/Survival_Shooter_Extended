@@ -3,14 +3,11 @@ using UnityEngine.UI;
 
 public class PlayerShooting : MonoBehaviour
 {
-    //public int damagePerShot = 20;                  
-    //public float timeBetweenBullets = 0.15f;        
-    //public float range = 100f;
+
     public Text powerAmount;
     public Text speedWeaponAmount;
     public Text diagonalWeaponAmount;
-
-      
+  
     float timer;                                    
     Ray shootRay = new Ray();                                   
     RaycastHit shootHit;                            
@@ -21,7 +18,6 @@ public class PlayerShooting : MonoBehaviour
     AudioSource gunAudio;                           
     Light gunLight;                                 
     float effectsDisplayTime = 0.2f;
-    //int maxDamage = 100;
 
     void Awake()
     {
@@ -31,7 +27,6 @@ public class PlayerShooting : MonoBehaviour
         gunLine = GetComponent<LineRenderer>();
         gunAudio = GetComponent<AudioSource>();
         gunLight = GetComponent<Light>();
-
 
         if (Player.damagePerShot > Player.maxDamage)
         {
@@ -72,7 +67,7 @@ public class PlayerShooting : MonoBehaviour
 
         if (WeaponUpgradeManager.isUpSpeed)
         {
-            Debug.Log("UP SPEED WOI");
+      
             if (Player.timeBetweenBullets < Player.maxTimeBetweenBullets)
             {
                 speedWeaponAmount.text = Player.maxTimeBetweenBullets.ToString() + "/" + Player.maxTimeBetweenBullets.ToString();
@@ -101,11 +96,7 @@ public class PlayerShooting : MonoBehaviour
             powerAmount.text = Player.damagePerShot.ToString() + "/" + Player.maxDamage.ToString();
         }
 
-
-
-
     }
-
     public void DisableEffects()
     {
         gunLine.enabled = false;

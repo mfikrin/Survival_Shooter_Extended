@@ -16,7 +16,6 @@ public class EnemyHealth : MonoBehaviour
     bool isDead;
     bool isSinking;
 
-
     void Awake()
     {
         // Mendapatkan reference component
@@ -38,7 +37,6 @@ public class EnemyHealth : MonoBehaviour
             transform.Translate(-Vector3.up * sinkSpeed * Time.deltaTime);
         }
     }
-
 
     public void TakeDamage(int amount, Vector3 hitPoint)
     {

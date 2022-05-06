@@ -10,7 +10,6 @@ public class RobotMovement : MonoBehaviour
 
     public float speed = 7f;
 
-
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -21,8 +20,6 @@ public class RobotMovement : MonoBehaviour
         nav.speed = speed;
         
     }
-
-
     void Update ()
     {
         //Memindahkan posisi player

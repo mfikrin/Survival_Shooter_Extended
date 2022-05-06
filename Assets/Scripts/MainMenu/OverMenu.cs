@@ -15,9 +15,7 @@ public class OverMenu : MonoBehaviour
     public static string Param2;
     public Text param1;
     public Text param2;
-    //public ScoreWaveManager scoreWaveManager;
-
-
+    
     public static string defaultPlayerName;
     void Awake()
     {
@@ -26,17 +24,11 @@ public class OverMenu : MonoBehaviour
     }
     public void Restart()
     {
-        // Debug.Log("GameMode: " + GameMode);
-        // Debug.Log("Score: " + Score);
-
-        //Debug.Log(defaultPlayerName);
         Player.playerName = defaultPlayerName;
         
 
         if (GameMode == "Zen")
         {
-            //Debug.Log("Mode Game ZEN");
-
             Player.modeGame = GameMode;
             Player.timeBetweenBullets = 0.5f;
             Player.damagePerShot = 20;
@@ -52,8 +44,6 @@ public class OverMenu : MonoBehaviour
             Player.damagePerShot = 20;
             Player.speed = 6f;
             Player.diagonal = 1;
-            //Debug.Log("PAS RESTART MASUKIN COY");
-            //scoreWaveManager.AddWaveScore(new ScoreWave(name: Player.playerName, wave: ScoreManager.wave, score: ScoreManager.score));
             SceneManager.LoadScene("WaveMode");
         }
         else if (GameMode == "SuddenDeath")
@@ -63,8 +53,6 @@ public class OverMenu : MonoBehaviour
             Player.damagePerShot = 20;
             Player.speed = 6f;
             Player.diagonal = 1;
-            //Debug.Log("PAS RESTART MASUKIN COY");
-            //scoreWaveManager.AddWaveScore(new ScoreWave(name: Player.playerName, wave: ScoreManager.wave, score: ScoreManager.score));
             SceneManager.LoadScene("SuddenDeathMode");
         }
 

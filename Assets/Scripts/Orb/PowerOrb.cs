@@ -41,7 +41,6 @@ public class PowerOrb : MonoBehaviour
         // Set player in range
         if (other.gameObject == player && other.isTrigger == false)
         {
-            //Debug.Log("MASUK KE ORB GREEN - POWER");
             playerInRangeOrb = true;
             isPowerOrb = true;
             Player.damagePerShot += 10;

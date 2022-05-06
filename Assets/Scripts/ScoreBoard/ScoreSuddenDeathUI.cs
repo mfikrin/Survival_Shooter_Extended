@@ -18,8 +18,6 @@ public class ScoreSuddenDeathUI : MonoBehaviour
         {
             var scores = scoreSuddenDeathManager.GetSuddenDeathHighScores().ToArray();
 
-
-            Debug.Log(scores.Length);
             int max_display = scores.Length;
 
             if (scores.Length > 5)

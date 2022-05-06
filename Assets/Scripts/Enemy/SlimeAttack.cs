@@ -71,10 +71,6 @@ public class SlimeAttack : MonoBehaviour
             arrowLight[i] = arrows[i].GetComponent<Light>();
         }
 
-
-
-
-
     }
 
     // Callback jika ada suatu object masuk ke dalam trigger
@@ -97,8 +93,6 @@ public class SlimeAttack : MonoBehaviour
             playerInRange = false;
         }
     }
-
-
     void Update()
     {
         timer += Time.deltaTime;
@@ -163,8 +157,6 @@ public class SlimeAttack : MonoBehaviour
                 PlayerHealth pHealth = arrowHit.collider.GetComponent<PlayerHealth>();
                 if (pHealth != null)
                 {
-                    Debug.Log("Player Health : " + pHealth.currentHealth);
-                    //Debug.Log("Distance : " + dist);
                     pHealth.TakeDamage(rangedDamage);
                     arrowLine[i].SetPosition(1, pHealth.transform.position);
                 }
@@ -176,36 +168,7 @@ public class SlimeAttack : MonoBehaviour
             {
                 arrowLine[i].SetPosition(1, arrowRay.origin + arrowRay.direction * range);
             }   
-        }
-
-                // arrowAudio.Play();
-        // arrowLight.enabled = true;
-        // arrowParticle.Stop();
-        // arrowParticle.Play();
-        // arrowLine.enabled = true;
-        // arrowLine.SetPosition(0, arrows.transform.position);
-        // arrowRay.origin = arrows.transform.position;
-        // arrowRay.direction = arrows.transform.forward;
-        // if (Physics.Raycast(arrowRay, out arrowHit, range, shootableMask))
-        // {
-        //     PlayerHealth pHealth = arrowHit.collider.GetComponent<PlayerHealth>();
-        //     if (pHealth != null)
-        //     {
-        //         // Debug.Log("Player Health : " + pHealth.currentHealth);
-        //         // Debug.Log("Distance : " + dist);
-        //         pHealth.TakeDamage(rangedDamage);
-        //         arrowLine.SetPosition(1, pHealth.transform.position);
-        //     }
-        //     else{
-        //         arrowLine.SetPosition(1, arrowHit.point);
-        //     }
-        // }
-        // else
-        // {
-        //     arrowLine.SetPosition(1, arrowRay.origin + arrowRay.direction * range);
-        // }  
-
-        
+        }    
     }
 
     void DisableEffects()
@@ -217,6 +180,5 @@ public class SlimeAttack : MonoBehaviour
             arrowLight[1].enabled = false;        
         
     }
-
     
 }

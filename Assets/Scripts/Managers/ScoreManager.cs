@@ -21,15 +21,12 @@ public class ScoreManager : MonoBehaviour
     // wave
     public static int wave;
 
-    
     private ScoreZenData scoreZenData;
     private ScoreWaveData scoreWaveData;
     private ScoreSuddenDeathData scoreSuddenDeathData;
 
-
     public GameObject panelUpgradeWeapon;
     public GameObject panelResume;
-
 
     public Text textScore;
     public Text textTime;
@@ -51,7 +48,6 @@ public class ScoreManager : MonoBehaviour
         stopwatch = new Stopwatch();
         stopwatch.Start();
       
-
     }
 
 
@@ -61,23 +57,11 @@ public class ScoreManager : MonoBehaviour
         UnityEngine.Debug.Log(scene);
         if (scene.Equals("ZenMode") || scene.Equals("WaveMode") || scene.Equals("SuddenDeathMode"))
         {
-            //UnityEngine.Debug.Log("MASUK KE IFFF");
 
             if (Player.modeGame.Equals("Zen"))
             {
-                //UnityEngine.Debug.Log("MASUK KE ZEN");
                 if (stopwatch != null)
                 {
-                    //if (isTimeActive && counterPanel == 2)
-                    //{
-                    //    stopTime = 0;
-                    //    counterPanel = 0; 
-                    //}
-                    //if (!isTimeActive)
-                    //{
-                    //    counterPanel += 1;
-                    //    isTimeActive = true; 
-                    //}
                     ts = stopwatch.Elapsed; 
                     string time = ts.ToString().Substring(0, 11);
                     if (textTime != null)
@@ -108,7 +92,6 @@ public class ScoreManager : MonoBehaviour
             }
             else if (Player.modeGame.Equals("Wave"))
             {
-                //UnityEngine.Debug.Log("MASUK KE WAVE");
 
                 if (textScore != null)
                 {
@@ -120,22 +103,18 @@ public class ScoreManager : MonoBehaviour
                 }
                 if (ResumeManager.isGamePaused)
                 {
-                    //UnityEngine.Debug.Log("AAAAAAAA");
                     isTimeActive = false;
-                    //stopwatch.Stop();
                     panelResume.SetActive(true);
                 }
             }
             else if (Player.modeGame.Equals("SuddenDeath"))
             {
-                UnityEngine.Debug.Log("Sud");
                 if (textScore != null)
                 {
                     textScore.text = "Score: " + score;
                 }
                 if (stopwatch != null)
                 {
-                    //UnityEngine.Debug.Log("MASUK KE STOPWATCH SUDDEN DEATH");
                     ts = stopwatch.Elapsed;
                     string time = ts.ToString().Substring(0, 11);
                     if (textTime != null)

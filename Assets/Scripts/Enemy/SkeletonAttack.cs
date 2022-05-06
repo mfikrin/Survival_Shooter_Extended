@@ -26,8 +26,6 @@ public class SkeletonAttack : MonoBehaviour
     RaycastHit arrowHit;              
     float effectsDisplayTime = 0.2f;
     float shootingDistance = 10f;
-
-
     void Awake ()
     {
         player = GameObject.FindGameObjectWithTag ("Player");
@@ -48,9 +46,6 @@ public class SkeletonAttack : MonoBehaviour
         arrowAudio = arrows.GetComponent<AudioSource>();
         // Mendapatkan Light
         arrowLight = arrows.GetComponent<Light>();
-
-
-
 
     }
 
@@ -74,7 +69,6 @@ public class SkeletonAttack : MonoBehaviour
             playerInRange = false;
         }
     }
-
 
     void Update()
     {
@@ -103,14 +97,11 @@ public class SkeletonAttack : MonoBehaviour
             DisableEffects();
         }
 
-
         if ((playerHealth.currentHealth <= 0 && Player.modeGame != "SuddenDeath") || (playerHealth.currentHealth < 0 && Player.modeGame.Equals("SuddenDeath")))
         {
             anim.SetTrigger("PlayerDead");
         }
     }
-
-
     void Attack()
     {
         timer = 0f;
@@ -139,8 +130,6 @@ public class SkeletonAttack : MonoBehaviour
             Vector3 hitPoint = arrowHit.point;
             if (pHealth != null)
             {
-                // Debug.Log("Player Health : " + pHealth.currentHealth);
-                // Debug.Log("Distance : " + dist);
                 pHealth.TakeDamage(rangedDamage);
                 arrowLine.SetPosition(1, pHealth.transform.position);
             }
@@ -153,7 +142,6 @@ public class SkeletonAttack : MonoBehaviour
             arrowLine.SetPosition(1, arrowRay.origin + arrowRay.direction * range);
         }
 
-        
     }
 
     void DisableEffects()
@@ -161,6 +149,5 @@ public class SkeletonAttack : MonoBehaviour
         arrowLine.enabled = false;
         arrowLight.enabled = false;
     }
-
     
 }

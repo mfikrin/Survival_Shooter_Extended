@@ -11,7 +11,6 @@ public class ResumeManager : MonoBehaviour
 
     public void Pause()
     {
-        //Debug.Log("PAUSEEEEEEE");
         panelResume.SetActive(true);
         Time.timeScale = 0.0000001f;
         isGamePaused = true;
@@ -31,8 +30,6 @@ public class ResumeManager : MonoBehaviour
     }
     public void MainMenuFromResume()
     {
-        Debug.Log("To main menu Resume");
-
         Player.playerName = null;
         Player.timeBetweenBullets = 0.5f;
         Player.damagePerShot = 20;
@@ -46,8 +43,6 @@ public class ResumeManager : MonoBehaviour
     }
     public void QuitGameFromResume()
     {
-        Debug.Log("Quit Resume");
-        //Application.Quit();
         #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
         #else

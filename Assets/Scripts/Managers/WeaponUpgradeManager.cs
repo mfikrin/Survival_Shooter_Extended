@@ -17,31 +17,20 @@ public class WeaponUpgradeManager : MonoBehaviour
     public GameObject weapon5;
     void Start()
     {
-        //panelUpgradeWeapon.SetActive(false);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("UPDATE IN WEP MANG");
         if (EnemyWaveManager.isAfterWaveBoss)
         {
-            //Debug.Log("MASUK PAUSEEEEE");
             Pause();
         }
         if (ScoreManager.isUpgradeZen)
         {
-            //Debug.Log("MASUK PAUSEEEEE ZENNNN");
             Pause();
         }
-    }
-
-    public void exitFromUpgradeWeapon()
-    {
-        //Resume();
-        //isExitUpgradeWeapon = true;
-        
-       
     }
 
     public void Pause()
@@ -60,29 +49,18 @@ public class WeaponUpgradeManager : MonoBehaviour
         ScoreManager.stopwatch.Start();
     }
 
-    public void upgradeWeapon()
-    {
-        // munculin panel upgrade 
-        //Pause(); 
-        //Debug.Log("Update Dong");
-        // upgradeSpeed.onClick.AddListener(speedup);
-        // upgradeDiagonal.onClick.AddListener(diagonalup);
-
-    }
-
     public void speedup()
     {
         isUpSpeed = true;
 
-        //Debug.Log("Speed up");
         if (Player.timeBetweenBullets >= 0.1)
         {
             Player.timeBetweenBullets -= 0.1f;
         }
-        else
-        {
-            Debug.Log("sudah kecepatan maksimal");
-        }
+        //else
+        //{
+        //    Debug.Log("sudah kecepatan maksimal");
+        //}
 
         Resume();
        
@@ -90,8 +68,6 @@ public class WeaponUpgradeManager : MonoBehaviour
 
     public void diagonalup()
     {
-        Debug.Log("diagonal up");
-
         if (Player.diagonal < 5)
         {
            Player.diagonal += 2;
@@ -113,7 +89,6 @@ public class WeaponUpgradeManager : MonoBehaviour
 
     public void powerup()
     {
-        Debug.Log("Power Up");
         if (Player.damagePerShot != 100)
         {
             Player.damagePerShot += 20;

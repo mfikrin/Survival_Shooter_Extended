@@ -9,8 +9,7 @@ public class EnemyWaveManager : MonoBehaviour
 {
     public PlayerHealth playerHealth;
     public GameObject panelUpgradeWeapon;
-    //public Button upgradeSpeed;
-    //public Button upgradeDiagonal;
+  
     public int[] spawnedEnemy;
     public int waveNumber;
     public float spawnTime;
@@ -19,9 +18,7 @@ public class EnemyWaveManager : MonoBehaviour
     public int[] enemyWeight;
     [SerializeField] public enemyPool[] waves;
 
-    //// upgrade weapon 
-    //public static bool GameIsPaused = false;
-    //public bool isExitUpgradeWeapon = false;
+    //// upgrade weapon
     public static bool isAfterWaveBoss = false;
 
     [SerializeField]
@@ -40,11 +37,8 @@ public class EnemyWaveManager : MonoBehaviour
 
     void Start()
     {
-
-        //spawnedEnemy = new int[spawnedEnemyAmount];
         panelUpgradeWeapon.SetActive(false);
         spawnTime = 3f;
-        // spawnedEnemyAmount = spawnedEnemy.Length;
         enemyKilled = 0;
         spawnedEnemyAmount = 999;
         maxWave = waves.Length;
@@ -60,7 +54,6 @@ public class EnemyWaveManager : MonoBehaviour
             timer += Time.deltaTime; 
             if (ScoreManager.wave == maxWave) // Reached max wave
             {
-
                 // set score
                 ScoreWaveUI.scoreWaveUI = ScoreManager.score;
                 // set wave
@@ -68,8 +61,7 @@ public class EnemyWaveManager : MonoBehaviour
 
                 OverMenu.Param1 = ScoreManager.wave.ToString();
                 OverMenu.Param2 = ScoreManager.score.ToString();
-                Debug.Log(OverMenu.Param1);
-
+              
                 SceneManager.LoadScene("WaveWinMenu");
             }
             else
@@ -78,12 +70,8 @@ public class EnemyWaveManager : MonoBehaviour
                 {
                     if(ScoreManager.wave % 3 == 0)
                     {
-                    isAfterWaveBoss = true;
-                    panelUpgradeWeapon.SetActive(true);
-
-                    //Debug.Log("BOSS WAVE");
-
-                    //upgradeWeapon();
+                        isAfterWaveBoss = true;
+                        panelUpgradeWeapon.SetActive(true);
                     }
                     if (!WeaponUpgradeManager.isGamePaused)
                     {
@@ -120,9 +108,7 @@ public class EnemyWaveManager : MonoBehaviour
     private void FirstWave()
     {
         timer = 0f;
-        //Debug.Log("IN START WAVE");
         ScoreManager.wave = 1;
-        //spawnedEnemyAmount = 2;s
         enemyKilled = 0;
         int tempAmount = 0;
         int[] currentPool = randomiseSpawnAmount(waves[0].enemyPrefabIndex, waves[0].maxWeight);
@@ -137,15 +123,12 @@ public class EnemyWaveManager : MonoBehaviour
                 Spawn(tag);
             }
         }
-        Debug.Log("Wave Manager Wave : "+ ScoreManager.wave );
-        Debug.Log("Spawned Enemy : " + tempAmount);
 
         spawnedEnemyAmount = tempAmount;
     }
 
     private void NextWave()
     {
-        //Debug.Log("IN NEXT WAVE");
         timer = 0f;
         ScoreManager.wave++;
         enemyKilled = 0;
@@ -162,8 +145,6 @@ public class EnemyWaveManager : MonoBehaviour
             }
 
         }
-        Debug.Log("Wave Manager Wave : "+ ScoreManager.wave );
-        Debug.Log("Spawned Enemy : " + tempAmount);
         spawnedEnemyAmount = tempAmount;      
 
     }
@@ -213,8 +194,8 @@ public class EnemyWaveManager : MonoBehaviour
         }
         if(countRepeated >= 50)
         {
-            Debug.Log("Randomise Spawn Amount Error; Can't get permutation.");
-            Debug.Log("Using Default Spawn Amount");
+            //Debug.Log("Randomise Spawn Amount Error; Can't get permutation.");
+            //Debug.Log("Using Default Spawn Amount");
             for (int i = 0; i < randomisedEnemyPool.Length; i++)
             {
                 randomisedEnemyPool[i] = defaultPool[ScoreManager.wave-1][i];

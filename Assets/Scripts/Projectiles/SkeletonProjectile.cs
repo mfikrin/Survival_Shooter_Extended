@@ -6,6 +6,4 @@ using System;
 
 public class SkeletonProjectile : MonoBehaviour{
     public GameObject bullet;
-    
-    
 }

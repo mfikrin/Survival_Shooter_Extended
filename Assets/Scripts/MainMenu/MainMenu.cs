@@ -28,13 +28,11 @@ public class MainMenu : MonoBehaviour
             DateTime now = DateTime.Now;
             defaultPlayerName = "Anonymous ";
             defaultPlayerName += now.ToString();
-            //Debug.Log(defaultPlayerName);
             Player.playerName = defaultPlayerName;
         }
 
         if (GameMode == "Zen")
         {
-            //Debug.Log("Mode Game ZEN");
             Player.modeGame = GameMode;
             SceneManager.LoadScene("ZenMode");
 
@@ -57,14 +55,11 @@ public class MainMenu : MonoBehaviour
 
     public void ScoreBoard()
     {
-        Debug.Log("To scoreBoard");
         SceneManager.LoadScene("ZenScoreBoard");
     }
 
     public void QuitGame()
     {
-        Debug.Log("Quit");
-        //Application.Quit();
         #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
         #else

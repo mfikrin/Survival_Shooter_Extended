@@ -20,7 +20,6 @@ public class ScoreZenUI : MonoBehaviour
         {
             var scores = scoreZenManager.GetZenHighScores().ToArray();
 
-            Debug.Log(scores.Length);
             int max_display = scores.Length;
 
             if (scores.Length > 5)

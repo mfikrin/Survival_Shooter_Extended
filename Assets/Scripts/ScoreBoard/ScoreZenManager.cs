@@ -14,22 +14,14 @@ public class ScoreZenManager : MonoBehaviour
     {
         var ZenScoreJson = PlayerPrefs.GetString("ZenScores");
 
-        Debug.Log(ZenScoreJson);
         if (ZenScoreJson.Equals(String.Empty))
         {
-            Debug.Log("nulll");
             scoreZenData = new ScoreZenData();
         }
         else
         {
-            Debug.Log("not nulll");
             scoreZenData = JsonConvert.DeserializeObject<ScoreZenData>(ZenScoreJson);
         }
-
-        Debug.Log(scoreZenData);
-
-        Debug.Log(Player.playerName);
-        Debug.Log(Player.modeGame);
 
         if (Player.playerName != null && Player.modeGame.Equals("Zen"))
         {
@@ -61,7 +53,6 @@ public class ScoreZenManager : MonoBehaviour
     public void SaveScoreZen()
     {
         var ZenScoreJson = JsonConvert.SerializeObject(scoreZenData);
-        UnityEngine.Debug.Log(ZenScoreJson);
         PlayerPrefs.SetString("ZenScores", ZenScoreJson);
     }
 }

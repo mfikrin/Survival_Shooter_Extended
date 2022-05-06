@@ -9,7 +9,6 @@ public class SkeletonMovement : MonoBehaviour
     UnityEngine.AI.NavMeshAgent nav;
     float shootingDistance = 10f;
 
-
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -18,7 +17,6 @@ public class SkeletonMovement : MonoBehaviour
         enemyHealth = GetComponent<EnemyHealth>();
         nav = GetComponent <UnityEngine.AI.NavMeshAgent>();
     }
-
 
     void Update ()
     {

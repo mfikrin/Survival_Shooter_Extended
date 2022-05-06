@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public PlayerHealth playerHealth;
-    //public GameObject enemy;
     public int spawnEnemy;
     public float spawnTime;
     public Transform[] spawnPoints;
@@ -14,9 +13,6 @@ public class EnemyManager : MonoBehaviour
     public MonoBehaviour factory;
     IFactory Factory { get { return factory as IFactory; } }
 
-    //private int waveNumber = 0;
-    //private int enemySpawnAmount;
-    //private int enemyKilled;
     void Start ()
     { 
         InvokeRepeating(nameof(Spawn), spawnTime, spawnTime);

@@ -16,8 +16,6 @@ public class RobotAttack : MonoBehaviour
         ParticleSystem hitParticles;
         bool playerInRange;
         float timer;
-
-
         void Awake ()
         {
             player = GameObject.FindGameObjectWithTag ("Player");
@@ -48,7 +46,6 @@ public class RobotAttack : MonoBehaviour
             }
         }
 
-
         void Update()
         {
             timer += Time.deltaTime;
@@ -66,8 +63,6 @@ public class RobotAttack : MonoBehaviour
                 anim.SetTrigger("PlayerDead");
             }
         }
-
-
         void Attack()
         {
             timer = 0f;

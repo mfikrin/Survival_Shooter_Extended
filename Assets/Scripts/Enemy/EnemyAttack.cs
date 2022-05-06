@@ -43,8 +43,6 @@ public class EnemyAttack : MonoBehaviour
             playerInRange = false;
         }
     }
-
-
     void Update()
     {
         timer += Time.deltaTime;
@@ -59,7 +57,6 @@ public class EnemyAttack : MonoBehaviour
             anim.SetTrigger("PlayerDead");
         }
     }
-
 
     void Attack()
     {

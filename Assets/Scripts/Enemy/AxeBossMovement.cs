@@ -7,7 +7,7 @@ public class AxeBossMovement : MonoBehaviour
     PlayerHealth playerHealth;
     EnemyHealth enemyHealth;
     UnityEngine.AI.NavMeshAgent nav;
-     Animator anim;
+    Animator anim;
      
     public float speed = 8f;
     float detectionRange = 8f;
@@ -39,7 +39,6 @@ public class AxeBossMovement : MonoBehaviour
         //transform.Rotate (0,0,50*Time.deltaTime);
         if (enemyHealth.currentHealth > 0 && ((playerHealth.currentHealth > 0 && Player.modeGame != "SuddenDeath") || (playerHealth.currentHealth == 0 && Player.modeGame.Equals("SuddenDeath"))))
         {
-            //Debug.Log("MASUK KE NAV MESHAN");
             nav.SetDestination(player.position);
             
         }

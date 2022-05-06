@@ -14,22 +14,14 @@ public class ScoreSuddenDeathManager : MonoBehaviour
     {
         var SuddenDeathScoreJson = PlayerPrefs.GetString("SuddenDeathScores");
 
-        Debug.Log(SuddenDeathScoreJson);
         if (SuddenDeathScoreJson.Equals(String.Empty))
         {
-            Debug.Log("nulll");
             scoreSuddenDeathData = new ScoreSuddenDeathData();
         }
         else
         {
-            Debug.Log("not nulll");
             scoreSuddenDeathData = JsonConvert.DeserializeObject<ScoreSuddenDeathData>(SuddenDeathScoreJson);
         }
-
-        Debug.Log(scoreSuddenDeathData);
-
-        Debug.Log(Player.playerName);
-        Debug.Log(Player.modeGame);
 
         if (Player.playerName != null && Player.modeGame.Equals("SuddenDeath"))
         {
@@ -61,7 +53,6 @@ public class ScoreSuddenDeathManager : MonoBehaviour
     public void SaveScoreSuddenDeath()
     {
         var SuddenDeathScoreJson = JsonConvert.SerializeObject(scoreSuddenDeathData);
-        UnityEngine.Debug.Log(SuddenDeathScoreJson);
         PlayerPrefs.SetString("SuddenDeathScores", SuddenDeathScoreJson);
     }
 }

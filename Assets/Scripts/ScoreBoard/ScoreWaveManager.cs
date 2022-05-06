@@ -12,23 +12,14 @@ public class ScoreWaveManager : MonoBehaviour
     private void Awake()
     {
         var WaveScoreJson = PlayerPrefs.GetString("WaveScores");
-        //Debug.Log(ZenScoreJson.Equals(String.Empty));
-        Debug.Log(WaveScoreJson);
         if (WaveScoreJson.Equals(String.Empty))
         {
-            Debug.Log("nulll");
             scoreWaveData = new ScoreWaveData();
         }
         else
         {
-            Debug.Log("not nulll");
             scoreWaveData = JsonConvert.DeserializeObject<ScoreWaveData>(WaveScoreJson);
         }
-
-        Debug.Log(scoreWaveData);
-
-        Debug.Log(Player.playerName);
-        Debug.Log(Player.modeGame);
 
         if (Player.playerName != null && Player.modeGame.Equals("Wave"))
         {
@@ -59,19 +50,7 @@ public class ScoreWaveManager : MonoBehaviour
 
     public void SaveScoreWave()
     {
-        //var ZenScoreJson = JsonUtility.ToJson(scoreZenData);
-        //var ZenScoreJson = JsonConvert.SerializeObject(scoreZenData);
-        //UnityEngine.Debug.Log(ZenScoreJson);
-        //PlayerPrefs.SetString("ZenScores", ZenScoreJson);
-
         var WaveScoreJson = JsonConvert.SerializeObject(scoreWaveData);
-        UnityEngine.Debug.Log(WaveScoreJson);
-
         PlayerPrefs.SetString("WaveScores", WaveScoreJson);
-
-        //var SuddenDeathScoreJson = JsonConvert.SerializeObject(scoreSuddenDeathData);
-        //UnityEngine.Debug.Log(SuddenDeathScoreJson);
-
-        //PlayerPrefs.SetString("SuddenDeathScores", SuddenDeathScoreJson);
     }
 }
